@@ -1,0 +1,259 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>code - Java Engineer</title><meta name="keywords" content="Java"><meta name="author" content="Bernardo Li"><meta name="copyright" content="Bernardo Li"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><meta name="description" content="岁月过的好快，我怎么突然就老了">
+<meta property="og:type" content="website">
+<meta property="og:title" content="code">
+<meta property="og:url" content="http://example.com/index.html">
+<meta property="og:site_name" content="code">
+<meta property="og:description" content="岁月过的好快，我怎么突然就老了">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/null">
+<meta property="article:author" content="Bernardo Li">
+<meta property="article:tag" content="Java">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/null"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+};
+
+var saveToLocal = {
+  set: function setWithExpiry(key, value, ttl) {
+    const now = new Date()
+    const expiryDay = ttl * 86400000
+    const item = {
+      value: value,
+      expiry: now.getTime() + expiryDay,
+    }
+    localStorage.setItem(key, JSON.stringify(item))
+  },
+
+  get: function getWithExpiry(key) {
+    const itemStr = localStorage.getItem(key)
+
+    if (!itemStr) {
+      return undefined
+    }
+    const item = JSON.parse(itemStr)
+    const now = new Date()
+
+    if (now.getTime() > item.expiry) {
+      localStorage.removeItem(key)
+      return undefined
+    }
+    return item.value
+  }
+}
+
+// https://stackoverflow.com/questions/16839698/jquery-getscript-alternative-in-native-javascript
+const getScript = url => new Promise((resolve, reject) => {
+  const script = document.createElement('script')
+  script.src = url
+  script.async = true
+  script.onerror = reject
+  script.onload = script.onreadystatechange = function() {
+    const loadState = this.readyState
+    if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+    script.onload = script.onreadystatechange = null
+    resolve()
+  }
+  document.head.appendChild(script)
+})</script><script id="config_change">var GLOBAL_CONFIG_SITE = { 
+  isPost: false,
+  isHome: true,
+  isHighlightShrink: false,
+  isToc: false,
+  postUpdate: '2021-01-28 07:43:11'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(function () {  window.activateDarkMode = function () {
+    document.documentElement.setAttribute('data-theme', 'dark')
+    if (document.querySelector('meta[name="theme-color"]') !== null) {
+      document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+    }
+  }
+  window.activateLightMode = function () {
+    document.documentElement.setAttribute('data-theme', 'light')
+   if (document.querySelector('meta[name="theme-color"]') !== null) {
+      document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+    }
+  }
+  const autoChangeMode = 'false'
+  const t = saveToLocal.get('theme')
+  if (autoChangeMode === '1') {
+    const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+    const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+    const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+    const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+    if (t === undefined) {
+      if (isLightMode) activateLightMode()
+      else if (isDarkMode) activateDarkMode()
+      else if (isNotSpecified || hasNoSupport) {
+        const now = new Date()
+        const hour = now.getHours()
+        const isNight = hour <= 6 || hour >= 18
+        isNight ? activateDarkMode() : activateLightMode()
+      }
+      window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+        if (saveToLocal.get('theme') === undefined) {
+          e.matches ? activateDarkMode() : activateLightMode()
+        }
+      })
+    } else if (t === 'light') activateLightMode()
+    else activateDarkMode()
+  } else if (autoChangeMode === '2') {
+    const now = new Date()
+    const hour = now.getHours()
+    const isNight = hour <= 6 || hour >= 18
+    if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+    else if (t === 'light') activateLightMode()
+    else activateDarkMode()
+  } else {
+    if (t === 'dark') activateDarkMode()
+    else if (t === 'light') activateLightMode()
+  }const asideStatus = saveToLocal.get('aside-status')
+if (asideStatus !== undefined) {
+   if (asideStatus === 'hide') {
+     document.documentElement.classList.add('hide-aside')
+   } else {
+     document.documentElement.classList.remove('hide-aside')
+   }
+}})()</script><meta name="generator" content="Hexo 5.3.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="alternate" href="/atom.xml" title="code" type="application/atom+xml">
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="/null" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">97</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">42</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">11</div></a></div></div></div><hr/></div></div><div class="page" id="body-wrap"><header class="full_page" id="page-header"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">code</a></span><div id="menus"><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="site-info"><h1 id="site-title">code</h1><div id="site-subtitle"><span id="subtitle"></span></div></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item"><div class="post_cover left_radius"><a href="/2021/01/28/94_chrome%E3%80%81firefox%E5%9C%A8linux%E7%B3%BB%E7%BB%9F%E4%B8%AD%E7%9A%84%E5%AE%89%E8%A3%85%E4%BD%8D%E7%BD%AE/" title="无题">     <img class="post_bg" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/01/28/94_chrome%E3%80%81firefox%E5%9C%A8linux%E7%B3%BB%E7%BB%9F%E4%B8%AD%E7%9A%84%E5%AE%89%E8%A3%85%E4%BD%8D%E7%BD%AE/" title="无题">无题</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2021-01-27T19:52:37.952Z" title="发表于 2021-01-28 03:52:37">2021-01-28</time></span></div><div class="content">Chrome安装位置/opt/google/chrome
+在配置idea启动chrome时，直接选择/opt/google/chrome/chrome即可。
+Firefox安装位置usr/lib/firefox
+在配置idea启动firefox时，直接选择usr/lib/firefox/firefox即可。
+</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/2021/01/28/95_ked%20%E5%9E%83%E5%9C%BE%E6%A1%B6%E6%8A%A5%E9%94%99:%20malformed%20url%20trash:%E2%81%84%20%20%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/" title="无题">     <img class="post_bg" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/01/28/95_ked%20%E5%9E%83%E5%9C%BE%E6%A1%B6%E6%8A%A5%E9%94%99:%20malformed%20url%20trash:%E2%81%84%20%20%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/" title="无题">无题</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2021-01-27T19:52:37.952Z" title="发表于 2021-01-28 03:52:37">2021-01-28</time></span></div><div class="content">问题描述在使用manjaro kde系统时，点击任务栏上的trash垃圾桶图标，报错malformed url trash:/，译为错误的垃圾桶路径。
+解决方法方法一System Settings —&gt; default applications —&gt; File manager 选择为之前系统默认的Dolphiin。因为系统的文件管理器选择错误了，所以才会如此。
+方法二删除~/.local/share/Trash文件夹中的所有文件。可能是因为trash中错误的垃圾文件，导致了trash的错误。
+</div></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="/2021/01/28/97_XML%E5%85%A5%E9%97%A8/" title="无题">     <img class="post_bg" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/01/28/97_XML%E5%85%A5%E9%97%A8/" title="无题">无题</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2021-01-27T19:52:37.952Z" title="发表于 2021-01-28 03:52:37">2021-01-28</time></span></div><div class="content">XML简介什么是XML？xml 是可扩展的标记性语言。
+XML的作用
+用来保存数据， 而且这些数据具有自我描述性
+它还可以做为项目或者模块的配置文件
+还可以做为网络传输数据的格式（现在 JSON 为主）
+
+XML初体验12345678910111213141516&lt;?xml version="1.0" encoding="UTF-8" ?&gt;&lt;!--    上面一行为XML声明，是必须存在的--&gt;&lt;books&gt;&lt;!--books表示多个图书信息--&gt;    &lt;book sn="1010"&gt;&lt;!--book表示一个图书信息，sn表示序列号--&gt;        &lt;name&gt;那些比拼命努力更重要的事&lt;/name&gt;&lt;!--name表示书名--&gt;        &lt;author&gt;乔治•维兰特&lt;/author&gt;&lt;!--author表示作者--&gt;        &lt;price&gt;32&lt;/price&gt;&lt;!--price表示价格--&gt; ...</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/2021/01/28/96_%E5%88%9D%E8%AF%86Shell/" title="无题">     <img class="post_bg" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/01/28/96_%E5%88%9D%E8%AF%86Shell/" title="无题">无题</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2021-01-27T19:52:37.952Z" title="发表于 2021-01-28 03:52:37">2021-01-28</time></span></div><div class="content">程序
+什么是程序程序是为实现特定目标或解决特定问题而用计算机语言编写的命令序列的集合。简单来说，电脑里面的应用都是程序来控制的，程序天天见。程序是由序列组成的，告诉计算机如何完成一个具体的任务。由于现在的计算机还不能理解人类的自然语言，所以还不能用自然语言编写计算机程序，不过现在语音识别技术己经很历害了，在不久的将来，估计，电脑就自己会编程序了。
+程序能做什么？电脑控制手机控制机械控制物联，一切自动化制造的系统，都是由程序来控制的。
+什么是编程？编程是一个动词，编程==写代码。写代码为了什么？为了让计算机干你想要干的事情。
+语言那计算机能理解的语言是什么？计算机只能理解二进制，如：01010101等。如果使用二进制来写代码，这样开发速度太慢。所以最好的办法就是人输入简单的指令，计算机能把指令转成二进制执行。
+有哪些编程语言呢？编程语言总体分为：机器语言、汇编语言、高级语言
+机器语言由于计算机内部只能接受二进制，因此用二进制代码0和1描述的指令成为机器指令，全部机器指令的集合构成计算机的机器语言。用机器语言编程的程序成为目标程序，只有目标程序才能被计算机直接识别和执行。但是机器语言编写的 ...</div></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="/2021/01/28/93_JQuery%E5%85%A5%E9%97%A8/" title="无题">     <img class="post_bg" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/01/28/93_JQuery%E5%85%A5%E9%97%A8/" title="无题">无题</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2021-01-27T19:52:37.952Z" title="发表于 2021-01-28 03:52:37">2021-01-28</time></span></div><div class="content">JQuery概述什么是JQuery？jQuery， 顾名思义， 也就是 JavaScript 和查询（Query） ， 它就是辅助 JavaScript 开发的 js 类库。
+JQuery核心思想它的核心思想是 write less,do more(写得更少,做得更多)， 所以它实现了很多浏览器的兼容问题。
+JQuery流行程度jQuery 现在已经成为最流行的 JavaScript 库， 在世界前 10000 个访问最多的网站中， 有超过 55%在使用jQuery。
+jQuery 好处jQuery 是免费、 开源的， jQuery 的语法设计可以使开发更加便捷， 例如操作文档对象、 选择 DOM 元素、制作动画效果、 事件处理、 使用 Ajax 以及其他功能。
+JQuery初体验需求： 使用 jQuery 给一个按钮绑定单击事件?
+12345678910111213141516171819&lt;!DOCTYPE html&gt;&lt;html lang="en"&gt;&lt;head&gt;    &lt;meta charset="UTF-8"&gt;    &lt;titl ...</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/2020/11/30/92_%E8%AE%A1%E7%BD%91%E4%B8%87%E5%AD%97%E6%89%AB%E7%9B%B2/" title="计网万字扫盲">     <img class="post_bg" src="https://gitee.com/jasonM4A1/pictureHost/raw/master/20201130162619.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="计网万字扫盲"></a></div><div class="recent-post-info"><a class="article-title" href="/2020/11/30/92_%E8%AE%A1%E7%BD%91%E4%B8%87%E5%AD%97%E6%89%AB%E7%9B%B2/" title="计网万字扫盲">计网万字扫盲</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-11-30T08:24:53.000Z" title="发表于 2020-11-30 16:24:53">2020-11-30</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a></span></div><div class="content">计算机网络概述基本术语
+结点（node）：网络中的结点可以是计算机、集线器、交换机或路由器等。
+链路（link）：从一个结点到另一个结点的一段物理线路，中间没有任何其他交点。
+主机（host）：连接在因特网上的计算机。
+ISP（Internet Service Provider）：因特网服务提供者（提供商）。
+IXP（Internet eXchange Point）：互联网交换点IXP的主要作用就是允许两个网络直接相连并交换分组，而不需要再通过第三个网络来转发分组。
+RFC（Requst For Comments）：意思是“请求评议”，包含了关于Internet几乎所有的重要的文字资料。
+广域网WAN（Wide Area Network）：任务是通过长距离运送主机发送的数据。
+城域网MAN（Metropolitan Area Network）：大型的计算机网络，MAN是改进LAN（局域网）中的传输介质，扩大局域网的范围。
+局域网LAN（Local Area Network）：地理分布范较小，一般为数百米至数公里。
+个人区域网PAN（Personal Area Network）：在个人工 ...</div></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="/2020/11/27/91_JDBC%E5%85%A5%E9%97%A8/" title="JDBC入门">     <img class="post_bg" src="https://gitee.com/jasonM4A1/pictureHost/raw/master/20201127204636.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="JDBC入门"></a></div><div class="recent-post-info"><a class="article-title" href="/2020/11/27/91_JDBC%E5%85%A5%E9%97%A8/" title="JDBC入门">JDBC入门</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-11-27T12:42:51.000Z" title="发表于 2020-11-27 20:42:51">2020-11-27</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/MySQL/">MySQL</a><i class="fas fa-angle-right"></i><a class="article-meta__categories" href="/categories/MySQL/%E5%A4%8D%E4%B9%A0/">复习</a></span></div><div class="content">JDBC概述JDBC 是 Java 访问数据库的标准规范，真正怎么操作数据库还需要具体的实现类，也就是数据库驱动。每个数据库厂商根据自家数据库的通信格式编写好自己数据库的驱动。所以我们只需要会调用 JDBC 接口中的方法即 可，数据库驱动由数据库厂商提供。
+程序员如果要开发访问数据库的程序，只需要会调用 JDBC 接口中的方法即可，不用关注类是如何实现的。 
+ 使用同一套 Java 代码，进行少量的修改就可以访问其他 JDBC 支持的数据库。
+
+JDBC相关开发包
+java.sql：包含所有与JDBC访问数据库相关的接口和类。
+javax.sql：数据库扩展包，提供数据库额外的功能。如：连接池
+数据库的驱动：由各大数据库厂商提供，需要额外去下载，是对 JDBC 接口实现的类
+
+JDBC核心API
+DriverManager类：管理和注册数据库驱动，得到数据库连接对象。
+Connection接口：一个连接对象，可用于创建Statement和PreparedStatement对象
+Statement接口：一个SQL语句对象，用于将SQL语句发送给数据库服务器。
+PreparedStatem ...</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/2020/11/27/90_CentOS%E5%AE%89%E8%A3%85MySQL%E8%AF%A6%E8%A7%A3/" title="CentOS安装MySQL详解">     <img class="post_bg" src="https://gitee.com/jasonM4A1/pictureHost/raw/master/20201127011021.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="CentOS安装MySQL详解"></a></div><div class="recent-post-info"><a class="article-title" href="/2020/11/27/90_CentOS%E5%AE%89%E8%A3%85MySQL%E8%AF%A6%E8%A7%A3/" title="CentOS安装MySQL详解">CentOS安装MySQL详解</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-11-26T17:01:57.000Z" title="发表于 2020-11-27 01:01:57">2020-11-27</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/Linux/">Linux</a><i class="fas fa-angle-right"></i><a class="article-meta__categories" href="/categories/Linux/MySQL/">MySQL</a></span></div><div class="content">引言最近某云搞活动，买了个服务器作为平时学习和测试用，新机器啥也没有，一些常用软件的安装是免不了的，于是乎想着把安装过程都详细记录下来，一是做个备忘，二是给有需要的同学作个参考。
+Linux上安装软件常见的几种方式：
+
+源码编译
+压缩包解压（一般为tar.gz）
+编译好的安装包（RPM、DPKG等）
+在线安装（YUM、APT等）
+
+以上几种方式便捷性依次增加，但通用性依次下降，比如直接下载压缩包进行解压，这种方式一般需要自己做一些额外的配置工作，但只要掌握了方法，各个平台基本都适用，YUM虽然简单，但是平台受限，网络受限，必要的时候还需要增加一些特定YUM源。
+几种安装方式最好都能掌握，原则上能用简单的就用简单的：YUM&gt;RPM&gt;tar.gz&gt;源码
+本文是介绍MySQL在CentOS上的安装，主要步骤都是参考了MySQL官方文档：https://dev.mysql.com/doc/refman/5.7/en/installing.html
+为了测试不同安装方式，反复折腾了好几次，装了删，删了装，每个步骤都是亲测成功的，每条命令都是亲自执行过的，可以放心使用
+咱们闲话少 ...</div></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="/2020/11/26/89_MySQL%E6%8F%92%E5%85%A5%E8%AE%B0%E5%BD%95%E5%87%BA%E7%8E%B0Incorrent-string-value%E9%94%99%E8%AF%AF/" title="MySQL插入记录出现Incorrent string value错误">     <img class="post_bg" src="https://gitee.com/jasonM4A1/pictureHost/raw/master/20201126112509.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="MySQL插入记录出现Incorrent string value错误"></a></div><div class="recent-post-info"><a class="article-title" href="/2020/11/26/89_MySQL%E6%8F%92%E5%85%A5%E8%AE%B0%E5%BD%95%E5%87%BA%E7%8E%B0Incorrent-string-value%E9%94%99%E8%AF%AF/" title="MySQL插入记录出现Incorrent string value错误">MySQL插入记录出现Incorrent string value错误</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-11-26T03:14:49.000Z" title="发表于 2020-11-26 11:14:49">2020-11-26</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/MySQL/">MySQL</a><i class="fas fa-angle-right"></i><a class="article-meta__categories" href="/categories/MySQL/%E6%8A%A5%E9%94%99/">报错</a></span></div><div class="content">MySQL插入记录出现Incorrent string value错误问题描述你是否遇到过类似以下错误？
+java.sql.SQLException: Incorrect string value: ‘\xF0\x9F\x92\x9C’ for column ‘content’ at row 1.
+产生这种异常的原因在于，mysql中的utf8编码最多会用3个字节存储一个字符，如果一个字符的utf8
+编码占用4个字节（最常见的就是ios中的emoji表情字符），那么在写入数据库时就会报错。
+mysql从5.5.3版本开始，才支持4字节的utf8编码，编码名称为utf8mb4（mb4的意思是max bytes 4），这种编码方式最多用4个字节存储一个字符。
+解决方法
+修改MySQL的配置文件：windows 查找C:\ProgramData\MySQL\MySQL Server 5.7\my.ini，Linux查找my.cnf。在配置文件最后添加如下字段：(先备份)
+12345[mysqld]character-set-server=utf8mb4 [mysql]default-char ...</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/2020/11/25/88_MySQL-DCL%E8%AF%AD%E5%8F%A5/" title="MySQL-DCL语句">     <img class="post_bg" src="https://gitee.com/jasonM4A1/pictureHost/raw/master/20201125231153.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="MySQL-DCL语句"></a></div><div class="recent-post-info"><a class="article-title" href="/2020/11/25/88_MySQL-DCL%E8%AF%AD%E5%8F%A5/" title="MySQL-DCL语句">MySQL-DCL语句</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-11-25T15:10:52.000Z" title="发表于 2020-11-25 23:10:52">2020-11-25</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/MySQL/">MySQL</a><i class="fas fa-angle-right"></i><a class="article-meta__categories" href="/categories/MySQL/%E5%A4%8D%E4%B9%A0/">复习</a></span></div><div class="content">MySQL-DCL语句概述我们现在默认使用的都是 root 用户，超级管理员，拥有全部的权限。但是，一个公司里面的数据库服务器上面可能同时运行着很多个项目的数据库。所以，我们应该可以根据不同的项目建立不同的用户，分配不同的权限来管理和维护数据库。
+
+注：mysqld是MySQL的主程序，服务器端。mysql是MySQL的命令行工具，客户端。
+
+
+查看用户所有的用户信息，我们都可以去MySQL自带的数据库mysql中的表user去查询（密码是加密的）。
+12345-- 切换到mysql数据库use mysql;-- 查询user表中的用户信息select * from user;
+
+创建用户语法1CREATE USER '用户名'@'主机名' IDENTIFIED BY '密码';
+关键字
+'用户名'
+将要创建的用户名
+
+'主机名'
+指定该用户在哪个主机上可以登录，如果是本地用户可用localhost。如果想让该用户可以从任意远程主机登录，可以使用通配符%
+
+'密码'
+该用户的登录密码，密码可以为空，如果为空则该用户可以不需要密码登录服务器
+
+
+代码演示12345678-- 创建 use ...</div></div></div><nav id="pagination"><div class="pagination"><span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/2/"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-info-avatar is-center"><img class="avatar-img" src="/null" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">Bernardo Li</div><div class="author-info__description">岁月过的好快，我怎么突然就老了</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">97</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">42</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">11</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2021/01/28/94_chrome%E3%80%81firefox%E5%9C%A8linux%E7%B3%BB%E7%BB%9F%E4%B8%AD%E7%9A%84%E5%AE%89%E8%A3%85%E4%BD%8D%E7%BD%AE/" title="无题"><img src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/2021/01/28/94_chrome%E3%80%81firefox%E5%9C%A8linux%E7%B3%BB%E7%BB%9F%E4%B8%AD%E7%9A%84%E5%AE%89%E8%A3%85%E4%BD%8D%E7%BD%AE/" title="无题">无题</a><time datetime="2021-01-27T19:52:37.952Z" title="发表于 2021-01-28 03:52:37">2021-01-28</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/01/28/95_ked%20%E5%9E%83%E5%9C%BE%E6%A1%B6%E6%8A%A5%E9%94%99:%20malformed%20url%20trash:%E2%81%84%20%20%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/" title="无题"><img src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/2021/01/28/95_ked%20%E5%9E%83%E5%9C%BE%E6%A1%B6%E6%8A%A5%E9%94%99:%20malformed%20url%20trash:%E2%81%84%20%20%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/" title="无题">无题</a><time datetime="2021-01-27T19:52:37.952Z" title="发表于 2021-01-28 03:52:37">2021-01-28</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/01/28/97_XML%E5%85%A5%E9%97%A8/" title="无题"><img src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/2021/01/28/97_XML%E5%85%A5%E9%97%A8/" title="无题">无题</a><time datetime="2021-01-27T19:52:37.952Z" title="发表于 2021-01-28 03:52:37">2021-01-28</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/01/28/96_%E5%88%9D%E8%AF%86Shell/" title="无题"><img src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/2021/01/28/96_%E5%88%9D%E8%AF%86Shell/" title="无题">无题</a><time datetime="2021-01-27T19:52:37.952Z" title="发表于 2021-01-28 03:52:37">2021-01-28</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/01/28/93_JQuery%E5%85%A5%E9%97%A8/" title="无题"><img src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/2021/01/28/93_JQuery%E5%85%A5%E9%97%A8/" title="无题">无题</a><time datetime="2021-01-27T19:52:37.952Z" title="发表于 2021-01-28 03:52:37">2021-01-28</time></div></div></div></div><div class="card-widget card-categories"><div class="item-headline"><i class="fas fa-folder-open"></i><span>分类</span></div><ul class="card-category-list" id="aside-cat-list">
+            <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Git/"><span class="card-category-list-name">Git</span><span class="card-category-list-count">7</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Java/"><span class="card-category-list-name">Java</span><span class="card-category-list-count">63</span></a><ul class="card-category-list child"><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Java/%E5%A4%8D%E4%B9%A0/"><span class="card-category-list-name">复习</span><span class="card-category-list-count">2</span></a></li></ul></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Linux/"><span class="card-category-list-name">Linux</span><span class="card-category-list-count">4</span></a><ul class="card-category-list child"><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Linux/MySQL/"><span class="card-category-list-name">MySQL</span><span class="card-category-list-count">1</span></a></li></ul></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/MySQL/"><span class="card-category-list-name">MySQL</span><span class="card-category-list-count">11</span></a><ul class="card-category-list child"><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/MySQL/%E5%A4%8D%E4%B9%A0/"><span class="card-category-list-name">复习</span><span class="card-category-list-count">10</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/MySQL/%E6%8A%A5%E9%94%99/"><span class="card-category-list-name">报错</span><span class="card-category-list-count">1</span></a></li></ul></li>
+            <li class="card-category-list-item more is-center"><a class="card-category-list-link-more" href="/categories/">
+                <span>查看更多</span><i class="fas fa-angle-right"></i></a></li>
+            </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/ArrayList%E7%B1%BB/" style="font-size: 1.1em; color: #999">ArrayList类</a> <a href="/tags/Arrays%E7%B1%BB/" style="font-size: 1.1em; color: #999">Arrays类</a> <a href="/tags/Butterfly/" style="font-size: 1.1em; color: #999">Butterfly</a> <a href="/tags/Git/" style="font-size: 1.3em; color: #99a1ac">Git</a> <a href="/tags/Hexo/" style="font-size: 1.14em; color: #999b9d">Hexo</a> <a href="/tags/IO/" style="font-size: 1.34em; color: #99a3b0">IO</a> <a href="/tags/IO%E6%B5%81/" style="font-size: 1.1em; color: #999">IO流</a> <a href="/tags/Java/" style="font-size: 1.46em; color: #99a7bb">Java</a> <a href="/tags/Lambda/" style="font-size: 1.22em; color: #999ea4">Lambda</a> <a href="/tags/Linux/" style="font-size: 1.1em; color: #999">Linux</a> <a href="/tags/MySQL/" style="font-size: 1.38em; color: #99a4b4">MySQL</a> <a href="/tags/Random/" style="font-size: 1.1em; color: #999">Random</a> <a href="/tags/SVM/" style="font-size: 1.1em; color: #999">SVM</a> <a href="/tags/String%E7%B1%BB/" style="font-size: 1.14em; color: #999b9d">String类</a> <a href="/tags/bios/" style="font-size: 1.1em; color: #999">bios</a> <a href="/tags/hexo/" style="font-size: 1.14em; color: #999b9d">hexo</a> <a href="/tags/%E4%BB%93%E5%BA%93/" style="font-size: 1.1em; color: #999">仓库</a> <a href="/tags/%E5%86%85%E9%83%A8%E7%B1%BB/" style="font-size: 1.1em; color: #999">内部类</a> <a href="/tags/%E5%88%86%E6%94%AF/" style="font-size: 1.1em; color: #999">分支</a> <a href="/tags/%E5%8D%9A%E5%AE%A2/" style="font-size: 1.18em; color: #999ca1">博客</a> <a href="/tags/%E5%8F%8D%E5%B0%84/" style="font-size: 1.1em; color: #999">反射</a> <a href="/tags/%E5%9F%BA%E7%A1%80/" style="font-size: 1.1em; color: #999">基础</a> <a href="/tags/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" style="font-size: 1.5em; color: #99a9bf">基础知识</a> <a href="/tags/%E5%AD%90%E7%B3%BB%E7%BB%9F/" style="font-size: 1.1em; color: #999">子系统</a> <a href="/tags/%E5%AE%89%E8%A3%85/" style="font-size: 1.1em; color: #999">安装</a> <a href="/tags/%E5%AF%B9%E8%B1%A1/" style="font-size: 1.1em; color: #999">对象</a> <a href="/tags/%E5%B8%B8%E7%94%A8%E7%B1%BB/" style="font-size: 1.42em; color: #99a6b7">常用类</a> <a href="/tags/%E5%BE%AE%E6%98%9FB450/" style="font-size: 1.1em; color: #999">微星B450</a> <a href="/tags/%E6%8A%A5%E9%94%99/" style="font-size: 1.18em; color: #999ca1">报错</a> <a href="/tags/%E6%8A%A5%E9%94%99%E8%A7%A3%E5%86%B3/" style="font-size: 1.14em; color: #999b9d">报错解决</a> <a href="/tags/%E6%8F%92%E4%BB%B6/" style="font-size: 1.1em; color: #999">插件</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 1.34em; color: #99a3b0">数据库</a> <a href="/tags/%E6%9D%83%E9%99%90/" style="font-size: 1.1em; color: #999">权限</a> <a href="/tags/%E6%A6%82%E5%BF%B5/" style="font-size: 1.1em; color: #999">概念</a> <a href="/tags/%E6%B3%A8%E8%A7%A3/" style="font-size: 1.1em; color: #999">注解</a> <a href="/tags/%E6%B5%8B%E8%AF%95/" style="font-size: 1.1em; color: #999">测试</a> <a href="/tags/%E7%BA%BF%E7%A8%8B/" style="font-size: 1.26em; color: #999fa8">线程</a> <a href="/tags/%E7%BD%91%E7%BB%9C/" style="font-size: 1.14em; color: #999b9d">网络</a> <a href="/tags/%E8%99%9A%E6%8B%9F%E5%8C%96/" style="font-size: 1.1em; color: #999">虚拟化</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 1.1em; color: #999">计算机网络</a></div></div><div class="card-widget card-archives"><div class="item-headline"><i class="fas fa-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2021/01/"><span class="card-archive-list-date">一月 2021</span><span class="card-archive-list-count">5</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/11/"><span class="card-archive-list-date">十一月 2020</span><span class="card-archive-list-count">21</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/10/"><span class="card-archive-list-date">十月 2020</span><span class="card-archive-list-count">71</span></a></li></ul></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站资讯</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">97</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"></div></div><div class="webinfo-item"><div class="item-name">本站总访问量 :</div><div class="item-count" id="busuanzi_value_site_pv"></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2021-01-27T23:43:11.439Z"></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2021 By Bernardo Li</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></div></body></html>

@@ -1,0 +1,298 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>CentOS安装MySQL详解 | code</title><meta name="keywords" content="MySQL,Linux,安装"><meta name="author" content="Bernardo Li"><meta name="copyright" content="Bernardo Li"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><meta name="description" content="引言最近某云搞活动，买了个服务器作为平时学习和测试用，新机器啥也没有，一些常用软件的安装是免不了的，于是乎想着把安装过程都详细记录下来，一是做个备忘，二是给有需要的同学作个参考。 Linux上安装软件常见的几种方式：  源码编译 压缩包解压（一般为tar.gz） 编译好的安装包（RPM、DPKG等） 在线安装（YUM、APT等）  以上几种方式便捷性依次增加，但通用性依次下降，比如直接下载压缩包进">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CentOS安装MySQL详解">
+<meta property="og:url" content="http://example.com/2020/11/27/90_CentOS%E5%AE%89%E8%A3%85MySQL%E8%AF%A6%E8%A7%A3/index.html">
+<meta property="og:site_name" content="code">
+<meta property="og:description" content="引言最近某云搞活动，买了个服务器作为平时学习和测试用，新机器啥也没有，一些常用软件的安装是免不了的，于是乎想着把安装过程都详细记录下来，一是做个备忘，二是给有需要的同学作个参考。 Linux上安装软件常见的几种方式：  源码编译 压缩包解压（一般为tar.gz） 编译好的安装包（RPM、DPKG等） 在线安装（YUM、APT等）  以上几种方式便捷性依次增加，但通用性依次下降，比如直接下载压缩包进">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gitee.com/jasonM4A1/pictureHost/raw/master/20201127011021.jpg">
+<meta property="article:published_time" content="2020-11-26T17:01:57.000Z">
+<meta property="article:modified_time" content="2021-01-27T19:52:37.949Z">
+<meta property="article:author" content="Bernardo Li">
+<meta property="article:tag" content="MySQL">
+<meta property="article:tag" content="Linux">
+<meta property="article:tag" content="安装">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gitee.com/jasonM4A1/pictureHost/raw/master/20201127011021.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2020/11/27/90_CentOS%E5%AE%89%E8%A3%85MySQL%E8%AF%A6%E8%A7%A3/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+};
+
+var saveToLocal = {
+  set: function setWithExpiry(key, value, ttl) {
+    const now = new Date()
+    const expiryDay = ttl * 86400000
+    const item = {
+      value: value,
+      expiry: now.getTime() + expiryDay,
+    }
+    localStorage.setItem(key, JSON.stringify(item))
+  },
+
+  get: function getWithExpiry(key) {
+    const itemStr = localStorage.getItem(key)
+
+    if (!itemStr) {
+      return undefined
+    }
+    const item = JSON.parse(itemStr)
+    const now = new Date()
+
+    if (now.getTime() > item.expiry) {
+      localStorage.removeItem(key)
+      return undefined
+    }
+    return item.value
+  }
+}
+
+// https://stackoverflow.com/questions/16839698/jquery-getscript-alternative-in-native-javascript
+const getScript = url => new Promise((resolve, reject) => {
+  const script = document.createElement('script')
+  script.src = url
+  script.async = true
+  script.onerror = reject
+  script.onload = script.onreadystatechange = function() {
+    const loadState = this.readyState
+    if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+    script.onload = script.onreadystatechange = null
+    resolve()
+  }
+  document.head.appendChild(script)
+})</script><script id="config_change">var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2021-01-28 03:52:37'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(function () {  window.activateDarkMode = function () {
+    document.documentElement.setAttribute('data-theme', 'dark')
+    if (document.querySelector('meta[name="theme-color"]') !== null) {
+      document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+    }
+  }
+  window.activateLightMode = function () {
+    document.documentElement.setAttribute('data-theme', 'light')
+   if (document.querySelector('meta[name="theme-color"]') !== null) {
+      document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+    }
+  }
+  const autoChangeMode = 'false'
+  const t = saveToLocal.get('theme')
+  if (autoChangeMode === '1') {
+    const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+    const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+    const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+    const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+    if (t === undefined) {
+      if (isLightMode) activateLightMode()
+      else if (isDarkMode) activateDarkMode()
+      else if (isNotSpecified || hasNoSupport) {
+        const now = new Date()
+        const hour = now.getHours()
+        const isNight = hour <= 6 || hour >= 18
+        isNight ? activateDarkMode() : activateLightMode()
+      }
+      window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+        if (saveToLocal.get('theme') === undefined) {
+          e.matches ? activateDarkMode() : activateLightMode()
+        }
+      })
+    } else if (t === 'light') activateLightMode()
+    else activateDarkMode()
+  } else if (autoChangeMode === '2') {
+    const now = new Date()
+    const hour = now.getHours()
+    const isNight = hour <= 6 || hour >= 18
+    if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+    else if (t === 'light') activateLightMode()
+    else activateDarkMode()
+  } else {
+    if (t === 'dark') activateDarkMode()
+    else if (t === 'light') activateLightMode()
+  }const asideStatus = saveToLocal.get('aside-status')
+if (asideStatus !== undefined) {
+   if (asideStatus === 'hide') {
+     document.documentElement.classList.add('hide-aside')
+   } else {
+     document.documentElement.classList.remove('hide-aside')
+   }
+}})()</script><meta name="generator" content="Hexo 5.3.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="alternate" href="/atom.xml" title="code" type="application/atom+xml">
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="/null" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">97</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">42</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">11</div></a></div></div></div><hr/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(https://gitee.com/jasonM4A1/pictureHost/raw/master/20201127011021.jpg)"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">code</a></span><div id="menus"><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">CentOS安装MySQL详解</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2020-11-26T17:01:57.000Z" title="发表于 2020-11-27 01:01:57">2020-11-27</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-01-27T19:52:37.949Z" title="更新于 2021-01-28 03:52:37">2021-01-28</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Linux/">Linux</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Linux/MySQL/">MySQL</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>最近某云搞活动，买了个服务器作为平时学习和测试用，新机器啥也没有，一些常用软件的安装是免不了的，于是乎想着把安装过程都详细记录下来，一是做个备忘，二是给有需要的同学作个参考。</p>
+<p>Linux上安装软件常见的几种方式：</p>
+<ul>
+<li>源码编译</li>
+<li>压缩包解压（一般为tar.gz）</li>
+<li>编译好的安装包（RPM、DPKG等）</li>
+<li>在线安装（YUM、APT等）</li>
+</ul>
+<p>以上几种方式便捷性依次增加，但通用性依次下降，比如直接下载压缩包进行解压，这种方式一般需要自己做一些额外的配置工作，但只要掌握了方法，各个平台基本都适用，YUM虽然简单，但是平台受限，网络受限，必要的时候还需要增加一些特定YUM源。</p>
+<p>几种安装方式最好都能掌握，原则上能用简单的就用简单的：YUM&gt;RPM&gt;tar.gz&gt;源码</p>
+<p>本文是介绍MySQL在CentOS上的安装，主要步骤都是参考了MySQL官方文档：<a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/installing.html">https://dev.mysql.com/doc/refman/5.7/en/installing.html</a></p>
+<p>为了测试不同安装方式，反复折腾了好几次，装了删，删了装，每个步骤都是亲测成功的，每条命令都是亲自执行过的，可以放心使用</p>
+<p>咱们闲话少说，书归正传（这闲话就不少了…）</p>
+<h2 id="一、YUM"><a href="#一、YUM" class="headerlink" title="一、YUM"></a>一、YUM</h2><h4 id="0、删除已安装的MySQL"><a href="#0、删除已安装的MySQL" class="headerlink" title="0、删除已安装的MySQL"></a>0、删除已安装的MySQL</h4><h5 id="检查MariaDB"><a href="#检查MariaDB" class="headerlink" title="检查MariaDB"></a>检查MariaDB</h5><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">shell&gt; rpm -qa|grep mariadb</span><br><span class="line">mariadb-server-5.5.60-1.el7_5.x86_64</span><br><span class="line">mariadb-5.5.60-1.el7_5.x86_64</span><br><span class="line">mariadb-libs-5.5.60-1.el7_5.x86_64</span><br></pre></td></tr></tbody></table></figure>
+<h5 id="删除mariadb"><a href="#删除mariadb" class="headerlink" title="删除mariadb"></a>删除mariadb</h5><p>如果不存在（上面检查结果返回空）则跳过步骤</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">shell&gt; rpm -e --nodeps mariadb-server</span><br><span class="line">shell&gt; rpm -e --nodeps mariadb</span><br><span class="line">shell&gt; rpm -e --nodeps mariadb-libs</span><br></pre></td></tr></tbody></table></figure>
+<p><em>其实yum方式安装是可以不用删除mariadb的，安装MySQL会覆盖掉之前已存在的mariadb</em></p>
+<h5 id="检查MySQL"><a href="#检查MySQL" class="headerlink" title="检查MySQL"></a>检查MySQL</h5><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">shell&gt; rpm -qa|grep mysql</span><br></pre></td></tr></tbody></table></figure>
+<h5 id="删除MySQL"><a href="#删除MySQL" class="headerlink" title="删除MySQL"></a>删除MySQL</h5><p>如果不存在（上面检查结果返回空）则跳过步骤</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">shell&gt; rpm -e --nodeps xxx</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="1、添加MySQL-Yum-Repository"><a href="#1、添加MySQL-Yum-Repository" class="headerlink" title="1、添加MySQL Yum Repository"></a>1、添加MySQL Yum Repository</h3><blockquote>
+<p>从CentOS 7开始，MariaDB成为Yum源中默认的数据库安装包。也就是说在CentOS 7及以上的系统中使用yum安装MySQL默认安装的会是MariaDB（MySQL的一个分支）。如果想安装官方MySQL版本，需要使用MySQL提供的Yum源。</p>
+</blockquote>
+<h5 id="下载MySQL源"><a href="#下载MySQL源" class="headerlink" title="下载MySQL源"></a>下载MySQL源</h5><p>官网地址：<a target="_blank" rel="noopener" href="https://dev.mysql.com/downloads/repo/yum/">https://dev.mysql.com/downloads/repo/yum/</a></p>
+<p>查看系统版本：</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">shell&gt; cat /etc/redhat-release</span><br><span class="line">CentOS Linux release 7.6.1810 (Core)</span><br></pre></td></tr></tbody></table></figure>
+<p>选择对应的版本进行下载，例如CentOS 7当前在官网查看最新Yum源的下载地址为：<br><a target="_blank" rel="noopener" href="https://dev.mysql.com/get/mysql80-community-release-el7-3.noarch.rpm">https://dev.mysql.com/get/mysql80-community-release-el7-3.noarch.rpm</a></p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">shell&gt; wget https://dev.mysql.com/get/mysql80-community-release-el7-3.noarch.rpm</span><br></pre></td></tr></tbody></table></figure>
+<h5 id="安装MySQL源"><a href="#安装MySQL源" class="headerlink" title="安装MySQL源"></a>安装MySQL源</h5><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">shell&gt; sudo rpm -Uvh platform-and-version-specific-package-name.rpm</span><br></pre></td></tr></tbody></table></figure>
+<p>例如CentOS7当前最新MySQL源安装：</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">shell&gt; sudo rpm -Uvh mysql80-community-release-el7-3.noarch.rpm</span><br></pre></td></tr></tbody></table></figure>
+<h5 id="检查是否安装成功"><a href="#检查是否安装成功" class="headerlink" title="检查是否安装成功"></a>检查是否安装成功</h5><p>执行成功后会在<code>/etc/yum.repos.d/</code>目录下生成两个repo文件<code>mysql-community.repo</code>及 <code>mysql-community-source.repo</code></p>
+<p>并且通过<code>yum repolist</code>可以看到mysql相关资源</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">shell&gt; yum repolist enabled | grep "mysql.*-community.*"</span><br><span class="line">!mysql-connectors-community/x86_64 MySQL Connectors Community                108</span><br><span class="line">!mysql-tools-community/x86_64      MySQL Tools Community                      90</span><br><span class="line">!mysql80-community/x86_64          MySQL 8.0 Community Server                113</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="2、选择MySQL版本"><a href="#2、选择MySQL版本" class="headerlink" title="2、选择MySQL版本"></a>2、选择MySQL版本</h3><p>使用MySQL Yum Repository安装MySQL，默认会选择当前最新的稳定版本，例如通过上面的MySQL源进行安装的话，默安装会选择MySQL 8.0版本，如果就是想要安装该版本，可以直接跳过此步骤，如果不是，比如我这里希望安装MySQL5.7版本，就需要“切换一下版本”：</p>
+<h5 id="查看当前MySQL-Yum-Repository中所有MySQL版本（每个版本在不同的子仓库中）"><a href="#查看当前MySQL-Yum-Repository中所有MySQL版本（每个版本在不同的子仓库中）" class="headerlink" title="查看当前MySQL Yum Repository中所有MySQL版本（每个版本在不同的子仓库中）"></a>查看当前MySQL Yum Repository中所有MySQL版本（每个版本在不同的子仓库中）</h5><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">shell&gt; yum repolist all | grep mysql</span><br></pre></td></tr></tbody></table></figure>
+<h5 id="切换版本"><a href="#切换版本" class="headerlink" title="切换版本"></a>切换版本</h5><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">shell&gt; sudo yum-config-manager --disable mysql80-community</span><br><span class="line">shell&gt; sudo yum-config-manager --enable mysql57-community</span><br></pre></td></tr></tbody></table></figure>
+<p>除了使用yum-config-manager之外，还可以直接编辑<code>/etc/yum.repos.d/mysql-community.repo</code>文件</p>
+<p>enabled=0禁用</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[mysql80-community]</span><br><span class="line">name=MySQL 8.0 Community Server</span><br><span class="line">baseurl=http://repo.mysql.com/yum/mysql-8.0-community/el/7/$basearch/</span><br><span class="line">enabled=0</span><br><span class="line">gpgcheck=1</span><br><span class="line">gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-mysql</span><br></pre></td></tr></tbody></table></figure>
+<p>enabled=1启用</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># Enable to use MySQL 5.7</span><br><span class="line">[mysql57-community]</span><br><span class="line">name=MySQL 5.7 Community Server</span><br><span class="line">baseurl=http://repo.mysql.com/yum/mysql-5.7-community/el/7/$basearch/</span><br><span class="line">enabled=1</span><br><span class="line">gpgcheck=1</span><br><span class="line">gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-mysql</span><br></pre></td></tr></tbody></table></figure>
+<h5 id="检查当前启用的MySQL仓库"><a href="#检查当前启用的MySQL仓库" class="headerlink" title="检查当前启用的MySQL仓库"></a>检查当前启用的MySQL仓库</h5><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">shell&gt; yum repolist enabled | grep mysql</span><br></pre></td></tr></tbody></table></figure>
+<p><em>如果同时启用了多个仓库，安装时会选择最新版本</em></p>
+<h3 id="3、安装MySQL"><a href="#3、安装MySQL" class="headerlink" title="3、安装MySQL"></a>3、安装MySQL</h3><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">shell&gt; sudo yum install mysql-community-server</span><br></pre></td></tr></tbody></table></figure>
+<p>该命令会安装MySQL服务器 (mysql-community-server) 及其所需的依赖、相关组件，包括mysql-community-client、mysql-community-common、mysql-community-libs等</p>
+<p>如果带宽不够，这个步骤时间会比较长，请耐心等待~</p>
+<h3 id="4、启动MySQL"><a href="#4、启动MySQL" class="headerlink" title="4、启动MySQL"></a>4、启动MySQL</h3><h5 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h5><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">shell&gt; sudo systemctl start mysqld.service</span><br></pre></td></tr></tbody></table></figure>
+<p>CentOS 6：</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">shell&gt; sudo service mysqld start</span><br></pre></td></tr></tbody></table></figure>
+<h5 id="查看状态"><a href="#查看状态" class="headerlink" title="查看状态"></a>查看状态</h5><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">shell&gt; sudo systemctl status mysqld.service</span><br></pre></td></tr></tbody></table></figure>
+<p>CentOS 6：</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">shell&gt; sudo service mysqld status</span><br></pre></td></tr></tbody></table></figure>
+<h5 id="停止"><a href="#停止" class="headerlink" title="停止"></a>停止</h5><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">shell&gt; sudo systemctl stop mysqld.service</span><br></pre></td></tr></tbody></table></figure>
+<p>CentOS 6：</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">shell&gt; sudo service mysqld stop</span><br></pre></td></tr></tbody></table></figure>
+<h5 id="重启"><a href="#重启" class="headerlink" title="重启"></a>重启</h5><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">shell&gt; sudo systemctl restart mysqld.service</span><br></pre></td></tr></tbody></table></figure>
+<p>CentOS 6：</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">shell&gt; sudo service mysqld restart</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="5、修改密码"><a href="#5、修改密码" class="headerlink" title="5、修改密码"></a>5、修改密码</h3><h5 id="初始密码"><a href="#初始密码" class="headerlink" title="初始密码"></a>初始密码</h5><p>MySQL第一次启动后会创建超级管理员账号<code>root@localhost</code>，初始密码存储在日志文件中：</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">shell&gt; sudo grep 'temporary password' /var/log/mysqld.log</span><br></pre></td></tr></tbody></table></figure>
+<h5 id="修改默认密码"><a href="#修改默认密码" class="headerlink" title="修改默认密码"></a>修改默认密码</h5><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">shell&gt; mysql -uroot -p</span><br><span class="line">mysql&gt; ALTER USER 'root'@'localhost' IDENTIFIED BY '123456';</span><br><span class="line">ERROR 1819 (HY000): Your password does not satisfy the current policy requirements</span><br></pre></td></tr></tbody></table></figure>
+<p>出现上面的提示是因为密码太简单了，解决方法如下：</p>
+<ol>
+<li>使用复杂密码，MySQL默认的密码策略是要包含数字、字母及特殊字符；</li>
+<li>如果只是测试用，不想用那么复杂的密码，可以修改默认策略，即<code>validate_password_policy</code>（以及<code>validate_password_length</code>等相关参数），使其支持简单密码的设定，具体方法可以自行百度；</li>
+<li>修改配置文件<code>/etc/my.cnf</code>，添加<code>validate_password=OFF</code>，保存并重启MySQL</li>
+</ol>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; ALTER USER 'root'@'localhost' IDENTIFIED BY '123456';</span><br><span class="line">Query OK, 0 rows affected (0.00 sec)</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="6、允许root远程访问"><a href="#6、允许root远程访问" class="headerlink" title="6、允许root远程访问"></a>6、允许root远程访问</h3><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY '123456' WITH GRANT OPTION;</span><br><span class="line">mysql&gt; FLUSH PRIVILEGES;</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="7、设置编码为utf8"><a href="#7、设置编码为utf8" class="headerlink" title="7、设置编码为utf8"></a>7、设置编码为utf8</h3><h5 id="查看编码"><a href="#查看编码" class="headerlink" title="查看编码"></a>查看编码</h5><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SHOW VARIABLES LIKE 'character%';</span><br></pre></td></tr></tbody></table></figure>
+<h5 id="设置编码"><a href="#设置编码" class="headerlink" title="设置编码"></a>设置编码</h5><p>编辑/etc/my.cnf，[mysqld]节点增加以下代码：</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[mysqld]</span><br><span class="line">character_set_server=utf8</span><br><span class="line">init-connect='SET NAMES utf8'</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="8、设置开机启动"><a href="#8、设置开机启动" class="headerlink" title="8、设置开机启动"></a>8、设置开机启动</h3><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">shell&gt; systemctl enable mysqld</span><br><span class="line">shell&gt; systemctl daemon-reload</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="二、RPM"><a href="#二、RPM" class="headerlink" title="二、RPM"></a>二、RPM</h2><blockquote>
+<p>除安装过程外，其他步骤和yum方式安装相同，不再赘述</p>
+</blockquote>
+<h3 id="0、删除已旧版本"><a href="#0、删除已旧版本" class="headerlink" title="0、删除已旧版本"></a>0、删除已旧版本</h3><p>略</p>
+<h3 id="1、下载MySQL安装包"><a href="#1、下载MySQL安装包" class="headerlink" title="1、下载MySQL安装包"></a>1、下载MySQL安装包</h3><p>下载地址：<a target="_blank" rel="noopener" href="https://dev.mysql.com/downloads/mysql/">https://dev.mysql.com/downloads/mysql/</a></p>
+<p>选择对应的版本：</p>
+<p><img src="https://gitee.com/jasonM4A1/pictureHost/raw/master/20201130101014.png"></p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">shell&gt; wget https://dev.mysql.com/get/Downloads/MySQL-5.7/mysql-5.7.26-1.el7.x86_64.rpm-bundle.tar</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="2、安装MySQL"><a href="#2、安装MySQL" class="headerlink" title="2、安装MySQL"></a>2、安装MySQL</h3><h5 id="解压（解打包）"><a href="#解压（解打包）" class="headerlink" title="解压（解打包）"></a>解压（解打包）</h5><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">shell&gt; tar -xvf mysql-5.7.26-1.el7.x86_64.rpm-bundle.tar</span><br><span class="line">tar -xvf mysql-5.7.26-1.el7.x86_64.rpm-bundle.tar</span><br><span class="line">mysql-community-embedded-devel-5.7.26-1.el7.x86_64.rpm</span><br><span class="line">mysql-community-libs-5.7.26-1.el7.x86_64.rpm</span><br><span class="line">mysql-community-embedded-5.7.26-1.el7.x86_64.rpm</span><br><span class="line">mysql-community-test-5.7.26-1.el7.x86_64.rpm</span><br><span class="line">mysql-community-embedded-compat-5.7.26-1.el7.x86_64.rpm</span><br><span class="line">mysql-community-common-5.7.26-1.el7.x86_64.rpm</span><br><span class="line">mysql-community-devel-5.7.26-1.el7.x86_64.rpm</span><br><span class="line">mysql-community-client-5.7.26-1.el7.x86_64.rpm</span><br><span class="line">mysql-community-server-5.7.26-1.el7.x86_64.rpm</span><br></pre></td></tr></tbody></table></figure>
+<p>我们主要安装的是这四个（如果有需要也可以一并安装其它的）：</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mysql-community-libs-5.7.26-1.el7.x86_64.rpm</span><br><span class="line">mysql-community-common-5.7.26-1.el7.x86_64.rpm</span><br><span class="line">mysql-community-client-5.7.26-1.el7.x86_64.rpm</span><br><span class="line">mysql-community-server-5.7.26-1.el7.x86_64.rpm</span><br></pre></td></tr></tbody></table></figure>
+<p>如果不想下载rpm-bundle，官网也提供单独的rpm下载链接</p>
+<h5 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h5><p>各rpm包是有依赖关系的，所以需要按照一定顺序进行安装，安装期间如果提示缺少哪些依赖也要先安装相应的包：</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">shell&gt; rpm -ivh mysql-community-common-5.7.26-1.el7.x86_64.rpm</span><br><span class="line">shell&gt; rpm -ivh mysql-community-libs-5.7.26-1.el7.x86_64.rpm</span><br><span class="line">shell&gt; rpm -ivh mysql-community-client-5.7.26-1.el7.x86_64.rpm</span><br><span class="line">shell&gt; rpm -ivh mysql-community-server-5.7.26-1.el7.x86_64.rpm</span><br></pre></td></tr></tbody></table></figure>
+<p>还有一种简单的方式，可以自动处理各个包之间的依赖关系并自动下载缺少的依赖：</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">shell&gt; yum install mysql-community-{server,client,common,libs}-*</span><br></pre></td></tr></tbody></table></figure>
+<p><em>注意：上面的<code>yum install</code>命令需要在tar解压之后的各个rpm包所在目录内执行，否则就变成yum方式安装了，需要配置MySQL的yum源并且速度很慢，还要当前机器支持外网访问</em></p>
+<h3 id="3、设置"><a href="#3、设置" class="headerlink" title="3、设置"></a>3、设置</h3><p>略</p>
+<h2 id="三、tar-gz"><a href="#三、tar-gz" class="headerlink" title="三、tar.gz"></a>三、tar.gz</h2><h3 id="0、删除旧版本"><a href="#0、删除旧版本" class="headerlink" title="0、删除旧版本"></a>0、删除旧版本</h3><p>略</p>
+<h3 id="1、下载"><a href="#1、下载" class="headerlink" title="1、下载"></a>1、下载</h3><p>下载地址：<a target="_blank" rel="noopener" href="https://dev.mysql.com/downloads/mysql/">https://dev.mysql.com/downloa…</a></p>
+<p>选择对应的版本：<br><img src="https://gitee.com/jasonM4A1/pictureHost/raw/master/20201130100824.png"></p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">shell&gt; wget https://dev.mysql.com/get/Downloads/MySQL-5.7/mysql-5.7.26-linux-glibc2.12-x86_64.tar.gz</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="2、安装-amp-配置："><a href="#2、安装-amp-配置：" class="headerlink" title="2、安装&amp;配置："></a>2、安装&amp;配置：</h3><h5 id="依赖"><a href="#依赖" class="headerlink" title="依赖"></a>依赖</h5><p>MySQL依赖libaio库，如果没有先安装一下：</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">shell&gt; yum install libaio</span><br></pre></td></tr></tbody></table></figure>
+<h5 id="创建mysql用户"><a href="#创建mysql用户" class="headerlink" title="创建mysql用户"></a>创建mysql用户</h5><p>不需要登录的一个系统账号，启动MySQL服务时会使用该账号</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">shell&gt; groupadd mysql</span><br><span class="line">shell&gt; useradd -r -g mysql -s /bin/false mysql</span><br></pre></td></tr></tbody></table></figure>
+<h5 id="解压并创建链接"><a href="#解压并创建链接" class="headerlink" title="解压并创建链接"></a>解压并创建链接</h5><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">shell&gt; cd /usr/local</span><br><span class="line">shell&gt; tar zxvf /path/to/mysql-5.7.26-linux-glibc2.12-x86_64.tar.gz</span><br><span class="line">shell&gt; ln -s mysql-5.7.26-linux-glibc2.12-x86_64/ mysql</span><br></pre></td></tr></tbody></table></figure>
+<h5 id="创建mysql-files目录"><a href="#创建mysql-files目录" class="headerlink" title="创建mysql-files目录"></a>创建mysql-files目录</h5><p>这一步并不是必须的，可以设置secure_file_priv的值指向该目录（用于限制数据导入导出操作的目录）</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">shell&gt; cd mysql</span><br><span class="line">shell&gt; mkdir mysql-files</span><br><span class="line">shell&gt; chown mysql:mysql mysql-files</span><br><span class="line">shell&gt; chmod 750 mysql-files</span><br></pre></td></tr></tbody></table></figure>
+<h5 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h5><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">shell&gt; bin/mysqld --initialize --user=mysql</span><br></pre></td></tr></tbody></table></figure>
+<p>如果初始化时报错如下：</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">error while loading shared libraries: libnuma.so.1: cannot open shared object file: No such file or directory</span><br></pre></td></tr></tbody></table></figure>
+<p>是因为libnuma没有安装（或者默认安装的是32位），我们这里需要64位的：</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">shell&gt; yum install numactl.x86_64</span><br></pre></td></tr></tbody></table></figure>
+<p>执行完后重新初始化即可<br>初始化成功后返回结果中有一行包含初始密码，第一次登录时要用到它：</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">A temporary password is generated for root@localhost: 8M0ary878s*U</span><br></pre></td></tr></tbody></table></figure>
+<h5 id="启用SSL（非必须）"><a href="#启用SSL（非必须）" class="headerlink" title="启用SSL（非必须）"></a>启用SSL（非必须）</h5><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">shell&gt; bin/mysql_ssl_rsa_setup</span><br></pre></td></tr></tbody></table></figure>
+<h5 id="启动-1"><a href="#启动-1" class="headerlink" title="启动"></a>启动</h5><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">shell&gt; bin/mysqld_safe --user=mysql &amp;</span><br></pre></td></tr></tbody></table></figure>
+<p>查看进程可以看到一些默认参数，可以在配置文件中修改这些参数</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">shell&gt; ps -ef | grep mysql</span><br><span class="line">root     14604 12719  0 00:03 pts/0    00:00:00 /bin/sh bin/mysqld_safe --user=mysql</span><br><span class="line">mysql    14674 14604  0 00:03 pts/0    00:00:00 /usr/local/mysql/bin/mysqld --basedir=/usr/local/mysql --datadir=/usr/local/mysql/data --plugin-dir=/usr/local/mysql/lib/plugin --user=mysql --log-error=VM_2_24_centos.err --pid-file=VM_2_24_centos.pid</span><br></pre></td></tr></tbody></table></figure>
+<h5 id="设置环境变量"><a href="#设置环境变量" class="headerlink" title="设置环境变量"></a>设置环境变量</h5><p>避免每次执行mysql命令都要加上路径，在<code>/etc/profile</code>中添加：</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export PATH=$PATH:/usr/local/mysql/bin</span><br></pre></td></tr></tbody></table></figure>
+<h5 id="设置为服务"><a href="#设置为服务" class="headerlink" title="设置为服务"></a>设置为服务</h5><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">shell&gt; cp support-files/mysql.server /etc/init.d/mysqld</span><br><span class="line">shell&gt; service mysqld start|stop|restart|status</span><br></pre></td></tr></tbody></table></figure>
+<h5 id="开机启动"><a href="#开机启动" class="headerlink" title="开机启动"></a>开机启动</h5><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">shell&gt; chkconfig --add mysqld</span><br><span class="line">shell&gt; chkconfig --list mysqld</span><br><span class="line">mysqld             0:关    1:关    2:开    3:开    4:开    5:开    6:关</span><br></pre></td></tr></tbody></table></figure>
+<p><em>其他配置与yum、rpm相同，不再赘述</em></p>
+<h2 id="四、源码安装"><a href="#四、源码安装" class="headerlink" title="四、源码安装"></a>四、源码安装</h2><p>就别费这个劲了吧…</p>
+<h2 id="结束语"><a href="#结束语" class="headerlink" title="结束语"></a>结束语</h2><p>我们不是Linux运维专家，也不是MySQL专家，生在这个年代也不知算是幸福还是不幸，线上的环境已经越来越少有人（主要指平时写代码的人）手动去搞这些数据库、中间件的安装配置了，为什么呢？因为各种云产品实在是太方便了呀，一般的公司也不会差这几个钱，既方便又稳定，何乐而不为呢~但是我们自己搞一搞用于自己测试还是必要的，而且还有不少公司的开发环境、测试环境偶尔还是需要手动搞一下的，当然，还有那些个自己搞机房的巨头们。</p>
+<p>那我们既然不是专家，上面所写的内容如果有纰漏也是在所难免的，如果被看到了还希望能够及时批评指正~</p>
+<blockquote>
+<p>转载至：<a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000019507071">CentOS安装MySQL详解_个人文章 - SegmentFault 思否</a></p>
+</blockquote>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">Bernardo Li</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2020/11/27/90_CentOS%E5%AE%89%E8%A3%85MySQL%E8%AF%A6%E8%A7%A3/">http://example.com/2020/11/27/90_CentOS%E5%AE%89%E8%A3%85MySQL%E8%AF%A6%E8%A7%A3/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">code</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/MySQL/">MySQL</a><a class="post-meta__tags" href="/tags/Linux/">Linux</a><a class="post-meta__tags" href="/tags/%E5%AE%89%E8%A3%85/">安装</a></div><div class="post_share"><div class="social-share" data-image="https://gitee.com/jasonM4A1/pictureHost/raw/master/20201127011021.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2020/11/27/91_JDBC%E5%85%A5%E9%97%A8/"><img class="prev-cover" src="https://gitee.com/jasonM4A1/pictureHost/raw/master/20201127204636.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">JDBC入门</div></div></a></div><div class="next-post pull-right"><a href="/2020/11/26/89_MySQL%E6%8F%92%E5%85%A5%E8%AE%B0%E5%BD%95%E5%87%BA%E7%8E%B0Incorrent-string-value%E9%94%99%E8%AF%AF/"><img class="next-cover" src="https://gitee.com/jasonM4A1/pictureHost/raw/master/20201126112509.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">MySQL插入记录出现Incorrent string value错误</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span> 相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2020/11/17/80_MySQL基础/" title="MySQL基础"><img class="cover" src="https://gitee.com/jasonM4A1/pictureHost/raw/master/20201117164446.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-11-17</div><div class="title">MySQL基础</div></div></a></div><div><a href="/2020/11/17/81_MySQL-DDL语句/" title="MySQL-DDL语句"><img class="cover" src="https://gitee.com/jasonM4A1/pictureHost/raw/master/20201117221033.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-11-17</div><div class="title">MySQL-DDL语句</div></div></a></div><div><a href="/2020/11/18/82_MySQL-DML语句/" title="MySQL-DML语句"><img class="cover" src="https://gitee.com/jasonM4A1/pictureHost/raw/master/20201117194600.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-11-18</div><div class="title">MySQL-DML语句</div></div></a></div><div><a href="/2020/11/18/83_MySQL-DQL语句/" title="MySQL-DQL语句"><img class="cover" src="https://gitee.com/jasonM4A1/pictureHost/raw/master/20201119000016.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-11-18</div><div class="title">MySQL-DQL语句</div></div></a></div><div><a href="/2020/11/19/84_数据库表的约束/" title="数据库表的约束"><img class="cover" src="https://gitee.com/jasonM4A1/pictureHost/raw/master/20201119183208.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-11-19</div><div class="title">数据库表的约束</div></div></a></div><div><a href="/2020/11/20/85_数据库设计规范/" title="数据库设计规范"><img class="cover" src="https://gitee.com/jasonM4A1/pictureHost/raw/master/20201120033009.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-11-20</div><div class="title">数据库设计规范</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-info-avatar is-center"><img class="avatar-img" src="/null" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">Bernardo Li</div><div class="author-info__description">岁月过的好快，我怎么突然就老了</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">97</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">42</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">11</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%95%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">引言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81YUM"><span class="toc-number">2.</span> <span class="toc-text">一、YUM</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#0%E3%80%81%E5%88%A0%E9%99%A4%E5%B7%B2%E5%AE%89%E8%A3%85%E7%9A%84MySQL"><span class="toc-number">2.0.1.</span> <span class="toc-text">0、删除已安装的MySQL</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%A3%80%E6%9F%A5MariaDB"><span class="toc-number">2.0.1.1.</span> <span class="toc-text">检查MariaDB</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%88%A0%E9%99%A4mariadb"><span class="toc-number">2.0.1.2.</span> <span class="toc-text">删除mariadb</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%A3%80%E6%9F%A5MySQL"><span class="toc-number">2.0.1.3.</span> <span class="toc-text">检查MySQL</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%88%A0%E9%99%A4MySQL"><span class="toc-number">2.0.1.4.</span> <span class="toc-text">删除MySQL</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81%E6%B7%BB%E5%8A%A0MySQL-Yum-Repository"><span class="toc-number">2.1.</span> <span class="toc-text">1、添加MySQL Yum Repository</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BDMySQL%E6%BA%90"><span class="toc-number">2.1.0.1.</span> <span class="toc-text">下载MySQL源</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%AE%89%E8%A3%85MySQL%E6%BA%90"><span class="toc-number">2.1.0.2.</span> <span class="toc-text">安装MySQL源</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%A3%80%E6%9F%A5%E6%98%AF%E5%90%A6%E5%AE%89%E8%A3%85%E6%88%90%E5%8A%9F"><span class="toc-number">2.1.0.3.</span> <span class="toc-text">检查是否安装成功</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81%E9%80%89%E6%8B%A9MySQL%E7%89%88%E6%9C%AC"><span class="toc-number">2.2.</span> <span class="toc-text">2、选择MySQL版本</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E5%BD%93%E5%89%8DMySQL-Yum-Repository%E4%B8%AD%E6%89%80%E6%9C%89MySQL%E7%89%88%E6%9C%AC%EF%BC%88%E6%AF%8F%E4%B8%AA%E7%89%88%E6%9C%AC%E5%9C%A8%E4%B8%8D%E5%90%8C%E7%9A%84%E5%AD%90%E4%BB%93%E5%BA%93%E4%B8%AD%EF%BC%89"><span class="toc-number">2.2.0.1.</span> <span class="toc-text">查看当前MySQL Yum Repository中所有MySQL版本（每个版本在不同的子仓库中）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%88%87%E6%8D%A2%E7%89%88%E6%9C%AC"><span class="toc-number">2.2.0.2.</span> <span class="toc-text">切换版本</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%A3%80%E6%9F%A5%E5%BD%93%E5%89%8D%E5%90%AF%E7%94%A8%E7%9A%84MySQL%E4%BB%93%E5%BA%93"><span class="toc-number">2.2.0.3.</span> <span class="toc-text">检查当前启用的MySQL仓库</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%E3%80%81%E5%AE%89%E8%A3%85MySQL"><span class="toc-number">2.3.</span> <span class="toc-text">3、安装MySQL</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4%E3%80%81%E5%90%AF%E5%8A%A8MySQL"><span class="toc-number">2.4.</span> <span class="toc-text">4、启动MySQL</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%90%AF%E5%8A%A8"><span class="toc-number">2.4.0.1.</span> <span class="toc-text">启动</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E7%8A%B6%E6%80%81"><span class="toc-number">2.4.0.2.</span> <span class="toc-text">查看状态</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%81%9C%E6%AD%A2"><span class="toc-number">2.4.0.3.</span> <span class="toc-text">停止</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%87%8D%E5%90%AF"><span class="toc-number">2.4.0.4.</span> <span class="toc-text">重启</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5%E3%80%81%E4%BF%AE%E6%94%B9%E5%AF%86%E7%A0%81"><span class="toc-number">2.5.</span> <span class="toc-text">5、修改密码</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%88%9D%E5%A7%8B%E5%AF%86%E7%A0%81"><span class="toc-number">2.5.0.1.</span> <span class="toc-text">初始密码</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9%E9%BB%98%E8%AE%A4%E5%AF%86%E7%A0%81"><span class="toc-number">2.5.0.2.</span> <span class="toc-text">修改默认密码</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6%E3%80%81%E5%85%81%E8%AE%B8root%E8%BF%9C%E7%A8%8B%E8%AE%BF%E9%97%AE"><span class="toc-number">2.6.</span> <span class="toc-text">6、允许root远程访问</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7%E3%80%81%E8%AE%BE%E7%BD%AE%E7%BC%96%E7%A0%81%E4%B8%BAutf8"><span class="toc-number">2.7.</span> <span class="toc-text">7、设置编码为utf8</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E7%BC%96%E7%A0%81"><span class="toc-number">2.7.0.1.</span> <span class="toc-text">查看编码</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AE%E7%BC%96%E7%A0%81"><span class="toc-number">2.7.0.2.</span> <span class="toc-text">设置编码</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8%E3%80%81%E8%AE%BE%E7%BD%AE%E5%BC%80%E6%9C%BA%E5%90%AF%E5%8A%A8"><span class="toc-number">2.8.</span> <span class="toc-text">8、设置开机启动</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81RPM"><span class="toc-number">3.</span> <span class="toc-text">二、RPM</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#0%E3%80%81%E5%88%A0%E9%99%A4%E5%B7%B2%E6%97%A7%E7%89%88%E6%9C%AC"><span class="toc-number">3.1.</span> <span class="toc-text">0、删除已旧版本</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81%E4%B8%8B%E8%BD%BDMySQL%E5%AE%89%E8%A3%85%E5%8C%85"><span class="toc-number">3.2.</span> <span class="toc-text">1、下载MySQL安装包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81%E5%AE%89%E8%A3%85MySQL"><span class="toc-number">3.3.</span> <span class="toc-text">2、安装MySQL</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%A7%A3%E5%8E%8B%EF%BC%88%E8%A7%A3%E6%89%93%E5%8C%85%EF%BC%89"><span class="toc-number">3.3.0.1.</span> <span class="toc-text">解压（解打包）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%AE%89%E8%A3%85"><span class="toc-number">3.3.0.2.</span> <span class="toc-text">安装</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%E3%80%81%E8%AE%BE%E7%BD%AE"><span class="toc-number">3.4.</span> <span class="toc-text">3、设置</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81tar-gz"><span class="toc-number">4.</span> <span class="toc-text">三、tar.gz</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#0%E3%80%81%E5%88%A0%E9%99%A4%E6%97%A7%E7%89%88%E6%9C%AC"><span class="toc-number">4.1.</span> <span class="toc-text">0、删除旧版本</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81%E4%B8%8B%E8%BD%BD"><span class="toc-number">4.2.</span> <span class="toc-text">1、下载</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81%E5%AE%89%E8%A3%85-amp-%E9%85%8D%E7%BD%AE%EF%BC%9A"><span class="toc-number">4.3.</span> <span class="toc-text">2、安装&amp;配置：</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BE%9D%E8%B5%96"><span class="toc-number">4.3.0.1.</span> <span class="toc-text">依赖</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%88%9B%E5%BB%BAmysql%E7%94%A8%E6%88%B7"><span class="toc-number">4.3.0.2.</span> <span class="toc-text">创建mysql用户</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%A7%A3%E5%8E%8B%E5%B9%B6%E5%88%9B%E5%BB%BA%E9%93%BE%E6%8E%A5"><span class="toc-number">4.3.0.3.</span> <span class="toc-text">解压并创建链接</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%88%9B%E5%BB%BAmysql-files%E7%9B%AE%E5%BD%95"><span class="toc-number">4.3.0.4.</span> <span class="toc-text">创建mysql-files目录</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-number">4.3.0.5.</span> <span class="toc-text">初始化</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%90%AF%E7%94%A8SSL%EF%BC%88%E9%9D%9E%E5%BF%85%E9%A1%BB%EF%BC%89"><span class="toc-number">4.3.0.6.</span> <span class="toc-text">启用SSL（非必须）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%90%AF%E5%8A%A8-1"><span class="toc-number">4.3.0.7.</span> <span class="toc-text">启动</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AE%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F"><span class="toc-number">4.3.0.8.</span> <span class="toc-text">设置环境变量</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AE%E4%B8%BA%E6%9C%8D%E5%8A%A1"><span class="toc-number">4.3.0.9.</span> <span class="toc-text">设置为服务</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%BC%80%E6%9C%BA%E5%90%AF%E5%8A%A8"><span class="toc-number">4.3.0.10.</span> <span class="toc-text">开机启动</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E6%BA%90%E7%A0%81%E5%AE%89%E8%A3%85"><span class="toc-number">5.</span> <span class="toc-text">四、源码安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%93%E6%9D%9F%E8%AF%AD"><span class="toc-number">6.</span> <span class="toc-text">结束语</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2021/01/28/94_chrome%E3%80%81firefox%E5%9C%A8linux%E7%B3%BB%E7%BB%9F%E4%B8%AD%E7%9A%84%E5%AE%89%E8%A3%85%E4%BD%8D%E7%BD%AE/" title="无题"><img src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/2021/01/28/94_chrome%E3%80%81firefox%E5%9C%A8linux%E7%B3%BB%E7%BB%9F%E4%B8%AD%E7%9A%84%E5%AE%89%E8%A3%85%E4%BD%8D%E7%BD%AE/" title="无题">无题</a><time datetime="2021-01-27T19:52:37.952Z" title="发表于 2021-01-28 03:52:37">2021-01-28</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/01/28/95_ked%20%E5%9E%83%E5%9C%BE%E6%A1%B6%E6%8A%A5%E9%94%99:%20malformed%20url%20trash:%E2%81%84%20%20%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/" title="无题"><img src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/2021/01/28/95_ked%20%E5%9E%83%E5%9C%BE%E6%A1%B6%E6%8A%A5%E9%94%99:%20malformed%20url%20trash:%E2%81%84%20%20%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/" title="无题">无题</a><time datetime="2021-01-27T19:52:37.952Z" title="发表于 2021-01-28 03:52:37">2021-01-28</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/01/28/97_XML%E5%85%A5%E9%97%A8/" title="无题"><img src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/2021/01/28/97_XML%E5%85%A5%E9%97%A8/" title="无题">无题</a><time datetime="2021-01-27T19:52:37.952Z" title="发表于 2021-01-28 03:52:37">2021-01-28</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/01/28/96_%E5%88%9D%E8%AF%86Shell/" title="无题"><img src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/2021/01/28/96_%E5%88%9D%E8%AF%86Shell/" title="无题">无题</a><time datetime="2021-01-27T19:52:37.952Z" title="发表于 2021-01-28 03:52:37">2021-01-28</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/01/28/93_JQuery%E5%85%A5%E9%97%A8/" title="无题"><img src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/2021/01/28/93_JQuery%E5%85%A5%E9%97%A8/" title="无题">无题</a><time datetime="2021-01-27T19:52:37.952Z" title="发表于 2021-01-28 03:52:37">2021-01-28</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2021 By Bernardo Li</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></div></body></html>
