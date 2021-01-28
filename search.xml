@@ -4,6 +4,122 @@
   
     
     <entry>
+      <title>Git提示Host key verification failed</title>
+      <link href="2021/01/28/102_Git%E6%8F%90%E7%A4%BAHost-key-verification-failed/"/>
+      <url>2021/01/28/102_Git%E6%8F%90%E7%A4%BAHost-key-verification-failed/</url>
+      
+        <content type="html"><![CDATA[<h1 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h1><p>Git提示Host key verification failed.</p><h1 id="问题描述-1"><a href="#问题描述-1" class="headerlink" title="问题描述"></a>问题描述</h1><h2 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h2><p>输入 ssh -T <a href="mailto:git@github.com">git@github.com</a>后，出现下面提示:<br><code>fingerprint is SHA256:FQGC9Kn/eye1W8icdBgrQp+KkGYoFgbVr17bmjey0Wc.Are you sure you want to continue connecting (yes/no)?</code><br>不能直接按”回车”键过去,要手动输入”yes”才可以.</p><h2 id="方法二"><a href="#方法二" class="headerlink" title="方法二"></a>方法二</h2><p>在生成密钥后，你得把ssh私钥添加到ssh-agent中。不然你是无法链接到已经添加ssh密钥的平台的。</p><p>在后台启动ssh-agent。</p><p>$ eval “$(ssh-agent -s)”</p><p>将SSH私钥添加到ssh-agent。如果您使用其他名称创建密钥，或者要添加具有其他名称的现有密钥，请使用私有密钥文件的名称替换命令中的id_ed25519。</p><p>$ ssh-add ~/.ssh/id_ed25519</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 报错 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Git </tag>
+            
+            <tag> 报错 </tag>
+            
+            <tag> github </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>vim使用系统粘贴板</title>
+      <link href="2021/01/28/101_vim%E4%BD%BF%E7%94%A8%E7%B3%BB%E7%BB%9F%E7%B2%98%E8%B4%B4%E6%9D%BF/"/>
+      <url>2021/01/28/101_vim%E4%BD%BF%E7%94%A8%E7%B3%BB%E7%BB%9F%E7%B2%98%E8%B4%B4%E6%9D%BF/</url>
+      
+        <content type="html"><![CDATA[<p>187 人赞同了该回答<br>根据平台不同，要分两种情况。先用下面命令确定你属于哪一种，</p><p>vim –version | grep clipboard</p><p>情况一，</p><p>如果结果里你找到加号开头的+clipboard， 恭喜你，你的vim没问题，是你姿势问题。</p><p>用”+y 代替y将选中的内容复制到系统剪贴板，效果和ctrl-c一致。<br>用”+p代替p将剪贴板内容复制到指定位置，也可以用ctrl-v。<br>d，x，c，s也一样，用之前前面加”+。</p><p>如果想偷懒用y直接把内容复制到系统剪贴板，需要到vim配置文件.vimrc里加一行属性。用下面命令开始配置，</p><p>vim ~/.vimrc<br>然后，加入下面这行，</p><p>set clipboard=unnamed<br>现在你的y，d，x，p已经能和 ctrl-c和ctrl-v 一个效果，并且能互相混用。</p><p>情况二，</p><p>如果找到的是负号开头的-clipboard，说明你的vim不支持系统剪切板，我的MacOS系统自带vim就不支持，所以跑来了。需要先重新安装vim，</p><p>Linux系统，</p><p>sudo apt install vim-gtk</p><p>arch系统<br><code>sudo pacman -Sy gvim</code></p><p>MacOS，</p><p>brew install vim<br>安装好之后，重复情况一的操作即可。</p><p>问题解决了，有几个细节再解释一下，满足一下好奇心。</p><p>首先，vim里y，d，x，c复制，剪切下来的内容临时存放在一个叫vim寄存器（Register）的地方。而且寄存器有好几个。下面vim命令可以看到寄存器列表，</p><p>:reg<br>最常用的默认寄存器””叫 未命名寄存器（unnamed register）。最近一次删除，修改，复制内容统统暂存这里（会覆盖，只保留最近一次任意操作）。感兴趣的同学可以看下表，其他寄存器都是干什么的。</p><p>“”      // 默认unnamed寄存器，最近一次”d”,”c”,”s”,”x”,”y”复制，删除，修改内容</p><p>“0      // 最近一次”y”复制内容</p><p>“1      // 最近一次”d”,”c”,”s”,”x”删除，修改内容<br>“2     //  上一次”d”,”c”,”s”,”x”删除，修改内容<br>“3     // 上上次”d”,”c”,”s”,”x”删除，修改内容<br>…<br>“9      // [1-9]数字以此类推</p><p>“a     // 字母寄存器，供用户指定使用，比如”ay就是复制到”a寄存器<br>“b<br>…<br>“z</p><p>“-      // 少于一行的”d”,”c”,”x”删除内容</p><p>“.      // 只读寄存器<br>“:      // 只读寄存器<br>“%     // 只读寄存器<br>“#     // 只读寄存器</p><p>“+      // 映射系统剪贴板 (有的默认设置不支持)<br>“*      // 映射系统剪贴板 (有的默认设置不支持)</p><p>而ctrl-c以及ctrl-v用到的是系统剪贴板（system clipboard）。vim寄存器和系统剪贴板不是一个东西。顾名思义，vim寄存器的数据作用域仅限于vim本地，甚至如果开多个vim窗口，每个窗口都有一套自己完整的寄存器，互相不影响。而系统剪贴板作为系统级别的全局变量，两边当然不能混用。</p><p>所以vim专门提供了”+寄存器作为对系统剪贴板的映射。可以理解成自动把”+寄存器的内容再复制一份到系统剪贴板，前提是你得把clipboard属性设置成打开。有些版本（比如MacOS自带的vim）就不支持这个映射。重装vim就是为了打开这个开关。（如果有简便的直接改设置方法，请纠正我）。打开以后用”+y命令把内容复制到和系统剪贴板关联的寄存器”+上。而y只是复制到默认无名寄存器””上。</p><p>最后set clipboard=unnamed就是把默认无名寄存器”” 和系统剪贴板也关联上。 就是用y也可以备份到系统剪贴板。缺点是破坏了默认寄存器””的本地性。因为p操作也会被等同于”+p处理，粘贴的是”+寄存器的内容， 粘贴的时候””默认寄存器内容就会被覆盖。 表现出来的就是复制一次，到任意vim窗口都可以粘贴。但这个特性恰恰是很多人想要的。</p><p>还有个细节，大部分系统上”+和”*是等价的。但在有的系统上不等价，比如Linux，</p><p>“+：对应ctrl-c和ctrl-v用到的系统剪贴板：desktop clipboard (XA_SECONDARY)<br>“*：对应图形界面中鼠标框选的内容（可以用鼠标中键黏贴）：X11 primary selection (XA_PRIMARY)<br>所以看到”*也不要慌，试试看用”*y和”*p能不能复制粘贴。可以的话就说明是混用的，不行就老老实实用”+。</p><p>以上。遇到此坑的同学了解一下。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> vim </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> vim </tag>
+            
+            <tag> 粘贴 </tag>
+            
+            <tag> 复制 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>github+hexo博客搭建详细教学</title>
+      <link href="2021/01/28/99_github-hexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E8%AF%A6%E7%BB%86%E6%95%99%E5%AD%A6/"/>
+      <url>2021/01/28/99_github-hexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E8%AF%A6%E7%BB%86%E6%95%99%E5%AD%A6/</url>
+      
+        <content type="html"><![CDATA[<p><a href="https://blog.csdn.net/qq_36759224/article/details/82121420">https://blog.csdn.net/qq_36759224/article/details/82121420</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Blog </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> hexo </tag>
+            
+            <tag> github </tag>
+            
+            <tag> 搭建 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>hexo双线部署，实现搜索引擎收录</title>
+      <link href="2021/01/28/100_Hexo%E5%8F%8C%E7%BA%BF%E9%83%A8%E7%BD%B2/"/>
+      <url>2021/01/28/100_Hexo%E5%8F%8C%E7%BA%BF%E9%83%A8%E7%BD%B2/</url>
+      
+        <content type="html"><![CDATA[<p><a href="https://blog.csdn.net/qq_36759224/article/details/100879609">https://blog.csdn.net/qq_36759224/article/details/100879609</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Blog </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> hexo </tag>
+            
+            <tag> 博客 </tag>
+            
+            <tag> 部署 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>hexo博客部署到github后404</title>
       <link href="2021/01/28/98_hexo%E5%8D%9A%E5%AE%A2%E9%83%A8%E7%BD%B2%E5%88%B0github%E5%90%8E404/"/>
       <url>2021/01/28/98_hexo%E5%8D%9A%E5%AE%A2%E9%83%A8%E7%BD%B2%E5%88%B0github%E5%90%8E404/</url>
@@ -2437,9 +2553,9 @@
       
         <tags>
             
-            <tag> 基础知识 </tag>
-            
             <tag> Git </tag>
+            
+            <tag> 基础知识 </tag>
             
         </tags>
       
@@ -2464,9 +2580,9 @@
       
         <tags>
             
-            <tag> 基础知识 </tag>
-            
             <tag> Git </tag>
+            
+            <tag> 基础知识 </tag>
             
             <tag> 仓库 </tag>
             
@@ -2520,9 +2636,9 @@
       
         <tags>
             
-            <tag> 基础知识 </tag>
-            
             <tag> Git </tag>
+            
+            <tag> 基础知识 </tag>
             
         </tags>
       
@@ -2547,9 +2663,9 @@
       
         <tags>
             
-            <tag> 基础知识 </tag>
-            
             <tag> Git </tag>
+            
+            <tag> 基础知识 </tag>
             
         </tags>
       
@@ -2574,9 +2690,9 @@
       
         <tags>
             
-            <tag> 基础知识 </tag>
-            
             <tag> Git </tag>
+            
+            <tag> 基础知识 </tag>
             
         </tags>
       
@@ -2601,9 +2717,9 @@
       
         <tags>
             
-            <tag> 基础知识 </tag>
-            
             <tag> Git </tag>
+            
+            <tag> 基础知识 </tag>
             
         </tags>
       
@@ -2680,9 +2796,9 @@
             
             <tag> 博客 </tag>
             
-            <tag> Hexo </tag>
-            
             <tag> 报错 </tag>
+            
+            <tag> Hexo </tag>
             
         </tags>
       
@@ -2709,11 +2825,11 @@
             
             <tag> 博客 </tag>
             
+            <tag> 报错 </tag>
+            
             <tag> Hexo </tag>
             
             <tag> Butterfly </tag>
-            
-            <tag> 报错 </tag>
             
         </tags>
       
