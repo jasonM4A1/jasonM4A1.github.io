@@ -207,15 +207,15 @@
 <p>使用多个远程库时，要注意git给远程库起的默认名称是origin，如果有多个远程库，我们需要用不同的名称来标识不同的远程库。仍然以learngit本地库为例，先删除已关联的名为origin的远程库：</p>
 <p><strong>git remote rm origin</strong></p>
 <p>然后，先关联GitHub的远程库：</p>
-<p><strong>git remote add github <a href="mailto:&#x67;&#105;&#x74;&#x40;&#x67;&#x69;&#116;&#x68;&#x75;&#x62;&#x2e;&#99;&#x6f;&#x6d;">&#x67;&#105;&#x74;&#x40;&#x67;&#x69;&#116;&#x68;&#x75;&#x62;&#x2e;&#99;&#x6f;&#x6d;</a>:\</strong>xxx**/LearnGit.git**</p>
+<p><strong>git remote add github <a href="mailto:&#x67;&#105;&#116;&#64;&#103;&#x69;&#116;&#x68;&#117;&#x62;&#46;&#x63;&#x6f;&#x6d;">&#x67;&#105;&#116;&#64;&#103;&#x69;&#116;&#x68;&#117;&#x62;&#46;&#x63;&#x6f;&#x6d;</a>:\</strong>xxx**/LearnGit.git**</p>
 <p>注意，远程库的名称叫github，不叫origin了。</p>
 <p>接着，再关联码云的远程库：</p>
-<p><strong>git remote add gitee <a href="mailto:&#103;&#105;&#x74;&#64;&#x67;&#105;&#x74;&#101;&#x65;&#46;&#x63;&#x6f;&#x6d;">&#103;&#105;&#x74;&#64;&#x67;&#105;&#x74;&#101;&#x65;&#46;&#x63;&#x6f;&#x6d;</a>:\</strong>xxx**/LearnGit.git**</p>
+<p><strong>git remote add gitee <a href="mailto:&#x67;&#105;&#x74;&#x40;&#x67;&#x69;&#116;&#101;&#101;&#46;&#99;&#x6f;&#x6d;">&#x67;&#105;&#x74;&#x40;&#x67;&#x69;&#116;&#101;&#101;&#46;&#99;&#x6f;&#x6d;</a>:\</strong>xxx**/LearnGit.git**</p>
 <p>同样注意，远程库的名称叫gitee，不叫origin。</p>
-<p>现在，我们用 <strong>git remote -v</strong>查看远程库信息，可以看到两个远程库：gitee <a href="mailto:&#x67;&#105;&#x74;&#x40;&#x67;&#105;&#x74;&#x65;&#101;&#46;&#x63;&#x6f;&#x6d;">&#x67;&#105;&#x74;&#x40;&#x67;&#105;&#x74;&#x65;&#101;&#46;&#x63;&#x6f;&#x6d;</a>: <strong>xxx</strong>/LearnGit.git (fetch)</p>
-<p>gitee <a href="mailto:&#x67;&#105;&#116;&#64;&#x67;&#105;&#116;&#x65;&#x65;&#46;&#x63;&#x6f;&#x6d;">&#x67;&#105;&#116;&#64;&#x67;&#105;&#116;&#x65;&#x65;&#46;&#x63;&#x6f;&#x6d;</a>: <strong>xxx</strong>/LearnGit.git (push)</p>
-<p>github <a href="mailto:&#x67;&#x69;&#x74;&#64;&#103;&#x69;&#116;&#x68;&#117;&#98;&#x2e;&#99;&#111;&#x6d;">&#x67;&#x69;&#x74;&#64;&#103;&#x69;&#116;&#x68;&#117;&#98;&#x2e;&#99;&#111;&#x6d;</a>: <strong>xxx</strong>/LearnGit.git (fetch)</p>
-<p>github <a href="mailto:&#x67;&#105;&#116;&#x40;&#x67;&#105;&#x74;&#x68;&#x75;&#x62;&#x2e;&#x63;&#111;&#x6d;">&#x67;&#105;&#116;&#x40;&#x67;&#105;&#x74;&#x68;&#x75;&#x62;&#x2e;&#x63;&#111;&#x6d;</a>: <strong>xxx</strong>/LearnGit.git (push)</p>
+<p>现在，我们用 <strong>git remote -v</strong>查看远程库信息，可以看到两个远程库：gitee <a href="mailto:&#103;&#105;&#x74;&#x40;&#103;&#x69;&#116;&#x65;&#101;&#46;&#x63;&#111;&#x6d;">&#103;&#105;&#x74;&#x40;&#103;&#x69;&#116;&#x65;&#101;&#46;&#x63;&#111;&#x6d;</a>: <strong>xxx</strong>/LearnGit.git (fetch)</p>
+<p>gitee <a href="mailto:&#103;&#x69;&#x74;&#x40;&#x67;&#x69;&#x74;&#101;&#x65;&#x2e;&#99;&#111;&#109;">&#103;&#x69;&#x74;&#x40;&#x67;&#x69;&#x74;&#101;&#x65;&#x2e;&#99;&#111;&#109;</a>: <strong>xxx</strong>/LearnGit.git (push)</p>
+<p>github <a href="mailto:&#103;&#x69;&#116;&#x40;&#103;&#x69;&#116;&#104;&#x75;&#98;&#46;&#x63;&#111;&#x6d;">&#103;&#x69;&#116;&#x40;&#103;&#x69;&#116;&#104;&#x75;&#98;&#46;&#x63;&#111;&#x6d;</a>: <strong>xxx</strong>/LearnGit.git (fetch)</p>
+<p>github <a href="mailto:&#x67;&#x69;&#116;&#64;&#103;&#x69;&#x74;&#104;&#117;&#x62;&#x2e;&#x63;&#x6f;&#x6d;">&#x67;&#x69;&#116;&#64;&#103;&#x69;&#x74;&#104;&#117;&#x62;&#x2e;&#x63;&#x6f;&#x6d;</a>: <strong>xxx</strong>/LearnGit.git (push)</p>
 <p>如果要推送到GitHub，使用命令：</p>
 <p><strong>git push github master</strong></p>
 <p>如果要推送到码云，使用命令：</p>
