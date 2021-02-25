@@ -1,0 +1,398 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Code - Java</title><meta name="author" content="Bernardo Li"><meta name="copyright" content="Bernardo Li"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="一个学开发的笨蛋">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Code">
+<meta property="og:url" content="http://example.com/page/8/index.html">
+<meta property="og:site_name" content="Code">
+<meta property="og:description" content="一个学开发的笨蛋">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gitee.com/jasonM4A1/pictureHost/raw/master/img/20210201095918.jpg">
+<meta property="article:author" content="Bernardo Li">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gitee.com/jasonM4A1/pictureHost/raw/master/img/20210201095918.jpg"><link rel="shortcut icon" href="/img/whiteFlag.ico"><link rel="canonical" href="http://example.com/page/8/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#121212","position":"bottom-left"},
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: true,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = { 
+  isPost: false,
+  isHome: true,
+  isHighlightShrink: false,
+  isToc: false,
+  postUpdate: '2021-02-25 21:24:29'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const fontSizeVal = saveToLocal.get('global-font-size')
+    if (fontSizeVal !== undefined) {
+      document.documentElement.style.setProperty('--global-font-size', fontSizeVal + 'px')
+    }
+    })(window)</script><meta name="generator" content="Hexo 5.4.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="https://gitee.com/jasonM4A1/pictureHost/raw/master/img/20210201095918.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">132</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">70</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">19</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="full_page" id="page-header" style="background-image: url('https://gitee.com/jasonM4A1/pictureHost/raw/master/img/20210201093201.png')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Code</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="site-info"><h1 id="site-title">Code</h1><div id="site_social_icons"><a class="social-icon" href="mailto:bernarlido266@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item"><div class="post_cover left_radius"><a href="/2020/10/22/62_%E5%AD%97%E7%AC%A6%E6%B5%81-Writer/" title="字符流-Writer">     <img class="post_bg" src="https://gitee.com/jasonM4A1/pictureHost/raw/master/20201022205427.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="字符流-Writer"></a></div><div class="recent-post-info"><a class="article-title" href="/2020/10/22/62_%E5%AD%97%E7%AC%A6%E6%B5%81-Writer/" title="字符流-Writer">字符流-Writer</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-10-22T12:52:52.000Z" title="发表于 2020-10-22 20:52:52">2020-10-22</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Java/">Java</a></span></div><div class="content">
+当使用字节流读取文本文件时，可能会有一个小问题。就是遇到中文字符时，可能不会显示完整的字符，那是因为一个中文字符可能占用多个字节存储。所以Java提供一些字符流类，以字符为单位读写数据，专门用于处理文本文件。
+
+字符流-WriterWriter抽象类java.io.Writer 抽象类是表示用于写出字符流的所有类的超类，将指定的字符信息写出到目的地。它定义了字节输出流的基本共性功能方法。
+
+void write(int c)：写入单个字符。
+void write(char[] cbuf)：写入指定字符数组。 
+abstract void write(char[] cbuf, int off, int len)：写入字符数组的某一部分,从数组索引off开始,写入len长度的字符。 
+void write(String str)：写入字符串。 
+void write(String str, int off ,int len)：写入字符串的某一部分,从数组索引off开始,写入len长度的字符串。 
+void flush()：将数据从缓冲区刷新到文件中，流对象可以被再次使用。
+void cl ...</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/2020/10/22/61_%E5%AD%97%E8%8A%82%E6%B5%81-Inputstream/" title="字节流-Inputstream">     <img class="post_bg" src="https://gitee.com/jasonM4A1/pictureHost/raw/master/20201022154828.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="字节流-Inputstream"></a></div><div class="recent-post-info"><a class="article-title" href="/2020/10/22/61_%E5%AD%97%E8%8A%82%E6%B5%81-Inputstream/" title="字节流-Inputstream">字节流-Inputstream</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-10-22T07:46:31.000Z" title="发表于 2020-10-22 15:46:31">2020-10-22</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Java/">Java</a></span></div><div class="content">字节流-Inputstream概述java.io.InputStream 抽象类是表示字节输入流的所有类的超类，可以读取字节信息到内存中。它定义了字节输入流的基本共性功能方法。
+
+void close()：关闭此输入流并释放与此流相关联的任何系统资源。    
+abstract int read()：从输入流读取数据的下一个字节。 
+int read(byte[] b)：从输入流中读取一些字节数，并将它们存储到字节数组中 。并返回获取的有效的字节个数。
+
+FileInputStream类概述java.io.InputStream有很多子类，我们以它的直接子类FileInputStream为例进行讲解。
+java.io.FileInputStream 类是文件输入流，从文件中读取字节。
+继承图
+
+构造方法
+FileInputStream(File file)：通过打开与实际文件的连接来创建一个FileInputStream对象，该文件由文件系统中的File对象来命名。 
+FileInputStream(String name)： 通过打开与实际文件的连接来创建一个FileInputStr ...</div></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="/2020/10/22/60_%E5%AD%97%E8%8A%82%E6%B5%81-OutputStream/" title="字节流-OutputStream">     <img class="post_bg" src="https://gitee.com/jasonM4A1/pictureHost/raw/master/20201022140111.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="字节流-OutputStream"></a></div><div class="recent-post-info"><a class="article-title" href="/2020/10/22/60_%E5%AD%97%E8%8A%82%E6%B5%81-OutputStream/" title="字节流-OutputStream">字节流-OutputStream</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-10-22T05:59:52.000Z" title="发表于 2020-10-22 13:59:52">2020-10-22</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Java/">Java</a></span></div><div class="content">字节流-OutputStream
+一切文件数据(文本、图片、视频等)在存储时，都是以二进制数字的形式保存，都一个一个的字节，那么传输时一样如此。所以，字节流可以传输任意文件数据。在操作流的时候，我们要时刻明确，无论使用什么样的流对象，底层传输的始终为二进制数据。
+
+OutputStream抽象类java.io.OutputStream抽象类是表示字节输出流的所有类的超类，将指定的字节信息写出到目的地。它定义了字节输出流的基本共性功能方法。
+
+void close()：关闭此输出流并释放与此流相关联的任何系统资源。  
+void flush()：刷新此输出流并强制任何缓冲的输出字节被写出。  
+void write(byte[] b)：将指定的字节数组写入此输出流。  
+void write(byte[] b, int off, int len)：写入字符数组的某一部分，从数组索引off开始,写入len长度的字符。 
+abstract void write(int b)：将指定的字节写入此输出流。
+
+FileOutputStream类OutputStream有很多子类，我们从最简单的一个 ...</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/2020/10/22/59_IO%E6%B5%81/" title="IO流">     <img class="post_bg" src="https://gitee.com/jasonM4A1/pictureHost/raw/master/20201022135011.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="IO流"></a></div><div class="recent-post-info"><a class="article-title" href="/2020/10/22/59_IO%E6%B5%81/" title="IO流">IO流</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-10-22T05:48:20.000Z" title="发表于 2020-10-22 13:48:20">2020-10-22</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Java/">Java</a></span></div><div class="content">IO-字节流概述在讲述字节流之前，我们首先需要明白IO流是什么。
+我们把数据的传输，可以看做是一种数据的流动，按照流动的方向，以内存为基准，分为输入input 和输出output ，即流向内存是输入流，流出内存的输出流。
+Java中I/O操作主要是指使用java.io包下的内容，进行输入、输出操作。输入也叫做读取数据，输出也叫做作写出数据。
+分类根据数据的流向分为：输入流和输出流。
+
+输入流 ：把数据从其他设备上读取到内存中的流。 
+输出流 ：把数据从内存 中写出到其他设备上的流。
+
+根据数据的类型分为：字节流和字符流。
+
+字节流 ：以字节为单位，读写数据的流。
+字符流 ：以字符为单位，读写数据的流。
+
+顶级父类
+
+
+
+输入流
+输出流
+
+
+
+字节流
+字节输入流（InputStream）
+字节输出流（OutputStream）
+
+
+字符流
+字符输入流（Reader）
+字符输出流（Writer）
+
+
+</div></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="/2020/10/22/58_%E9%80%92%E5%BD%92/" title="递归">     <img class="post_bg" src="https://gitee.com/jasonM4A1/pictureHost/raw/master/20201022094232.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="递归"></a></div><div class="recent-post-info"><a class="article-title" href="/2020/10/22/58_%E9%80%92%E5%BD%92/" title="递归">递归</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-10-22T01:41:07.000Z" title="发表于 2020-10-22 09:41:07">2020-10-22</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Java/">Java</a></span></div><div class="content">递归概述递归指在一个方法内，调用这个方法的一种情况。
+
+分类递归可以简单的分为两种：
+
+直接递归：方法自身直接调用自己。
+间接递归：方法A调用方法B，方法B调用方法A，间接的达成方法调用自身。
+
+代码演示
+
+功能要求：使用递归计算1~100的整数和
+
+123456789101112131415public class Test &#123;    private static int calc(int num) &#123;        //设定限制条件        if (num == 1) &#123;            return 1;        &#125;        //调用自身        return num + calc(--num);    &#125;    public static void main(String[] args) &#123;        //调用递归方法        int sum = calc(100);        System.out.println(sum);//5050    &#125;&#125;
+
+
+ ...</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/2020/10/21/57_File%E7%B1%BB/" title="File类">     <img class="post_bg" src="https://gitee.com/jasonM4A1/pictureHost/raw/master/20201021174935.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="File类"></a></div><div class="recent-post-info"><a class="article-title" href="/2020/10/21/57_File%E7%B1%BB/" title="File类">File类</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-10-21T09:46:02.000Z" title="发表于 2020-10-21 17:46:02">2020-10-21</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Java/">Java</a></span></div><div class="content">File类概述java.io.File 类是文件和目录路径名的抽象表示，主要用于文件和目录的创建、查找和删除等操作。
+构造方法
+File(String pathname)：通过将给定的路径名字符串转换为抽象路径名来创建新的 File实例
+File(String parent, String child)：从父路径名字符串和子路径名字符串创建新的 File实例。
+File(File parent, String child)：从父抽象路径名和子路径名字符串创建新的 File实例。  
+
+代码演示
+1234567891011121314151617import java.io.File;public class Test &#123;    public static void main(String[] args) &#123;        //通过将给定的路径名字符串转换为抽象路径名来创建新的File实例。        File file1 = new File(&quot;a.txt&quot;);//相对路径        File file2 = new File(&quot ...</div></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="/2020/10/20/56_Lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F/" title="Lambda表达式">     <img class="post_bg" src="https://gitee.com/jasonM4A1/pictureHost/raw/master/20201021143826.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Lambda表达式"></a></div><div class="recent-post-info"><a class="article-title" href="/2020/10/20/56_Lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F/" title="Lambda表达式">Lambda表达式</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-10-20T14:43:56.000Z" title="发表于 2020-10-20 22:43:56">2020-10-20</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Java/">Java</a></span></div><div class="content">Lambda表达式概述相对而言，面向对象过分强调“必须通过对象的形式来做事情”，而函数式思想则尽量忽略面向对象的复杂语法——强调做什么，而不是以什么形式做。
+
+面向对象的思想:
+做一件事情,找一个能解决这个事情的对象,调用对象的方法,完成事情.
+
+函数式编程思想:
+只要能获取到结果,谁去做的,怎么做的都不重要,重视的是结果,不重视过程
+
+
+使用前提Lambda作为JDK 8的新特性，可以大大简化代码。但是过于简化的代码语法，往往容易造成代码歧义的问题。为了避免这个问题的产生，SUN公司为Lambda表示式的使用做出了使用约束。有以下几点：
+
+Lambda表达式只能用于接口。
+
+使用Lambda表达式的接口，被要求有且仅有一个需要实现的方法。
+
+被 default 修饰的方法会有默认实现，不是必须被实现的方法，所以不影响 Lambda 表达式的使用。
+
+
+使用Lambda必须具有上下文推断
+也就是方法的参数或局部变量类型必须为Lambda对应的接口类型，才能使用Lambda作为该接口的实例。
+
+
+
+有且仅有一个抽象（需要实现的）方法的接口，称为“函数式接口”。
+
+格式标准格式1(参数类型 ...</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/2020/10/20/55_%E7%BA%BF%E7%A8%8B%E6%B1%A0/" title="线程池">     <img class="post_bg" src="https://gitee.com/jasonM4A1/pictureHost/raw/master/20201020171114.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="线程池"></a></div><div class="recent-post-info"><a class="article-title" href="/2020/10/20/55_%E7%BA%BF%E7%A8%8B%E6%B1%A0/" title="线程池">线程池</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-10-20T09:02:21.000Z" title="发表于 2020-10-20 17:02:21">2020-10-20</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Java/">Java</a></span></div><div class="content">线程池概述我们使用线程的时候就去创建一个线程，这样实现起来非常简便，但是就会有一个问题：
+如果并发的线程数量很多，并且每个线程都是执行一个时间很短的任务就结束了，因为频繁创建线程和销毁线程需要时间，这样频繁创建线程就会大大降低系统的效率。
+那么有没有一种办法使得线程可以复用，就是执行完一个任务，并不被销毁，而是可以继续执行其他的任务？
+在Java中可以通过线程池来达到这样的效果。今天我们就来详细讲解一下Java的线程池。
+线程池：
+其实就是一个容纳多个线程的容器，其中的线程可以反复使用，省去了频繁创建线程对象的操作，无需反复创建线程而消耗过多资源。
+由于线程池中有很多操作都是与优化资源相关的，我们在这里就不多赘述。我们通过一张图来了解线程池的工作原理：
+
+优势合理利用线程池能够带来三个好处：
+
+降低资源消耗。减少了创建和销毁线程的次数，每个工作线程都可以被重复利用，可执行多个任务。
+提高响应速度。当任务到达时，任务可以不需要的等到线程创建就能立即执行。
+提高线程的可管理性。可以根据系统的承受能力，调整线程池中工作线线程的数目，防止因为消耗过多的内存，而把服务器累趴下(每个线程需要大约1 ...</div></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="/2020/10/20/54_%E7%AD%89%E5%BE%85%E5%94%A4%E9%86%92%E6%9C%BA%E5%88%B6/" title="等待唤醒机制">     <img class="post_bg" src="https://gitee.com/jasonM4A1/pictureHost/raw/master/20201020155113.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="等待唤醒机制"></a></div><div class="recent-post-info"><a class="article-title" href="/2020/10/20/54_%E7%AD%89%E5%BE%85%E5%94%A4%E9%86%92%E6%9C%BA%E5%88%B6/" title="等待唤醒机制">等待唤醒机制</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-10-20T07:50:25.000Z" title="发表于 2020-10-20 15:50:25">2020-10-20</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Java/">Java</a></span></div><div class="content">等待唤醒机制线程间通信多个线程在处理同一个资源，但是处理的动作（线程的任务）却不相同，这个时候就需要线程通信了。
+比如：线程A用来生成包子的，线程B用来吃包子的，包子可以理解为同一资源，线程A与线程B处理的动作，一个是生产，一个是消费，那么线程A与线程B之间就存在线程通信问题。
+
+为什么要处理线程间通信：
+多个线程并发执行时, 在默认情况下CPU是随机切换线程的，当我们需要多个线程来共同完成一件任务，并且我们希望他们有规律的执行, 那么多线程之间需要一些协调通信，以此来帮我们达到多线程共同操作一份数据。
+如何保证线程间通信有效利用资源：
+多个线程在处理同一个资源，并且任务不同时，需要线程通信来帮助解决线程之间对同一个变量的使用或操作。 就是多个线程在操作同一份数据时， 避免对同一共享变量的争夺。也就是我们需要通过一定的手段使各个线程能有效的利用资源。而这种手段即—— 等待唤醒机制。
+什么是等待唤醒机制这是多个线程间的一种协作机制。谈到线程我们经常想到的是线程间的竞争（race），比如去争夺锁，但这并不是故事的全部，线程间也会有协作机制。就好比在公司里你和你的同事们，你们可能存在在晋升时 ...</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/2020/10/20/53_%E7%BA%BF%E7%A8%8B%E7%8A%B6%E6%80%81/" title="线程状态">     <img class="post_bg" src="https://gitee.com/jasonM4A1/pictureHost/raw/master/20201020005303.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="线程状态"></a></div><div class="recent-post-info"><a class="article-title" href="/2020/10/20/53_%E7%BA%BF%E7%A8%8B%E7%8A%B6%E6%80%81/" title="线程状态">线程状态</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-10-19T16:51:43.000Z" title="发表于 2020-10-20 00:51:43">2020-10-20</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Java/">Java</a></span></div><div class="content">线程状态概述当线程被创建并启动以后，它既不是一启动就进入了执行状态，也不是一直处于执行状态。在API中 java.lang.Thread.State 这个枚举中给出了六种线程状态：
+
+
+
+线程状态
+具体解释
+
+
+
+New（新建）
+线程刚被创建，还未调用start()方法来启动线程。
+
+
+Runnable（可运行）
+线程已经准备好在JVM中可以运行的状态。此时如果线程抢到锁对象，就可以运行；如果抢不到锁对象，就要变成阻塞状态。
+
+
+Blocked（锁阻塞）
+当一个线程试图获取一个对象锁，而该对象锁被其他的线程持有，则该线程进入Blocked状 态；当该线程抢到锁时，该线程将变成Runnable状态。
+
+
+Waiting（无限等待）
+一个线程在等待另一个线程执行一个（唤醒）动作时，该线程进入Waiting状态。进入此状态后是不能自动唤醒的，必须等待另一个线程调用notify或者notifyAll方法才能够唤醒
+
+
+Timed Waiting（计时等待）
+同waiting状态，有几个方法有超时参数，调用他们将进入Timed Waiting状态。这一状态 将一直保持到超时期满或者接收到唤醒通知 ...</div></div></div><nav id="pagination"><div class="pagination"><a class="extend prev" rel="prev" href="/page/7/"><i class="fas fa-chevron-left fa-fw"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><a class="extend next" rel="next" href="/page/9/"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-info-avatar is-center"><img class="avatar-img" src="https://gitee.com/jasonM4A1/pictureHost/raw/master/img/20210201095918.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">Bernardo Li</div><div class="author-info__description">一个学开发的笨蛋</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">132</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">70</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">19</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/jasonM4A1"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="mailto:bernarlido266@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2021/02/20/131_windows%E5%90%AF%E5%8A%A8ssh-agent/" title="windows启动ssh-agent"><img src="https://gitee.com/jasonM4A1/pictureHost/raw/master/img/20210220091020.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="windows启动ssh-agent"/></a><div class="content"><a class="title" href="/2021/02/20/131_windows%E5%90%AF%E5%8A%A8ssh-agent/" title="windows启动ssh-agent">windows启动ssh-agent</a><time datetime="2021-02-20T01:09:25.000Z" title="发表于 2021-02-20 09:09:25">2021-02-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/02/20/130_Idea%E7%94%9F%E6%88%90entity%E5%AE%9E%E4%BD%93%E7%B1%BB/" title="Idea生成entity实体类"><img src="https://gitee.com/jasonM4A1/pictureHost/raw/master/img/20210220084833.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Idea生成entity实体类"/></a><div class="content"><a class="title" href="/2021/02/20/130_Idea%E7%94%9F%E6%88%90entity%E5%AE%9E%E4%BD%93%E7%B1%BB/" title="Idea生成entity实体类">Idea生成entity实体类</a><time datetime="2021-02-20T00:45:30.000Z" title="发表于 2021-02-20 08:45:30">2021-02-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/02/18/129_idea%E6%96%B0%E5%BB%BA%E7%B1%BB%EF%BC%8C%E7%B1%BB%E5%90%8D%E5%87%BA%E7%8E%B0%E5%88%A0%E9%99%A4%E7%BA%BF%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/" title="idea新建类，类名出现删除线问题解决"><img src="https://gitee.com/jasonM4A1/pictureHost/raw/master/img/20210218154416.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="idea新建类，类名出现删除线问题解决"/></a><div class="content"><a class="title" href="/2021/02/18/129_idea%E6%96%B0%E5%BB%BA%E7%B1%BB%EF%BC%8C%E7%B1%BB%E5%90%8D%E5%87%BA%E7%8E%B0%E5%88%A0%E9%99%A4%E7%BA%BF%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/" title="idea新建类，类名出现删除线问题解决">idea新建类，类名出现删除线问题解决</a><time datetime="2021-02-18T07:43:22.000Z" title="发表于 2021-02-18 15:43:22">2021-02-18</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/02/18/128_Cannot-resolve-plugin-org-apache-maven-plugins-maven-site-plugin-3-7-1%E6%8A%A5%E9%94%99/" title="Cannot resolve plugin org.apache.maven.plugins:maven-site-plugin:3.7.1报错"><img src="https://gitee.com/jasonM4A1/pictureHost/raw/master/img/20210218152004.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Cannot resolve plugin org.apache.maven.plugins:maven-site-plugin:3.7.1报错"/></a><div class="content"><a class="title" href="/2021/02/18/128_Cannot-resolve-plugin-org-apache-maven-plugins-maven-site-plugin-3-7-1%E6%8A%A5%E9%94%99/" title="Cannot resolve plugin org.apache.maven.plugins:maven-site-plugin:3.7.1报错">Cannot resolve plugin org.apache.maven.plugins:maven-site-plugin:3.7.1报错</a><time datetime="2021-02-18T07:19:05.000Z" title="发表于 2021-02-18 15:19:05">2021-02-18</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/02/10/114_HTTP%E5%8D%8F%E8%AE%AE%E5%85%A5%E9%97%A8/" title="Http协议入门"><img src="https://gitee.com/jasonM4A1/pictureHost/raw/master/img/20210203172229.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Http协议入门"/></a><div class="content"><a class="title" href="/2021/02/10/114_HTTP%E5%8D%8F%E8%AE%AE%E5%85%A5%E9%97%A8/" title="Http协议入门">Http协议入门</a><time datetime="2021-02-10T01:20:50.000Z" title="发表于 2021-02-10 09:20:50">2021-02-10</time></div></div></div></div><div class="card-widget card-categories"><div class="item-headline">
+            <i class="fas fa-folder-open"></i>
+            <span>分类</span>
+            <a class="card-more-btn" href="/categories/" title="查看更多">
+    <i class="fas fa-angle-right"></i></a>
+            </div>
+            <ul class="card-category-list" id="aside-cat-list">
+            <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Blog/"><span class="card-category-list-name">Blog</span><span class="card-category-list-count">2</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Git/"><span class="card-category-list-name">Git</span><span class="card-category-list-count">7</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Java/"><span class="card-category-list-name">Java</span><span class="card-category-list-count">81</span></a><ul class="card-category-list child"><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Java/%E5%A4%8D%E4%B9%A0/"><span class="card-category-list-name">复习</span><span class="card-category-list-count">2</span></a></li></ul></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/JavaWeb/"><span class="card-category-list-name">JavaWeb</span><span class="card-category-list-count">2</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Linux/"><span class="card-category-list-name">Linux</span><span class="card-category-list-count">4</span></a><ul class="card-category-list child"><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Linux/MySQL/"><span class="card-category-list-name">MySQL</span><span class="card-category-list-count">1</span></a></li></ul></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/MySQL/"><span class="card-category-list-name">MySQL</span><span class="card-category-list-count">12</span></a></li>
+            </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/ArrayList%E7%B1%BB/" style="font-size: 1.1em; color: #999">ArrayList类</a> <a href="/tags/Arrays%E7%B1%BB/" style="font-size: 1.1em; color: #999">Arrays类</a> <a href="/tags/Butterfly/" style="font-size: 1.1em; color: #999">Butterfly</a> <a href="/tags/Entity/" style="font-size: 1.1em; color: #999">Entity</a> <a href="/tags/Git/" style="font-size: 1.3em; color: #99a1ac">Git</a> <a href="/tags/Hexo/" style="font-size: 1.15em; color: #999b9e">Hexo</a> <a href="/tags/Http/" style="font-size: 1.1em; color: #999">Http</a> <a href="/tags/IO/" style="font-size: 1.35em; color: #99a3b1">IO</a> <a href="/tags/IO%E6%B5%81/" style="font-size: 1.1em; color: #999">IO流</a> <a href="/tags/Idea/" style="font-size: 1.3em; color: #99a1ac">Idea</a> <a href="/tags/JDBC/" style="font-size: 1.2em; color: #999da3">JDBC</a> <a href="/tags/Java/" style="font-size: 1.5em; color: #99a9bf">Java</a> <a href="/tags/JavaScript/" style="font-size: 1.1em; color: #999">JavaScript</a> <a href="/tags/JavaWeb/" style="font-size: 1.45em; color: #99a7ba">JavaWeb</a> <a href="/tags/Lambda/" style="font-size: 1.25em; color: #999fa7">Lambda</a> <a href="/tags/Linux/" style="font-size: 1.2em; color: #999da3">Linux</a> <a href="/tags/Manjaro/" style="font-size: 1.1em; color: #999">Manjaro</a> <a href="/tags/Maven/" style="font-size: 1.25em; color: #999fa7">Maven</a> <a href="/tags/MySQL/" style="font-size: 1.4em; color: #99a5b6">MySQL</a> <a href="/tags/Random/" style="font-size: 1.1em; color: #999">Random</a> <a href="/tags/SVM/" style="font-size: 1.1em; color: #999">SVM</a> <a href="/tags/Servlet/" style="font-size: 1.1em; color: #999">Servlet</a> <a href="/tags/String%E7%B1%BB/" style="font-size: 1.15em; color: #999b9e">String类</a> <a href="/tags/Tomcat/" style="font-size: 1.3em; color: #99a1ac">Tomcat</a> <a href="/tags/Windows/" style="font-size: 1.2em; color: #999da3">Windows</a> <a href="/tags/bios/" style="font-size: 1.1em; color: #999">bios</a> <a href="/tags/chrome-firesox-linux/" style="font-size: 1.1em; color: #999">chrome - firesox - linux</a> <a href="/tags/git/" style="font-size: 1.1em; color: #999">git</a> <a href="/tags/github/" style="font-size: 1.2em; color: #999da3">github</a> <a href="/tags/hexo/" style="font-size: 1.25em; color: #999fa7">hexo</a> <a href="/tags/linux-%E6%8A%A5%E9%94%99-kde/" style="font-size: 1.1em; color: #999">linux - 报错 - kde</a> <a href="/tags/shell-linux/" style="font-size: 1.1em; color: #999">shell - linux</a> <a href="/tags/ssh/" style="font-size: 1.1em; color: #999">ssh</a> <a href="/tags/vim/" style="font-size: 1.1em; color: #999">vim</a> <a href="/tags/%E4%B9%B1%E7%A0%81/" style="font-size: 1.1em; color: #999">乱码</a> <a href="/tags/%E4%BB%93%E5%BA%93/" style="font-size: 1.1em; color: #999">仓库</a> <a href="/tags/%E5%86%85%E9%83%A8%E7%B1%BB/" style="font-size: 1.1em; color: #999">内部类</a> <a href="/tags/%E5%88%86%E6%94%AF/" style="font-size: 1.1em; color: #999">分支</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 1.15em; color: #999b9e">前端</a> <a href="/tags/%E5%89%8D%E7%AB%AF-JavaScript-JQuery/" style="font-size: 1.1em; color: #999">前端 - JavaScript - JQuery</a></div></div><div class="card-widget card-archives"><div class="item-headline"><i class="fas fa-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2021/02/"><span class="card-archive-list-date">二月 2021</span><span class="card-archive-list-count">28</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2021/01/"><span class="card-archive-list-date">一月 2021</span><span class="card-archive-list-count">7</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/12/"><span class="card-archive-list-date">十二月 2020</span><span class="card-archive-list-count">5</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/11/"><span class="card-archive-list-date">十一月 2020</span><span class="card-archive-list-count">21</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/10/"><span class="card-archive-list-date">十月 2020</span><span class="card-archive-list-count">71</span></a></li></ul></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站资讯</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">132</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"></div></div><div class="webinfo-item"><div class="item-name">本站总访问量 :</div><div class="item-count" id="busuanzi_value_site_pv"></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2021-02-25T13:24:28.269Z"></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2021 By Bernardo Li</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">李博帅</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="font-plus" type="button" title="放大字体"><i class="fas fa-plus"></i></button><button id="font-minus" type="button" title="缩小字体"><i class="fas fa-minus"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script src="/js/search/local-search.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"></div><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = [
+  'title',
+  '#config-diff',
+  '#body-wrap',
+  '#rightside-config-hide',
+  '#rightside-config-show',
+  '.js-pjax'
+]
+
+if (false) {
+  pjaxSelectors.unshift('meta[property="og:image"]', 'meta[property="og:title"]', 'meta[property="og:url"]')
+}
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  if (typeof gtag === 'function') {
+    gtag('config', '', {'page_path': window.location.pathname});
+  }
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // Analytics
+  if (false) {
+    MtaH5.pgv()
+  }
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+
+document.addEventListener('pjax:send', function () {
+  typeof preloader === 'object' && preloader.initLoading()
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

@@ -1,0 +1,505 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Servlet入门(servlet讲解+idea创建servlet程序) | Code</title><meta name="keywords" content="JavaWeb,Servlet"><meta name="author" content="Bernardo Li"><meta name="copyright" content="Bernardo Li"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Servlet概述 JServlet就是sun公司开发动态web的一门技术，是运行在 Web 服务器或应用服务器上的程序，作为来自 Web 浏览器或其他 HTTP 客户端的请求和 HTTP 服务器上的数据库或应用程序之间的中间层。 Servlet简单点说，其实就是JavaEE的一个规范。我们学习Servlet，就是学习JavaEE的Servlet接口。 Servlet是JavaWeb的三大组件之一">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Servlet入门(servlet讲解+idea创建servlet程序)">
+<meta property="og:url" content="http://example.com/2021/02/03/125_Servlet%E5%85%A5%E9%97%A8-servlet%E8%AE%B2%E8%A7%A3-idea%E5%88%9B%E5%BB%BAservlet%E7%A8%8B%E5%BA%8F/index.html">
+<meta property="og:site_name" content="Code">
+<meta property="og:description" content="Servlet概述 JServlet就是sun公司开发动态web的一门技术，是运行在 Web 服务器或应用服务器上的程序，作为来自 Web 浏览器或其他 HTTP 客户端的请求和 HTTP 服务器上的数据库或应用程序之间的中间层。 Servlet简单点说，其实就是JavaEE的一个规范。我们学习Servlet，就是学习JavaEE的Servlet接口。 Servlet是JavaWeb的三大组件之一">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gitee.com/jasonM4A1/pictureHost/raw/master/img/20210203022101.png">
+<meta property="article:published_time" content="2021-02-03T06:30:02.000Z">
+<meta property="article:modified_time" content="2021-02-25T13:24:04.178Z">
+<meta property="article:author" content="Bernardo Li">
+<meta property="article:tag" content="JavaWeb">
+<meta property="article:tag" content="Servlet">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gitee.com/jasonM4A1/pictureHost/raw/master/img/20210203022101.png"><link rel="shortcut icon" href="/img/whiteFlag.ico"><link rel="canonical" href="http://example.com/2021/02/03/125_Servlet%E5%85%A5%E9%97%A8-servlet%E8%AE%B2%E8%A7%A3-idea%E5%88%9B%E5%BB%BAservlet%E7%A8%8B%E5%BA%8F/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#121212","position":"bottom-left"},
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: true,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2021-02-25 21:24:04'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const fontSizeVal = saveToLocal.get('global-font-size')
+    if (fontSizeVal !== undefined) {
+      document.documentElement.style.setProperty('--global-font-size', fontSizeVal + 'px')
+    }
+    })(window)</script><meta name="generator" content="Hexo 5.4.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="https://gitee.com/jasonM4A1/pictureHost/raw/master/img/20210201095918.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">132</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">70</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">19</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://gitee.com/jasonM4A1/pictureHost/raw/master/img/20210203022101.png')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Code</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Servlet入门(servlet讲解+idea创建servlet程序)</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-02-03T06:30:02.000Z" title="发表于 2021-02-03 14:30:02">2021-02-03</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-02-25T13:24:04.178Z" title="更新于 2021-02-25 21:24:04">2021-02-25</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Java/">Java</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="Servlet概述"><a href="#Servlet概述" class="headerlink" title="Servlet概述"></a>Servlet概述</h1><ol>
+<li>JServlet就是sun公司开发动态web的一门技术，是运行在 Web 服务器或应用服务器上的程序，作为来自 Web 浏览器或其他 HTTP 客户端的请求和 HTTP 服务器上的数据库或应用程序之间的中间层。</li>
+<li>Servlet简单点说，其实就是JavaEE的一个规范。我们学习Servlet，就是学习JavaEE的Servlet接口。</li>
+<li>Servlet是JavaWeb的三大组件之一，它属于动态资源。三大组件分别是：Servlet 程序、Filter 过滤器、Listener 监听器。</li>
+</ol>
+<h1 id="Servlet继承体系"><a href="#Servlet继承体系" class="headerlink" title="Servlet继承体系"></a>Servlet继承体系</h1><p><img src="https://gitee.com/jasonM4A1/pictureHost/raw/master/img/20210209172702.png"></p>
+<h2 id="Servlet接口"><a href="#Servlet接口" class="headerlink" title="Servlet接口"></a>Servlet接口</h2><p>Servlet接口默认有两个实现类，这两个实现类同时也为父子类关系——GenericServlet(父)和HttpServlet(子)。</p>
+<p>Servlet接口去除注释、注解等，源代码大致为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">package javax.servlet;</span><br><span class="line"></span><br><span class="line">import java.io.IOException;</span><br><span class="line"></span><br><span class="line">public interface Servlet &#123;</span><br><span class="line"> 	&#x2F;&#x2F; 用于servlet初始化。init()方法在servlet生命周期中，只会被调用一次。</span><br><span class="line">    public void init(ServletConfig config) throws ServletException;</span><br><span class="line">    </span><br><span class="line">    &#x2F;&#x2F; 获取servlet的配置信息，例如：servlet名称、路径、参数等等。可以调用多次</span><br><span class="line">    public ServletConfig getServletConfig();</span><br><span class="line">    </span><br><span class="line">    &#x2F;&#x2F; 处理客户端的请求。每次请求都会被调用一次。</span><br><span class="line">    public void service(ServletRequest req, ServletResponse res)</span><br><span class="line">	throws ServletException, IOException;</span><br><span class="line">    </span><br><span class="line">    &#x2F;&#x2F;返回一个String类型的字符串，其中包括了关于Servlet的信息，例如，作者、版本和版权。可以调用多次。</span><br><span class="line">    public String getServletInfo();</span><br><span class="line">    </span><br><span class="line">    &#x2F;&#x2F;当servlet被卸载或者tomcat服务器停止运行时，调用destroy()销毁方法，用于释放一些资源。在servlet生命周期中，只会被调用一次。</span><br><span class="line">    public void destroy();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Servlet接口方法的作用简述，我已经注解在了各个方法的上面。</p>
+<h2 id="GenericServlet抽象类"><a href="#GenericServlet抽象类" class="headerlink" title="GenericServlet抽象类"></a>GenericServlet抽象类</h2><p>GenericServlet是位于javax.servlet包下的抽象类，并且实现自Servlet接口。</p>
+<p><img src="https://gitee.com/jasonM4A1/pictureHost/raw/master/20201220233512.png" alt="img"></p>
+<p>GenericServlet类中提供了一个ServletConfig成员对象，用于保存servlet的配置信息。在Tomcat服务器调用init()方法时，会将ServletConfig对象赋值给config成员变量。</p>
+<p>GenericServlet类对Servlet接口中的init()、destroy()、getServletInfo()、getServletConfig()方法进行了实现，但是对service()方法没有进行实现，因为service方法需要开发人员自己编写业务逻辑代码。</p>
+<p>除了Servlet接口中的五个方法，GenericServlet抽象类中还提供了getInitParameter()、getServletContext()、getServletName()等方法。</p>
+<ul>
+<li><code>String getInitParameter(String name)</code>：用于获取servlet初始化参数。</li>
+<li><code>ServletContext getServletContext()</code>：获取servlet的上下文对象。一个web工程中只有一个servlet上下文对象。</li>
+<li><code>String getServletName()</code>：获取servlet的名称。即：在web.xml配置文件中对应servlet的标签的名称。</li>
+</ul>
+<h2 id="HttpServlet抽象类"><a href="#HttpServlet抽象类" class="headerlink" title="HttpServlet抽象类"></a>HttpServlet抽象类</h2><p>HttpServlet是位于<code>javax.servlet.http</code>包下的抽象类，继承自GenericServlet抽象类。它不仅拥有GenericServlet类中的所有方法，而且HttpServlet类对service方法进行了重载，并且还添加了对应的doGet()、doPost()等http请求方法。</p>
+<p>我们进行Servlet业务开发，都是创建一个类然后继承<code>HttpServlet</code>类，然后重写它的<code>service()</code>方法既可。</p>
+<h1 id="实现Servlet三种方式"><a href="#实现Servlet三种方式" class="headerlink" title="实现Servlet三种方式"></a>实现Servlet三种方式</h1><ol>
+<li>实现<code>javax.servlet.Servlet</code>接口</li>
+<li>继承<code>javax.servlet.GenericServlet</code>类</li>
+<li>继承<code>javax.servlet.http.HttpServlet</code>类</li>
+</ol>
+<p>开发中通常我们会去继承HttpServlet类来完成我们的Servlet，既采用第三种方式。</p>
+<h1 id="Servlet编程快速上手"><a href="#Servlet编程快速上手" class="headerlink" title="Servlet编程快速上手"></a>Servlet编程快速上手</h1><h2 id="Servlet编程初始方式"><a href="#Servlet编程初始方式" class="headerlink" title="Servlet编程初始方式"></a>Servlet编程初始方式</h2><p>在前面我们已经在Idea中初步配置了Tomcat服务器，现在我们要在Idea使用Tomcat创建我们的第一个Servlet程序。</p>
+<ol>
+<li><p><strong>导入Servlet的Jar包</strong></p>
+<p>关于如何在Idea中导入Jar包，我们之前的文章已经介绍过了，不会的可以点<a target="_blank" rel="noopener" href="https://www.kuangstudy.com/bbs/1356635551163219969">这里</a>，去学习一下（很简单）。</p>
+<p>不过我是使用Maven+Tomcat，所以我直接在Maven的<code>pom.xml</code>文件中导入Servlet的Jar包远程库地址即可（关于Maven使用，点<a target="_blank" rel="noopener" href="https://www.kuangstudy.com/bbs/1356634744057495554">这里</a>学习）。</p>
+</li>
+<li><p>新建Java类，实现<code>Servlet</code>接口，同时重写<code>Servlet</code>的5个方法。</p>
+<p><img src="https://gitee.com/jasonM4A1/pictureHost/raw/master/img/20210203151604.png"></p>
+</li>
+<li><p>在<code>init</code>、<code>service</code>、<code>destroy</code>方法中各自写一个打印语句，为了测试其执行顺序</p>
+<p><img src="https://gitee.com/jasonM4A1/pictureHost/raw/master/img/20210203152048.png"></p>
+</li>
+<li><p>配置<code>web/WEB-INF</code>目录下的<code>web.xml</code>文件</p>
+<p><img src="https://gitee.com/jasonM4A1/pictureHost/raw/master/img/20210203150824.png">b</p>
+</li>
+<li><p>启动Tocmat服务器</p>
+<p><img src="https://gitee.com/jasonM4A1/pictureHost/raw/master/img/20210203152141.png"></p>
+</li>
+<li><p>打开浏览器输入追加输入你在<code>web.xml</code>中配置的虚拟路径，不报错既表明访问成功，你的第一个Servlet程序就完成了！</p>
+<p><img src="https://gitee.com/jasonM4A1/pictureHost/raw/master/img/20210203153051.png"></p>
+</li>
+<li><p>多次刷新页面，然后返回Idea关闭Tomcat服务器。查看Idea控制台输出情况，发现方法的执行顺序为<code>init</code>—&gt;<code>service</code>—&gt;<code>destroy</code>。</p>
+<p><img src="https://gitee.com/jasonM4A1/pictureHost/raw/master/img/20210203153956.png"></p>
+</li>
+</ol>
+<p>Servlet编程的最初步方式，已经演示完毕了。下面我来演示，更贴近实际开发的Servlet编程方式。</p>
+<h2 id="Servlet编程进阶方式"><a href="#Servlet编程进阶方式" class="headerlink" title="Servlet编程进阶方式"></a>Servlet编程进阶方式</h2><p>在实际的开发中，我们不会去通过实现<code>Servlet</code>接口来进行Servlet编程，而是通过去继承<code>Servlet</code>子抽象类<code>HttpServlet</code>来进行Servlet编程的。</p>
+<ol>
+<li><p>新建Java类，并继承HttpServlet抽象类，同时重写HttpServlet的两个方法<code>doGet</code>和<code>doPost</code>。</p>
+<p><img src="https://gitee.com/jasonM4A1/pictureHost/raw/master/img/20210203154854.png"></p>
+</li>
+<li><p>配置web.xml，为项目配置虚拟路径映射</p>
+<p><img src="https://gitee.com/jasonM4A1/pictureHost/raw/master/img/20210203155744.png"></p>
+</li>
+<li><p>在web目录下新建html文件，写一个文本框和提交按钮。</p>
+<p><img src="https://gitee.com/jasonM4A1/pictureHost/raw/master/img/20210203155137.png"></p>
+</li>
+<li><p>在打开的浏览器地址栏追加输入刚才html文件名，然后点击提交按钮</p>
+<p><img src="https://gitee.com/jasonM4A1/pictureHost/raw/master/img/20210203160433.png"></p>
+</li>
+<li><p>查看浏览器地址栏发现的变化</p>
+<p><img src="https://gitee.com/jasonM4A1/pictureHost/raw/master/img/20210203160601.png"></p>
+</li>
+<li><p>返回Idea查看控制台输出情况</p>
+<p><img src="https://gitee.com/jasonM4A1/pictureHost/raw/master/img/20210203160718.png"></p>
+</li>
+<li><p>修改<code>web</code>目录下<code>table.html</code>文件中<code>&lt;form&gt;</code>标签的属性为<code>method=&quot;GET&quot;</code>。</p>
+<p><img src="https://gitee.com/jasonM4A1/pictureHost/raw/master/img/20210203160911.png"></p>
+</li>
+<li><p>重启Tomcat服务器，然后重复步骤4、5、6。在第6步查看Idea控制输出情况时，发现输出结果变成了<code>执行POST请求操作</code>，表明这次执行的是<code>doPost()</code>。</p>
+<p><img src="https://gitee.com/jasonM4A1/pictureHost/raw/master/img/20210203161242.png"></p>
+</li>
+</ol>
+<p>我们在实际开发，就是将get请求的操作写到<code>doGet</code>方法中、post请求的操作写道<code>doPost</code>中。不过，我们可以使用Idea帮我们更加便捷的完成Servlet程序的编写。</p>
+<h2 id="Servlet编程高级方式"><a href="#Servlet编程高级方式" class="headerlink" title="Servlet编程高级方式"></a>Servlet编程高级方式</h2><ol>
+<li><p>在包上右键，进行如图操作</p>
+<p><img src="https://gitee.com/jasonM4A1/pictureHost/raw/master/img/20210203161659.png"></p>
+</li>
+<li><p>进行名字的填写</p>
+<p><img src="https://gitee.com/jasonM4A1/pictureHost/raw/master/img/20210203162454.png"></p>
+</li>
+<li><p>查看生成的Java类与我们自己手动创建的Java有什么不同</p>
+<p><img src="https://gitee.com/jasonM4A1/pictureHost/raw/master/img/20210203162922.png"></p>
+</li>
+<li><p>配置<code>web.xml</code>文件，为项目做虚拟映射</p>
+<p><img src="https://gitee.com/jasonM4A1/pictureHost/raw/master/img/20210203163207.png"></p>
+</li>
+<li><p>修改<code>web</code>目录下的<code>table.html</code>文件，将<code>form</code>标签中的属性<code>action</code>的值改为Servlet2的地址。</p>
+<p><img src="https://gitee.com/jasonM4A1/pictureHost/raw/master/img/20210203163507.png"></p>
+</li>
+<li><p>启动Tomcat服务器，在浏览器中追加输入Servlet2的虚拟地址，后续步骤与”Servlet编程进阶方式”一致。不再赘述。</p>
+</li>
+</ol>
+<h1 id="虚拟映射的相关问题"><a href="#虚拟映射的相关问题" class="headerlink" title="虚拟映射的相关问题"></a>虚拟映射的相关问题</h1><ol>
+<li><p>一个<code>servlet</code>可以映射多个<code>servlet-mapping</code>，访问时随便使用一个映射地址都可以。</p>
+<p><img src="https://gitee.com/jasonM4A1/pictureHost/raw/master/20201221005917.png" alt="img"></p>
+</li>
+<li><p>一个<code>Servlet</code>可以指定通用映射路径</p>
+<p><img src="https://gitee.com/jasonM4A1/pictureHost/raw/master/20201221010326.png" alt="img"></p>
+</li>
+<li><p>还可以配置默认请求路径，即服务器启动之初开启的页面</p>
+<p><img src="https://gitee.com/jasonM4A1/pictureHost/raw/master/20201221011607.png" alt="img"></p>
+<blockquote>
+<p>指定了固有的映射路径优先级最高，如果找不到才会走默认的处理请求；</p>
+</blockquote>
+</li>
+<li><p>为虚拟路径指定前缀或后缀。</p>
+<p><img src="https://gitee.com/jasonM4A1/pictureHost/raw/master/20201221012131.png" alt="img"></p>
+</li>
+</ol>
+<h1 id="使用注解来映射虚拟地址"><a href="#使用注解来映射虚拟地址" class="headerlink" title="使用注解来映射虚拟地址"></a>使用注解来映射虚拟地址</h1><p>Servlet3.0提供了注解(annotation)，使得不再需要在web.xml文件中进行Servlet的部署描述，简化开发流程。</p>
+<ol>
+<li><p>使用注解映射项目虚拟地址，需要在添加web框架时取消创建<code>web.xml</code>。除此之外，其他创建步骤和使用Idea部署Tomcat和创建JavaWeb项目一致。</p>
+<p><img src="https://gitee.com/jasonM4A1/pictureHost/raw/master/img/20210203165530.png"></p>
+</li>
+<li><p>我们发现idea真的没有生成<code>web.xml</code>文件，我们通过上面讲过的”Servlet编程高级方式”，来创建一个Java类。</p>
+<p><img src="https://gitee.com/jasonM4A1/pictureHost/raw/master/img/20210203170056.png"></p>
+</li>
+<li><p>使用注解配置虚拟地址映射</p>
+<p><img src="https://gitee.com/jasonM4A1/pictureHost/raw/master/img/20210203171019.png"></p>
+</li>
+<li><p>直接启动Tomcat，进入浏览器追加输入你在注解中配置的虚拟地址。页面不报错，既访问成功！</p>
+<p><img src="https://gitee.com/jasonM4A1/pictureHost/raw/master/img/20210203171211.png"></p>
+</li>
+<li><p>返回Idea，控制台上也输出了执行语句，表明使用注解配置虚拟路径成功了。</p>
+<p><img src="https://gitee.com/jasonM4A1/pictureHost/raw/master/img/20210203171301.png"></p>
+</li>
+</ol>
+<h1 id="ServletConfig类"><a href="#ServletConfig类" class="headerlink" title="ServletConfig类"></a>ServletConfig类</h1><h2 id="ServletConfig类概述"><a href="#ServletConfig类概述" class="headerlink" title="ServletConfig类概述"></a>ServletConfig类概述</h2><ol>
+<li><p>ServletConfig 类是 Servlet 程序的配置信息类。</p>
+</li>
+<li><p>Servlet 程序和 ServletConfig 对象都是由 Tomcat 负责创建，而我们只负责使用。 </p>
+</li>
+<li><p>Servlet 程序默认是第一次访问的时候创建，ServletConfig 是每个 Servlet 程序创建时，就创建一个对应的 ServletConfig 对象。</p>
+</li>
+</ol>
+<h2 id="ServletConfig类作用"><a href="#ServletConfig类作用" class="headerlink" title="ServletConfig类作用"></a>ServletConfig类作用</h2><ol>
+<li>获取 Servlet 程序的别名 servlet-name 的值</li>
+<li>获取初始化参数 init-param</li>
+<li>获取 ServletContext 对象</li>
+</ol>
+<h1 id="ServletContext类"><a href="#ServletContext类" class="headerlink" title="ServletContext类"></a>ServletContext类</h1><h2 id="ServletContext类的概述"><a href="#ServletContext类的概述" class="headerlink" title="ServletContext类的概述"></a>ServletContext类的概述</h2><ol>
+<li>ServletContext 是一个接口，它表示 Servlet 上下文对象</li>
+<li>一个 web 工程，只有一个 ServletContext 对象实例</li>
+<li>ServletContext 对象是一个域对象</li>
+<li>ServletContext 是在 web 工程部署启动的时候创建，在 web 工程停止的时候销毁</li>
+</ol>
+<blockquote>
+<p><strong>什么是域对象?</strong> </p>
+<p>域对象，是可以像 Map 一样存取数据的对象。 这里的域指的是存取数据的操作范围，整个 web 工程。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th align="center"></th>
+<th align="center">存数据</th>
+<th align="center">取数据</th>
+<th align="center">删除数据</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Map</td>
+<td align="center">put()</td>
+<td align="center">get()</td>
+<td align="center">remove()</td>
+</tr>
+<tr>
+<td align="center">域对象</td>
+<td align="center">setAttribute()</td>
+<td align="center">getAttribute()</td>
+<td align="center">removeAttribute()</td>
+</tr>
+</tbody></table>
+<h2 id="ServletContext类的作用"><a href="#ServletContext类的作用" class="headerlink" title="ServletContext类的作用"></a>ServletContext类的作用</h2><ol>
+<li>获取 web.xml 中配置的上下文参数 context-param</li>
+<li>像 Map 一样存取数据</li>
+<li>获取当前的工程路径，格式: /工程路径</li>
+<li>获取工程部署后在服务器硬盘上的绝对路径</li>
+</ol>
+<h2 id="ServletContext类的方法"><a href="#ServletContext类的方法" class="headerlink" title="ServletContext类的方法"></a>ServletContext类的方法</h2><ul>
+<li><code>ServletContext getServletContext()</code>：获取本web程序的ServletContext对象（直接使用this调用既可）。</li>
+<li><code>void setAttribute(String name, Object object)</code>：向ServletContext对象中存储数据，<code>String name</code>为键，<code>Object object</code>为存储的数据。</li>
+<li><code>Object getAttribute(String name)</code>：传入字符串键名，取出存储在ServletContext对象中的数据。</li>
+<li><code>String getInitParameter(String name)</code>：获取<code>xml</code>配置文件中定义的参数值。</li>
+<li><code>RequestDispatcher getRequestDispatcher(String path)</code>：传入要转发到的虚拟路径，来获取一个请求转发对象。</li>
+<li><code>void forward(ServletRequest request, ServletResponse response)</code>：由<code>RequestDispatcher</code>对象调用，启动转发。</li>
+</ul>
+<h1 id="ServletConfig类和ServletContext类的作用演示"><a href="#ServletConfig类和ServletContext类的作用演示" class="headerlink" title="ServletConfig类和ServletContext类的作用演示"></a>ServletConfig类和ServletContext类的作用演示</h1><p><strong>web.xml文件内容</strong></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">web-app</span> <span class="attr">xmlns</span>=<span class="string">&quot;http://xmlns.jcp.org/xml/ns/javaee&quot;</span></span></span><br><span class="line"><span class="tag">         <span class="attr">xmlns:xsi</span>=<span class="string">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span></span></span><br><span class="line"><span class="tag">         <span class="attr">xsi:schemaLocation</span>=<span class="string">&quot;http://xmlns.jcp.org/xml/ns/javaee</span></span></span><br><span class="line"><span class="tag"><span class="string">         http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd&quot;</span></span></span><br><span class="line"><span class="tag">         <span class="attr">version</span>=<span class="string">&quot;3.1&quot;</span>&gt;</span><span class="comment">&lt;!--将web版本4.0修改为3.1，注意上一行约束文件也要修改--&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--上下文参数(所有Servlet程序共享)--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">context-param</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--参数名--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">param-name</span>&gt;</span>namespace<span class="tag">&lt;/<span class="name">param-name</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--参数值--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">param-value</span>&gt;</span>henan<span class="tag">&lt;/<span class="name">param-value</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">context-param</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;<span class="name">servlet</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>Servlet04<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">servlet-class</span>&gt;</span>xyz.rtx3090.Servlet.Servlet04<span class="tag">&lt;/<span class="name">servlet-class</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--初始化参数--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">init-param</span>&gt;</span></span><br><span class="line">            <span class="comment">&lt;!--参数名--&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">param-name</span>&gt;</span>username<span class="tag">&lt;/<span class="name">param-name</span>&gt;</span></span><br><span class="line">            <span class="comment">&lt;!--参数值--&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">param-value</span>&gt;</span>bernardo<span class="tag">&lt;/<span class="name">param-value</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">init-param</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--初始化参数可以配置多个--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">init-param</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">param-name</span>&gt;</span>url<span class="tag">&lt;/<span class="name">param-name</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">param-value</span>&gt;</span>jdbc:mysql://localhost:3306/test<span class="tag">&lt;/<span class="name">param-value</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">init-param</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">servlet</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;<span class="name">servlet-mapping</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>Servlet04<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span>/Servlet04<span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">servlet-mapping</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">web-app</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>Java源代码</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> xyz.rtx3090.Servlet;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> javax.servlet.ServletConfig;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.ServletContext;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.ServletException;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServlet;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServletRequest;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServletResponse;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Servlet04</span> <span class="keyword">extends</span> <span class="title">HttpServlet</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Servlet04</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;我是构造函数!&quot;</span>);<span class="comment">//我是构造函数!</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">(ServletConfig config)</span> <span class="keyword">throws</span> ServletException </span>&#123;</span><br><span class="line">        <span class="comment">//继承HttpServlet的类重写init方法时，必须写下面的这行代码</span></span><br><span class="line">        <span class="keyword">super</span>.init(config);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//1. 获取web.xml文件中servlet-name标签的内容</span></span><br><span class="line">        String servletName = config.getServletName();</span><br><span class="line">        System.out.println(<span class="string">&quot;web.xml文件中servlet-name标签的内容: &quot;</span> + servletName);</span><br><span class="line">        <span class="comment">//web.xml文件中servlet-name标签的内容: Servlet04</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">//2. 获取web.xml文件中的init-param子标签param-value标签的内容</span></span><br><span class="line">        String username = config.getInitParameter(<span class="string">&quot;username&quot;</span>);</span><br><span class="line">        System.out.println(<span class="string">&quot;init-param子标签param-value标签的内容: &quot;</span> + username);</span><br><span class="line">        <span class="comment">//init-param子标签param-value标签的内容: bernardo</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">//3. 获取ServletContext对象</span></span><br><span class="line">        ServletContext servletContext = config.getServletContext();</span><br><span class="line"></span><br><span class="line">        <span class="comment">//4. 获取context-param子标签param-value的值</span></span><br><span class="line">        String namespace = servletContext.getInitParameter(<span class="string">&quot;namespace&quot;</span>);</span><br><span class="line">        System.out.println(<span class="string">&quot;context-param子标签param-value的值: &quot;</span> + namespace);</span><br><span class="line">        <span class="comment">//context-param子标签param-value的值: henan</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">//5. 设置ServletContext的attribute值</span></span><br><span class="line">        servletContext.setAttribute(<span class="string">&quot;country&quot;</span>, <span class="string">&quot;China&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//6. 获取ServletContext的attribute值</span></span><br><span class="line">        Object country = servletContext.getAttribute(<span class="string">&quot;country&quot;</span>);</span><br><span class="line">        System.out.println(<span class="string">&quot;ServletContext的attribute值: &quot;</span> + country);</span><br><span class="line">        <span class="comment">//ServletContext的attribute值: China</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">//7. 获取当前工程路径</span></span><br><span class="line">        String contextPath = servletContext.getContextPath();</span><br><span class="line">        System.out.println(<span class="string">&quot;获取当前工程路径: &quot;</span> + contextPath);</span><br><span class="line">        <span class="comment">//获取当前工程路径: /Servlet</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">//8. 获取工程部署后在服务器硬盘上的绝对路径</span></span><br><span class="line">        String realPath = servletContext.getRealPath(<span class="string">&quot;/&quot;</span>);</span><br><span class="line">        System.out.println(<span class="string">&quot;工程部署后在服务器硬盘上的绝对路径: &quot;</span> + realPath);</span><br><span class="line">        <span class="comment">//工程部署后在服务器硬盘上的绝对路径: D:\JavaProject\Servlet\out\artifacts\Servlet_war_exploded\</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">//9. 获取web项目中css文件夹里的图片路径</span></span><br><span class="line">        String realPath1 = servletContext.getRealPath(<span class="string">&quot;/css/wallhaven-5wwvd7.jpg&quot;</span>);</span><br><span class="line">        System.out.println(<span class="string">&quot;web项目中css文件夹里的图片路径: &quot;</span> + realPath1);</span><br><span class="line">        <span class="comment">//web项目中css文件夹里的图片路径: D:\JavaProject\Servlet\out\artifacts\Servlet_war_exploded\css\wallhaven-5wwvd7.jpg</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doGet</span><span class="params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;doGet方法...&quot;</span>);<span class="comment">//doGet方法...</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doPost</span><span class="params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;doPost方法...&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="HttpServletRequest类"><a href="#HttpServletRequest类" class="headerlink" title="HttpServletRequest类"></a>HttpServletRequest类</h1><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>每次只要有请求进入 Tomcat 服务器，Tomcat 服务器就会把请求过来的 HTTP 协议信息解析好封装到 Request 对象中。 然后传递到 service 方法（doGet 和 doPost）中给我们使用。我们可以通过 HttpServletRequest 对象，获取到所有请求的信息。</p>
+<h2 id="常见方法"><a href="#常见方法" class="headerlink" title="常见方法"></a>常见方法</h2><ul>
+<li><code>String getMethod()</code>：获取请求方式</li>
+<li><code>String getContextPath()</code>：获取虚拟目录</li>
+<li><code>String getServletPath()</code>：获取Servlet路径</li>
+<li><code>String getQueryString()</code>：获取get方法请求参数</li>
+<li><code>String getRequestURI</code>：获取请求URI</li>
+<li><code>StringBuffer getRequestURL() </code>：获取请求URL</li>
+<li><code>String getProtocol()</code>：获取协议及版本</li>
+<li><code>String getRemoteAddr()</code>：获取客户机的IP地址</li>
+<li><code>Enumeration&lt;String&gt; getHeaderNames()</code>：获取所有请求头名称</li>
+<li><code>String getHeader(String name)</code>：通过请求头的名称获取请求头的值</li>
+<li><code>String getParameter(String name)</code>：根据参数名称获取参数值</li>
+<li><code>String[] getParameterValues(String name)</code>：根据参数名称获取参数值的数组</li>
+<li><code>Enumeration&lt;String&gt; getParameterNames()</code>：获取所有请求的参数名称</li>
+<li><code>Map&lt;String, String[]&gt; getParameterMap()</code>：获取所有参数的map集合</li>
+<li><code>void setAttribute(String name, Object o)</code>：设置域数据</li>
+<li><code>Object getAttribute(String name)</code>：获取域数据</li>
+<li><code>RequestDispatcher getRequestDispatcher(String path)</code>：获取请求转发对象</li>
+</ul>
+<h2 id="演示"><a href="#演示" class="headerlink" title="演示"></a>演示</h2><h3 id="表单项"><a href="#表单项" class="headerlink" title="表单项"></a>表单项</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Table<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">&quot;http://localhost:8080/Servlet/Servlet01&quot;</span> <span class="attr">method</span>=<span class="string">&quot;POST&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">name</span>=<span class="string">&quot;username&quot;</span>/&gt;</span> <span class="tag">&lt;<span class="name">br</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;password&quot;</span> <span class="attr">name</span>=<span class="string">&quot;password&quot;</span>/&gt;</span> <span class="tag">&lt;<span class="name">br</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">b</span>&gt;</span>爱好：<span class="tag">&lt;/<span class="name">b</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;checkbox&quot;</span> <span class="attr">name</span>=<span class="string">&quot;hobby&quot;</span> <span class="attr">value</span>=<span class="string">&quot;table tennis&quot;</span>/&gt;</span>乒乓球</span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;checkbox&quot;</span> <span class="attr">name</span>=<span class="string">&quot;hobby&quot;</span> <span class="attr">value</span>=<span class="string">&quot;football&quot;</span>/&gt;</span>足球</span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;checkbox&quot;</span> <span class="attr">name</span>=<span class="string">&quot;hobby&quot;</span> <span class="attr">value</span>=<span class="string">&quot;basketball&quot;</span>/&gt;</span>篮球 <span class="tag">&lt;<span class="name">br</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;submit&quot;</span> <span class="attr">id</span>=<span class="string">&quot;提交&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Java源代码"><a href="#Java源代码" class="headerlink" title="Java源代码"></a>Java源代码</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">Bernardo Li</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2021/02/03/125_Servlet%E5%85%A5%E9%97%A8-servlet%E8%AE%B2%E8%A7%A3-idea%E5%88%9B%E5%BB%BAservlet%E7%A8%8B%E5%BA%8F/">http://example.com/2021/02/03/125_Servlet%E5%85%A5%E9%97%A8-servlet%E8%AE%B2%E8%A7%A3-idea%E5%88%9B%E5%BB%BAservlet%E7%A8%8B%E5%BA%8F/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">Code</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/JavaWeb/">JavaWeb</a><a class="post-meta__tags" href="/tags/Servlet/">Servlet</a></div><div class="post_share"><div class="social-share" data-image="https://gitee.com/jasonM4A1/pictureHost/raw/master/img/20210203022101.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2021/02/09/126_Tomcat%E6%8A%A5%E9%94%99%EF%BC%9A%E4%B8%A5%E9%87%8D-RMI-TCP-Connection-3-127-0-0-1-org-apache-catalina-core-ContainerBase-addChildInternal-ContainerBase-addChild-start/"><img class="prev-cover" src="https://gitee.com/jasonM4A1/pictureHost/raw/master/img/20210209121103.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Tomcat报错：严重 [RMI TCP Connection(3)-127.0.0.1] org.apache.catalina.core.ContainerBase.addChildInternal ContainerBase.addChild: start:</div></div></a></div><div class="next-post pull-right"><a href="/2021/02/03/124_Tomcat%E4%B8%8B%E8%BD%BD%E5%92%8C%E9%85%8D%E7%BD%AE%E8%AE%B2%E8%A7%A3/"><img class="next-cover" src="https://gitee.com/jasonM4A1/pictureHost/raw/master/img/20210203035146.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Tomcat入门(概念+下载+配置)</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span> 相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2021/01/31/103_Linux下idea启动tomcat项目报错：Error-copying-configuration-files-from/" title="Linux下idea启动tomcat项目报错：Error copying configuration files from"><img class="cover" src="https://gitee.com/jasonM4A1/pictureHost/raw/master/img/20210201092258.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-01-31</div><div class="title">Linux下idea启动tomcat项目报错：Error copying configuration files from</div></div></a></div><div><a href="/2021/01/31/104-Manjaro-kde环境下Idea2020-3创建JavaWeb项目-部署Tomcat-方法-md/" title="Manjaro-kde环境下Idea2020-3创建JavaWeb项目-部署Tomcat-方法"><img class="cover" src="https://gitee.com/jasonM4A1/pictureHost/raw/master/img/20210201092302.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-01-31</div><div class="title">Manjaro-kde环境下Idea2020-3创建JavaWeb项目-部署Tomcat-方法</div></div></a></div><div><a href="/2021/02/01/105-Idea2020-2配置maven-md/" title="Idea2020.2创建maven项目.md"><img class="cover" src="https://gitee.com/jasonM4A1/pictureHost/raw/master/img/20210201233133.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-02-01</div><div class="title">Idea2020.2创建maven项目.md</div></div></a></div><div><a href="/2021/02/02/108_HttpServletRequest和HttpServletResponse详解/" title="HttpServletRequest和HttpServletResponse详解"><img class="cover" src="https://gitee.com/jasonM4A1/pictureHost/raw/master/img/20210202012633.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-02-02</div><div class="title">HttpServletRequest和HttpServletResponse详解</div></div></a></div><div><a href="/2021/02/02/109_IDEA-服务器热部署详解（On-Update-action-On-frame-deactivation）/" title="IDEA 服务器热部署详解（On Update action/On frame deactivation）"><img class="cover" src="https://gitee.com/jasonM4A1/pictureHost/raw/master/img/20210202012836.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-02-02</div><div class="title">IDEA 服务器热部署详解（On Update action/On frame deactivation）</div></div></a></div><div><a href="/2021/02/02/110_Idea新建Maven项目-警告-No-archetype-found-in-remote-catalog/" title="Idea新建Maven项目,警告:No archetype found in remote catalog..."><img class="cover" src="https://gitee.com/jasonM4A1/pictureHost/raw/master/img/20210202013125.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-02-02</div><div class="title">Idea新建Maven项目,警告:No archetype found in remote catalog...</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-info-avatar is-center"><img class="avatar-img" src="https://gitee.com/jasonM4A1/pictureHost/raw/master/img/20210201095918.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">Bernardo Li</div><div class="author-info__description">一个学开发的笨蛋</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">132</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">70</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">19</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/jasonM4A1"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="mailto:bernarlido266@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Servlet%E6%A6%82%E8%BF%B0"><span class="toc-number">1.</span> <span class="toc-text">Servlet概述</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Servlet%E7%BB%A7%E6%89%BF%E4%BD%93%E7%B3%BB"><span class="toc-number">2.</span> <span class="toc-text">Servlet继承体系</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Servlet%E6%8E%A5%E5%8F%A3"><span class="toc-number">2.1.</span> <span class="toc-text">Servlet接口</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#GenericServlet%E6%8A%BD%E8%B1%A1%E7%B1%BB"><span class="toc-number">2.2.</span> <span class="toc-text">GenericServlet抽象类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HttpServlet%E6%8A%BD%E8%B1%A1%E7%B1%BB"><span class="toc-number">2.3.</span> <span class="toc-text">HttpServlet抽象类</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0Servlet%E4%B8%89%E7%A7%8D%E6%96%B9%E5%BC%8F"><span class="toc-number">3.</span> <span class="toc-text">实现Servlet三种方式</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Servlet%E7%BC%96%E7%A8%8B%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B"><span class="toc-number">4.</span> <span class="toc-text">Servlet编程快速上手</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Servlet%E7%BC%96%E7%A8%8B%E5%88%9D%E5%A7%8B%E6%96%B9%E5%BC%8F"><span class="toc-number">4.1.</span> <span class="toc-text">Servlet编程初始方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Servlet%E7%BC%96%E7%A8%8B%E8%BF%9B%E9%98%B6%E6%96%B9%E5%BC%8F"><span class="toc-number">4.2.</span> <span class="toc-text">Servlet编程进阶方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Servlet%E7%BC%96%E7%A8%8B%E9%AB%98%E7%BA%A7%E6%96%B9%E5%BC%8F"><span class="toc-number">4.3.</span> <span class="toc-text">Servlet编程高级方式</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%99%9A%E6%8B%9F%E6%98%A0%E5%B0%84%E7%9A%84%E7%9B%B8%E5%85%B3%E9%97%AE%E9%A2%98"><span class="toc-number">5.</span> <span class="toc-text">虚拟映射的相关问题</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E6%B3%A8%E8%A7%A3%E6%9D%A5%E6%98%A0%E5%B0%84%E8%99%9A%E6%8B%9F%E5%9C%B0%E5%9D%80"><span class="toc-number">6.</span> <span class="toc-text">使用注解来映射虚拟地址</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ServletConfig%E7%B1%BB"><span class="toc-number">7.</span> <span class="toc-text">ServletConfig类</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#ServletConfig%E7%B1%BB%E6%A6%82%E8%BF%B0"><span class="toc-number">7.1.</span> <span class="toc-text">ServletConfig类概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ServletConfig%E7%B1%BB%E4%BD%9C%E7%94%A8"><span class="toc-number">7.2.</span> <span class="toc-text">ServletConfig类作用</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ServletContext%E7%B1%BB"><span class="toc-number">8.</span> <span class="toc-text">ServletContext类</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#ServletContext%E7%B1%BB%E7%9A%84%E6%A6%82%E8%BF%B0"><span class="toc-number">8.1.</span> <span class="toc-text">ServletContext类的概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ServletContext%E7%B1%BB%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="toc-number">8.2.</span> <span class="toc-text">ServletContext类的作用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ServletContext%E7%B1%BB%E7%9A%84%E6%96%B9%E6%B3%95"><span class="toc-number">8.3.</span> <span class="toc-text">ServletContext类的方法</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ServletConfig%E7%B1%BB%E5%92%8CServletContext%E7%B1%BB%E7%9A%84%E4%BD%9C%E7%94%A8%E6%BC%94%E7%A4%BA"><span class="toc-number">9.</span> <span class="toc-text">ServletConfig类和ServletContext类的作用演示</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#HttpServletRequest%E7%B1%BB"><span class="toc-number">10.</span> <span class="toc-text">HttpServletRequest类</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A6%82%E8%BF%B0"><span class="toc-number">10.1.</span> <span class="toc-text">概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E6%96%B9%E6%B3%95"><span class="toc-number">10.2.</span> <span class="toc-text">常见方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%BC%94%E7%A4%BA"><span class="toc-number">10.3.</span> <span class="toc-text">演示</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A1%A8%E5%8D%95%E9%A1%B9"><span class="toc-number">10.3.1.</span> <span class="toc-text">表单项</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Java%E6%BA%90%E4%BB%A3%E7%A0%81"><span class="toc-number">10.3.2.</span> <span class="toc-text">Java源代码</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2021/02/20/131_windows%E5%90%AF%E5%8A%A8ssh-agent/" title="windows启动ssh-agent"><img src="https://gitee.com/jasonM4A1/pictureHost/raw/master/img/20210220091020.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="windows启动ssh-agent"/></a><div class="content"><a class="title" href="/2021/02/20/131_windows%E5%90%AF%E5%8A%A8ssh-agent/" title="windows启动ssh-agent">windows启动ssh-agent</a><time datetime="2021-02-20T01:09:25.000Z" title="发表于 2021-02-20 09:09:25">2021-02-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/02/20/130_Idea%E7%94%9F%E6%88%90entity%E5%AE%9E%E4%BD%93%E7%B1%BB/" title="Idea生成entity实体类"><img src="https://gitee.com/jasonM4A1/pictureHost/raw/master/img/20210220084833.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Idea生成entity实体类"/></a><div class="content"><a class="title" href="/2021/02/20/130_Idea%E7%94%9F%E6%88%90entity%E5%AE%9E%E4%BD%93%E7%B1%BB/" title="Idea生成entity实体类">Idea生成entity实体类</a><time datetime="2021-02-20T00:45:30.000Z" title="发表于 2021-02-20 08:45:30">2021-02-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/02/18/129_idea%E6%96%B0%E5%BB%BA%E7%B1%BB%EF%BC%8C%E7%B1%BB%E5%90%8D%E5%87%BA%E7%8E%B0%E5%88%A0%E9%99%A4%E7%BA%BF%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/" title="idea新建类，类名出现删除线问题解决"><img src="https://gitee.com/jasonM4A1/pictureHost/raw/master/img/20210218154416.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="idea新建类，类名出现删除线问题解决"/></a><div class="content"><a class="title" href="/2021/02/18/129_idea%E6%96%B0%E5%BB%BA%E7%B1%BB%EF%BC%8C%E7%B1%BB%E5%90%8D%E5%87%BA%E7%8E%B0%E5%88%A0%E9%99%A4%E7%BA%BF%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/" title="idea新建类，类名出现删除线问题解决">idea新建类，类名出现删除线问题解决</a><time datetime="2021-02-18T07:43:22.000Z" title="发表于 2021-02-18 15:43:22">2021-02-18</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/02/18/128_Cannot-resolve-plugin-org-apache-maven-plugins-maven-site-plugin-3-7-1%E6%8A%A5%E9%94%99/" title="Cannot resolve plugin org.apache.maven.plugins:maven-site-plugin:3.7.1报错"><img src="https://gitee.com/jasonM4A1/pictureHost/raw/master/img/20210218152004.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Cannot resolve plugin org.apache.maven.plugins:maven-site-plugin:3.7.1报错"/></a><div class="content"><a class="title" href="/2021/02/18/128_Cannot-resolve-plugin-org-apache-maven-plugins-maven-site-plugin-3-7-1%E6%8A%A5%E9%94%99/" title="Cannot resolve plugin org.apache.maven.plugins:maven-site-plugin:3.7.1报错">Cannot resolve plugin org.apache.maven.plugins:maven-site-plugin:3.7.1报错</a><time datetime="2021-02-18T07:19:05.000Z" title="发表于 2021-02-18 15:19:05">2021-02-18</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/02/10/114_HTTP%E5%8D%8F%E8%AE%AE%E5%85%A5%E9%97%A8/" title="Http协议入门"><img src="https://gitee.com/jasonM4A1/pictureHost/raw/master/img/20210203172229.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Http协议入门"/></a><div class="content"><a class="title" href="/2021/02/10/114_HTTP%E5%8D%8F%E8%AE%AE%E5%85%A5%E9%97%A8/" title="Http协议入门">Http协议入门</a><time datetime="2021-02-10T01:20:50.000Z" title="发表于 2021-02-10 09:20:50">2021-02-10</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2021 By Bernardo Li</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">李博帅</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="font-plus" type="button" title="放大字体"><i class="fas fa-plus"></i></button><button id="font-minus" type="button" title="缩小字体"><i class="fas fa-minus"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script src="/js/search/local-search.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"><script>function loadValine () {
+  function initValine () {
+    let initData = {
+      el: '#vcomment',
+      appId: 'MF0PRYjapmP9TvfVhQrAk3qp-gzGzoHsz',
+      appKey: '1gBa0Ea7mSph6YIuCz2wDtIG',
+      placeholder: 'Please leave your footprints',
+      avatar: 'monsterid',
+      meta: 'nick,mail,link'.split(','),
+      pageSize: '10',
+      lang: 'en',
+      recordIP: false,
+      serverURLs: '',
+      emojiCDN: '',
+      emojiMaps: "",
+      enableQQ: false,
+      path: window.location.pathname,
+    }
+
+    if (true) { 
+      initData.requiredFields= ('nick,mail'.split(','))
+    }
+    
+    if (false) {
+      const otherData = false
+      initData = Object.assign(initData, otherData)
+    }
+    
+    const valine = new Valine(initData)
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !false) {
+  if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script></div><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = [
+  'title',
+  '#config-diff',
+  '#body-wrap',
+  '#rightside-config-hide',
+  '#rightside-config-show',
+  '.js-pjax'
+]
+
+if (false) {
+  pjaxSelectors.unshift('meta[property="og:image"]', 'meta[property="og:title"]', 'meta[property="og:url"]')
+}
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  if (typeof gtag === 'function') {
+    gtag('config', '', {'page_path': window.location.pathname});
+  }
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // Analytics
+  if (false) {
+    MtaH5.pgv()
+  }
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+
+document.addEventListener('pjax:send', function () {
+  typeof preloader === 'object' && preloader.initLoading()
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

@@ -1,0 +1,386 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Code - Java</title><meta name="author" content="Bernardo Li"><meta name="copyright" content="Bernardo Li"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="一个学开发的笨蛋">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Code">
+<meta property="og:url" content="http://example.com/page/2/index.html">
+<meta property="og:site_name" content="Code">
+<meta property="og:description" content="一个学开发的笨蛋">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gitee.com/jasonM4A1/pictureHost/raw/master/img/20210201095918.jpg">
+<meta property="article:author" content="Bernardo Li">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gitee.com/jasonM4A1/pictureHost/raw/master/img/20210201095918.jpg"><link rel="shortcut icon" href="/img/whiteFlag.ico"><link rel="canonical" href="http://example.com/page/2/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#121212","position":"bottom-left"},
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: true,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = { 
+  isPost: false,
+  isHome: true,
+  isHighlightShrink: false,
+  isToc: false,
+  postUpdate: '2021-02-25 21:24:28'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const fontSizeVal = saveToLocal.get('global-font-size')
+    if (fontSizeVal !== undefined) {
+      document.documentElement.style.setProperty('--global-font-size', fontSizeVal + 'px')
+    }
+    })(window)</script><meta name="generator" content="Hexo 5.4.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="https://gitee.com/jasonM4A1/pictureHost/raw/master/img/20210201095918.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">132</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">70</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">19</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="full_page" id="page-header" style="background-image: url('https://gitee.com/jasonM4A1/pictureHost/raw/master/img/20210201093201.png')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Code</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="site-info"><h1 id="site-title">Code</h1><div id="site_social_icons"><a class="social-icon" href="mailto:bernarlido266@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item"><div class="post_cover left_radius"><a href="/2021/02/03/115_%E8%A7%A3%E5%86%B3tomcat%E5%90%AF%E5%8A%A8%E6%97%B6%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81%E7%9A%84%E9%97%AE%E9%A2%98/" title="解决tomcat启动时中文乱码的问题">     <img class="post_bg" src="https://gitee.com/jasonM4A1/pictureHost/raw/master/img/20210203022101.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="解决tomcat启动时中文乱码的问题"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/02/03/115_%E8%A7%A3%E5%86%B3tomcat%E5%90%AF%E5%8A%A8%E6%97%B6%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81%E7%9A%84%E9%97%AE%E9%A2%98/" title="解决tomcat启动时中文乱码的问题">解决tomcat启动时中文乱码的问题</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2021-02-02T18:13:48.000Z" title="发表于 2021-02-03 02:13:48">2021-02-03</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E8%B8%A9%E5%9D%91%E8%AE%B0%E5%BD%95/">踩坑记录</a></span></div><div class="content">问题描述当我们下载配置好Tomcat后，为了测试第一次启动Tomcat时，可能会遇到中文乱码的问题。如图所示：
+
+虽然Tomcat还是启动成功了，但是我们无法看到细节，很不舒服。
+解决方法进入你Tomcat的安装目录，再进入conf目录，使用文本编辑器打开logging.properties文件。
+
+然后大约到位到47行，或者直接搜索ConsoleHandler.encoding，找到如图所示的内容。然后修改编码UTF-8为GBK即可。
+
+再次启动Tomcat，发现乱码问题已经解决！
+
+</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/2021/02/02/123_%E7%BB%8F%E5%85%B8SQL%E7%BB%83%E4%B9%A0%E9%A2%98/" title="经典SQL练习题">     <img class="post_bg" src="https://gitee.com/jasonM4A1/pictureHost/raw/master/img/20210202054144.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="经典SQL练习题"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/02/02/123_%E7%BB%8F%E5%85%B8SQL%E7%BB%83%E4%B9%A0%E9%A2%98/" title="经典SQL练习题">经典SQL练习题</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2021-02-01T21:40:42.000Z" title="发表于 2021-02-02 05:40:42">2021-02-02</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/MySQL/">MySQL</a></span></div><div class="content">数据准备学生表 Student
+123456789create table Student(Sid varchar(6), Sname varchar(10), Sage datetime, Ssex varchar(10));insert into Student values(&#39;01&#39; , &#39;赵雷&#39; , &#39;1990-01-01&#39; , &#39;男&#39;);insert into Student values(&#39;02&#39; , &#39;钱电&#39; , &#39;1990-12-21&#39; , &#39;男&#39;);insert into Student values(&#39;03&#39; , &#39;孙风&#39; , &#39;1990-05-20&#39; , &#39;男&#39;);insert into Student values(&#39;04&#39; , &#39;李云&#39; , &#39;1990-08-06&#39; , &#39;男&#39;);insert into St ...</div></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="/2021/02/02/122_JDBC%E4%BA%8B%E5%8A%A1/" title="JDBC事务">     <img class="post_bg" src="https://gitee.com/jasonM4A1/pictureHost/raw/master/img/20210202053919.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="JDBC事务"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/02/02/122_JDBC%E4%BA%8B%E5%8A%A1/" title="JDBC事务">JDBC事务</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2021-02-01T21:39:14.000Z" title="发表于 2021-02-02 05:39:14">2021-02-02</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Java/">Java</a></span></div><div class="content">概述我们在使用JDBC操作数据库的时候，依然也得使用事务管理，这样可以保证数据的安全。
+操作使用Connection对象调用一下方法来管理事务
+
+setAutoCommit(boolean autoCommit)
+1234567   - 作用：开启事务   - 参数：设置为&#96;false&#96;，即为开启事务   - 时机：在执行SQL语句之前开启事务2. &#96;&#96;&#96;   commit()
+
+- 作用：提交事务
+- 时机：当所有SQL语句都执行完，再提交事务
+
+
+```rollback()
+12345678   - 作用：回滚事务   - 时机：在处理异常的&#96;catch&#96;中回滚事务# 不使用事务，数据异常演示- 数据库&#96;mydatabase.account&#96;
+
+  +—-+——+———+  | id | name | balance |  +—-+——+———+  |  1 | 张三 | 1000.00 |  |  2 | 李四 | 1000.00 |  +—-+——+———+  2 rows in set (0.00 sec ...</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/2021/02/02/121_%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%9E%E6%8E%A5%E6%B1%A0/" title="数据库连接池">     <img class="post_bg" src="https://gitee.com/jasonM4A1/pictureHost/raw/master/img/20210202061149.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="数据库连接池"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/02/02/121_%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%9E%E6%8E%A5%E6%B1%A0/" title="数据库连接池">数据库连接池</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2021-02-01T21:37:20.000Z" title="发表于 2021-02-02 05:37:20">2021-02-02</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Java/">Java</a></span></div><div class="content">概述其实就是一个容器（集合），用来存放数据库连接的容器。当系统初始化后，容器被创建，容器中会申请一些连接对象。等用户来访问数据库时，从容器中获取连接对象。用户访问完之后，再将连接对象归回给容器。
+这样做的好处，一是节约资源，二是访问速度提高。
+实现
+数据库连接池其实是在javax.sql.DataSource这个接口，但是SUN公司并没有对这个接口进行具体的实现，而是交给了数据库厂商来去实现它。现在市面上的数据库厂商，一般使用的接口实现也都是一些开源的源代码。下面我来介绍两种常用的数据库连接池接口实现：
+
+C3P0
+最早出现在开源项目Hibernate中，年头有点久。
+
+Druid
+这是一个阿里巴巴开发的数据库连接池实现源代码，也是我们常用的一种。
+
+
+
+下面是javax.sql.DataSource接口中常用方法的简介：
+
+getConnection()
+作用：获取连接
+
+close()
+作用：归还连接
+
+
+
+
+C3P0的使用步骤说明
+导入C3P0的jar包(两个)
+c3p0-0.9.5.2.jar和mchange-commons-java-0.2.12.jar
+
+定义配置文件
+
+名 ...</div></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="/2021/02/02/120_JDBCTemplate/" title="JDBCTemplate">     <img class="post_bg" src="https://gitee.com/jasonM4A1/pictureHost/raw/master/img/20210202053546.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="JDBCTemplate"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/02/02/120_JDBCTemplate/" title="JDBCTemplate">JDBCTemplate</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2021-02-01T21:35:38.000Z" title="发表于 2021-02-02 05:35:38">2021-02-02</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/JavaWeb/">JavaWeb</a></span></div><div class="content">概述JDBCTemplate是Spring框架对JDBC进行的一个简单的封装，简化了关于JDBC的开发工作。
+使用步骤
+导入jar包（五个）
+
+创建一个依赖于数据源DataSource的JdbcTemplate对象。
+1JdbcTemplate template &#x3D; new JdbcTemplate(ds);&#x2F;&#x2F;ds为一个DataSource对象的引用
+
+通过JdbcTemplate对象调用下面介绍的方法，来完成CRUD的操作。
+
+
+常用方法
+int update(String sql, @Nullable Object... args)
+
+作用：用来执行DML语句的方法，即执行增、删、改语句的方法。
+参数
+Stirng sql：需要执行的SQL语句
+@Nullable Object... args：为SQL语句中占位符赋值，直接按顺序传值即可
+
+
+返回值：SQL语句执行影响到的行数
+
+
+Map&lt;String, Object&gt; queryForMap(String sql, @Nullable Object... args)
+
+作用：查询表中数 ...</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/2021/02/02/119_idea%E5%AF%BC%E5%85%A5jar%E5%8C%85%E6%96%B9%E6%B3%95/" title="idea2020.2导入jar包方法">     <img class="post_bg" src="https://gitee.com/jasonM4A1/pictureHost/raw/master/img/20210202053451.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="idea2020.2导入jar包方法"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/02/02/119_idea%E5%AF%BC%E5%85%A5jar%E5%8C%85%E6%96%B9%E6%B3%95/" title="idea2020.2导入jar包方法">idea2020.2导入jar包方法</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2021-02-01T21:33:49.000Z" title="发表于 2021-02-02 05:33:49">2021-02-02</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/JavaWeb/">JavaWeb</a></span></div><div class="content">前言我在学习JDBC的时候，总是会遇到一些新的jar包需要添加到项目中，网上关于如何添加jar包到idea项目的教程五花八门的。导致我用的也迷迷糊糊的，最后我用了半个多小时，百度+自己试错总结了一套idea如何导入jar包的教程步骤。
+方法一：复制jar包到项目目录中第一种方法，需要复制或移动jar包到，idea项目目录中。然后Add as Library。
+
+在项目中新建一个目录，并命名为libs。
+
+
+
+
+将你需要导入的jar包统一copy到这个libs目录下
+
+
+右键libs目录，选择Add as Library...
+
+
+
+结果所图所示，这些jar都变成了可展开的了
+
+
+
+方法二：直接使用原地址jar包这二种方法，直接使用jar包的原地址，不会去复制和移动这个jar包。而是将这个jar包作为外部库来使用。
+
+
+
+
+
+方法三：使用Maven来自动下载管理jar包上面两个方法其实都挺麻烦的，只适合我们初步学习的时候使用。我们在实际开发过程中，肯定不会用这么笨的方法，手动下载导入Jar包的。
+而是去使用Maven来帮助我们下载和管理Jar包，这样既方便快捷，也可以帮助我们避免例如Ja ...</div></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="/2021/02/02/118_%E8%A7%A3%E5%86%B3JDBC%E8%BF%9E%E6%8E%A5MySQL%E6%97%B6%E5%8F%91%E5%87%BA%E7%9A%84%E8%AD%A6%E5%91%8A/" title="解决JDBC连接MySQL时发出的警告">     <img class="post_bg" src="https://gitee.com/jasonM4A1/pictureHost/raw/master/img/20210202053256.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="解决JDBC连接MySQL时发出的警告"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/02/02/118_%E8%A7%A3%E5%86%B3JDBC%E8%BF%9E%E6%8E%A5MySQL%E6%97%B6%E5%8F%91%E5%87%BA%E7%9A%84%E8%AD%A6%E5%91%8A/" title="解决JDBC连接MySQL时发出的警告">解决JDBC连接MySQL时发出的警告</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2021-02-01T21:31:52.000Z" title="发表于 2021-02-02 05:31:52">2021-02-02</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Java/">Java</a></span></div><div class="content">问题描述解决JDBC连接MySQL时发出的警告WARN: Establishing SSL connection without server’s identityverification…
+使用C3P0、Druid来连接MySQL数据库的时候，出现了警告一大串的红色警告：
+12345Sat Dec 05 19:14:16 GMT+08:00 2020 WARN: Establishing SSL connection without server&#39;s identity verification is not recommended. According to MySQL 5.5.45+, 5.6.26+ and 5.7.6+ requirements SSL connection must be established by default if explicit option isn&#39;t set. For compliance with existing applications not using SSL the verifyServerCertificate p ...</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/2021/02/02/117_windows%E7%8E%AF%E5%A2%83%E4%B8%8Bdea2020-23%E5%88%9B%E5%BB%BAJavaWeb%E9%A1%B9%E7%9B%AE%EF%BC%88%E9%83%A8%E7%BD%B2-Tomcat%EF%BC%89%E6%96%B9%E6%B3%95/" title="windows环境下Idea2020.23创建JavaWeb项目（部署 Tomcat）方法">     <img class="post_bg" src="https://gitee.com/jasonM4A1/pictureHost/raw/master/img/20210202052642.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="windows环境下Idea2020.23创建JavaWeb项目（部署 Tomcat）方法"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/02/02/117_windows%E7%8E%AF%E5%A2%83%E4%B8%8Bdea2020-23%E5%88%9B%E5%BB%BAJavaWeb%E9%A1%B9%E7%9B%AE%EF%BC%88%E9%83%A8%E7%BD%B2-Tomcat%EF%BC%89%E6%96%B9%E6%B3%95/" title="windows环境下Idea2020.23创建JavaWeb项目（部署 Tomcat）方法">windows环境下Idea2020.23创建JavaWeb项目（部署 Tomcat）方法</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2021-02-01T21:24:53.000Z" title="发表于 2021-02-02 05:24:53">2021-02-02</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Java/">Java</a></span></div><div class="content">1.创建项目不再是Java Enterprise了,而是先New 一个普通Java项目!
+
+2.创建项目后,选择Run-&gt;Edit Configuration-&gt;左上角加号-&gt;Tomcat Server(注意不是TomEE )-&gt;Localstep 1在这里插入图片描述
+
+
+3.点击Application右边的Configure,找到你放置的Tomcat的目录,点击OK
+
+4.选择你运行项目调试项目的浏览器,我的电脑安装的是Chrome,你可以自行选择,然后ok
+
+5.回到项目界面,右键项目名称-&gt;add framwork support-&gt;选中Web Application-&gt;默认勾选创建web.xml
+
+
+6.回到刚刚配置Tomcat的页面,选择第二个选项卡Deployment-&gt;右边的加号-&gt;选择Artifact…
+
+
+7.项目就添加完成了,下面的Application context表示虚拟路径,你可以改成”/“,不写项目名,这样在后面开发测试时就不用频繁的填写路径了,当然不一定要改,个人喜好.点击OK,配置部分完成
+
+8. ...</div></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="/2021/02/02/116_maven%E7%BC%96%E8%AF%91-Process-terminated/" title="maven编译报错Process terminated">     <img class="post_bg" src="https://gitee.com/jasonM4A1/pictureHost/raw/master/img/20210202043056.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="maven编译报错Process terminated"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/02/02/116_maven%E7%BC%96%E8%AF%91-Process-terminated/" title="maven编译报错Process terminated">maven编译报错Process terminated</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2021-02-01T18:19:36.000Z" title="发表于 2021-02-02 02:19:36">2021-02-02</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Java/">Java</a></span></div><div class="content">maven项目编译报错如下：
+点击【项目名】提示找到出错文件
+点击查看出错文件在idea中打开了settings文件，找到提示的报错位置
+
+▐ 原因及解决办法原因 ：缩进或者空格不一致导致该问题解决办法：格式化编辑好之后复制再粘贴过来就可以了(推荐 👉XML 在线格式化)
+
+转载自：南伯基尼的csdn博客
+
+</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/2021/02/02/113_JavaWeb-Request%E5%AF%B9%E8%B1%A1/" title="JavaWeb-Request对象">     <img class="post_bg" src="https://gitee.com/jasonM4A1/pictureHost/raw/master/img/20210202014611.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="JavaWeb-Request对象"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/02/02/113_JavaWeb-Request%E5%AF%B9%E8%B1%A1/" title="JavaWeb-Request对象">JavaWeb-Request对象</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2021-02-01T17:42:34.000Z" title="发表于 2021-02-02 01:42:34">2021-02-02</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Java/">Java</a></span></div><div class="content">概述
+request和response对象是由服务器创建的。我们来使用它们
+request对象是来获取请求消息，response对象是来设置响应消息
+
+继承结构12345ServletRequest		--	接口		|	继承HttpServletRequest	-- 接口		|	实现org.apache.catalina.connector.RequestFacade 类(tomcat)
+
+功能获取请求行数据方法
+获取请求方式：String getMethod()
+获取虚拟目录：String getContextPath()
+获取Servlet路径：String getServletPath()
+获取get方式请求参数：String getQueryString()
+获取请求URI：String getRequestURI()或StringBuffer getRequestURL()
+获取协议及版本：String getProtocol()
+获取客户机的IP地址：String getRemoteAddr()
+
+方法演示1234567891011121314151617181920212 ...</div></div></div><nav id="pagination"><div class="pagination"><a class="extend prev" rel="prev" href="/"><i class="fas fa-chevron-left fa-fw"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><a class="extend next" rel="next" href="/page/3/"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-info-avatar is-center"><img class="avatar-img" src="https://gitee.com/jasonM4A1/pictureHost/raw/master/img/20210201095918.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">Bernardo Li</div><div class="author-info__description">一个学开发的笨蛋</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">132</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">70</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">19</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/jasonM4A1"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="mailto:bernarlido266@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2021/02/20/131_windows%E5%90%AF%E5%8A%A8ssh-agent/" title="windows启动ssh-agent"><img src="https://gitee.com/jasonM4A1/pictureHost/raw/master/img/20210220091020.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="windows启动ssh-agent"/></a><div class="content"><a class="title" href="/2021/02/20/131_windows%E5%90%AF%E5%8A%A8ssh-agent/" title="windows启动ssh-agent">windows启动ssh-agent</a><time datetime="2021-02-20T01:09:25.000Z" title="发表于 2021-02-20 09:09:25">2021-02-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/02/20/130_Idea%E7%94%9F%E6%88%90entity%E5%AE%9E%E4%BD%93%E7%B1%BB/" title="Idea生成entity实体类"><img src="https://gitee.com/jasonM4A1/pictureHost/raw/master/img/20210220084833.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Idea生成entity实体类"/></a><div class="content"><a class="title" href="/2021/02/20/130_Idea%E7%94%9F%E6%88%90entity%E5%AE%9E%E4%BD%93%E7%B1%BB/" title="Idea生成entity实体类">Idea生成entity实体类</a><time datetime="2021-02-20T00:45:30.000Z" title="发表于 2021-02-20 08:45:30">2021-02-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/02/18/129_idea%E6%96%B0%E5%BB%BA%E7%B1%BB%EF%BC%8C%E7%B1%BB%E5%90%8D%E5%87%BA%E7%8E%B0%E5%88%A0%E9%99%A4%E7%BA%BF%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/" title="idea新建类，类名出现删除线问题解决"><img src="https://gitee.com/jasonM4A1/pictureHost/raw/master/img/20210218154416.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="idea新建类，类名出现删除线问题解决"/></a><div class="content"><a class="title" href="/2021/02/18/129_idea%E6%96%B0%E5%BB%BA%E7%B1%BB%EF%BC%8C%E7%B1%BB%E5%90%8D%E5%87%BA%E7%8E%B0%E5%88%A0%E9%99%A4%E7%BA%BF%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/" title="idea新建类，类名出现删除线问题解决">idea新建类，类名出现删除线问题解决</a><time datetime="2021-02-18T07:43:22.000Z" title="发表于 2021-02-18 15:43:22">2021-02-18</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/02/18/128_Cannot-resolve-plugin-org-apache-maven-plugins-maven-site-plugin-3-7-1%E6%8A%A5%E9%94%99/" title="Cannot resolve plugin org.apache.maven.plugins:maven-site-plugin:3.7.1报错"><img src="https://gitee.com/jasonM4A1/pictureHost/raw/master/img/20210218152004.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Cannot resolve plugin org.apache.maven.plugins:maven-site-plugin:3.7.1报错"/></a><div class="content"><a class="title" href="/2021/02/18/128_Cannot-resolve-plugin-org-apache-maven-plugins-maven-site-plugin-3-7-1%E6%8A%A5%E9%94%99/" title="Cannot resolve plugin org.apache.maven.plugins:maven-site-plugin:3.7.1报错">Cannot resolve plugin org.apache.maven.plugins:maven-site-plugin:3.7.1报错</a><time datetime="2021-02-18T07:19:05.000Z" title="发表于 2021-02-18 15:19:05">2021-02-18</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/02/10/114_HTTP%E5%8D%8F%E8%AE%AE%E5%85%A5%E9%97%A8/" title="Http协议入门"><img src="https://gitee.com/jasonM4A1/pictureHost/raw/master/img/20210203172229.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Http协议入门"/></a><div class="content"><a class="title" href="/2021/02/10/114_HTTP%E5%8D%8F%E8%AE%AE%E5%85%A5%E9%97%A8/" title="Http协议入门">Http协议入门</a><time datetime="2021-02-10T01:20:50.000Z" title="发表于 2021-02-10 09:20:50">2021-02-10</time></div></div></div></div><div class="card-widget card-categories"><div class="item-headline">
+            <i class="fas fa-folder-open"></i>
+            <span>分类</span>
+            <a class="card-more-btn" href="/categories/" title="查看更多">
+    <i class="fas fa-angle-right"></i></a>
+            </div>
+            <ul class="card-category-list" id="aside-cat-list">
+            <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Blog/"><span class="card-category-list-name">Blog</span><span class="card-category-list-count">2</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Git/"><span class="card-category-list-name">Git</span><span class="card-category-list-count">7</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Java/"><span class="card-category-list-name">Java</span><span class="card-category-list-count">81</span></a><ul class="card-category-list child"><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Java/%E5%A4%8D%E4%B9%A0/"><span class="card-category-list-name">复习</span><span class="card-category-list-count">2</span></a></li></ul></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/JavaWeb/"><span class="card-category-list-name">JavaWeb</span><span class="card-category-list-count">2</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Linux/"><span class="card-category-list-name">Linux</span><span class="card-category-list-count">4</span></a><ul class="card-category-list child"><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Linux/MySQL/"><span class="card-category-list-name">MySQL</span><span class="card-category-list-count">1</span></a></li></ul></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/MySQL/"><span class="card-category-list-name">MySQL</span><span class="card-category-list-count">12</span></a></li>
+            </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/ArrayList%E7%B1%BB/" style="font-size: 1.1em; color: #999">ArrayList类</a> <a href="/tags/Arrays%E7%B1%BB/" style="font-size: 1.1em; color: #999">Arrays类</a> <a href="/tags/Butterfly/" style="font-size: 1.1em; color: #999">Butterfly</a> <a href="/tags/Entity/" style="font-size: 1.1em; color: #999">Entity</a> <a href="/tags/Git/" style="font-size: 1.3em; color: #99a1ac">Git</a> <a href="/tags/Hexo/" style="font-size: 1.15em; color: #999b9e">Hexo</a> <a href="/tags/Http/" style="font-size: 1.1em; color: #999">Http</a> <a href="/tags/IO/" style="font-size: 1.35em; color: #99a3b1">IO</a> <a href="/tags/IO%E6%B5%81/" style="font-size: 1.1em; color: #999">IO流</a> <a href="/tags/Idea/" style="font-size: 1.3em; color: #99a1ac">Idea</a> <a href="/tags/JDBC/" style="font-size: 1.2em; color: #999da3">JDBC</a> <a href="/tags/Java/" style="font-size: 1.5em; color: #99a9bf">Java</a> <a href="/tags/JavaScript/" style="font-size: 1.1em; color: #999">JavaScript</a> <a href="/tags/JavaWeb/" style="font-size: 1.45em; color: #99a7ba">JavaWeb</a> <a href="/tags/Lambda/" style="font-size: 1.25em; color: #999fa7">Lambda</a> <a href="/tags/Linux/" style="font-size: 1.2em; color: #999da3">Linux</a> <a href="/tags/Manjaro/" style="font-size: 1.1em; color: #999">Manjaro</a> <a href="/tags/Maven/" style="font-size: 1.25em; color: #999fa7">Maven</a> <a href="/tags/MySQL/" style="font-size: 1.4em; color: #99a5b6">MySQL</a> <a href="/tags/Random/" style="font-size: 1.1em; color: #999">Random</a> <a href="/tags/SVM/" style="font-size: 1.1em; color: #999">SVM</a> <a href="/tags/Servlet/" style="font-size: 1.1em; color: #999">Servlet</a> <a href="/tags/String%E7%B1%BB/" style="font-size: 1.15em; color: #999b9e">String类</a> <a href="/tags/Tomcat/" style="font-size: 1.3em; color: #99a1ac">Tomcat</a> <a href="/tags/Windows/" style="font-size: 1.2em; color: #999da3">Windows</a> <a href="/tags/bios/" style="font-size: 1.1em; color: #999">bios</a> <a href="/tags/chrome-firesox-linux/" style="font-size: 1.1em; color: #999">chrome - firesox - linux</a> <a href="/tags/git/" style="font-size: 1.1em; color: #999">git</a> <a href="/tags/github/" style="font-size: 1.2em; color: #999da3">github</a> <a href="/tags/hexo/" style="font-size: 1.25em; color: #999fa7">hexo</a> <a href="/tags/linux-%E6%8A%A5%E9%94%99-kde/" style="font-size: 1.1em; color: #999">linux - 报错 - kde</a> <a href="/tags/shell-linux/" style="font-size: 1.1em; color: #999">shell - linux</a> <a href="/tags/ssh/" style="font-size: 1.1em; color: #999">ssh</a> <a href="/tags/vim/" style="font-size: 1.1em; color: #999">vim</a> <a href="/tags/%E4%B9%B1%E7%A0%81/" style="font-size: 1.1em; color: #999">乱码</a> <a href="/tags/%E4%BB%93%E5%BA%93/" style="font-size: 1.1em; color: #999">仓库</a> <a href="/tags/%E5%86%85%E9%83%A8%E7%B1%BB/" style="font-size: 1.1em; color: #999">内部类</a> <a href="/tags/%E5%88%86%E6%94%AF/" style="font-size: 1.1em; color: #999">分支</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 1.15em; color: #999b9e">前端</a> <a href="/tags/%E5%89%8D%E7%AB%AF-JavaScript-JQuery/" style="font-size: 1.1em; color: #999">前端 - JavaScript - JQuery</a></div></div><div class="card-widget card-archives"><div class="item-headline"><i class="fas fa-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2021/02/"><span class="card-archive-list-date">二月 2021</span><span class="card-archive-list-count">28</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2021/01/"><span class="card-archive-list-date">一月 2021</span><span class="card-archive-list-count">7</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/12/"><span class="card-archive-list-date">十二月 2020</span><span class="card-archive-list-count">5</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/11/"><span class="card-archive-list-date">十一月 2020</span><span class="card-archive-list-count">21</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/10/"><span class="card-archive-list-date">十月 2020</span><span class="card-archive-list-count">71</span></a></li></ul></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站资讯</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">132</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"></div></div><div class="webinfo-item"><div class="item-name">本站总访问量 :</div><div class="item-count" id="busuanzi_value_site_pv"></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2021-02-25T13:24:28.269Z"></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2021 By Bernardo Li</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">李博帅</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="font-plus" type="button" title="放大字体"><i class="fas fa-plus"></i></button><button id="font-minus" type="button" title="缩小字体"><i class="fas fa-minus"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script src="/js/search/local-search.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"></div><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = [
+  'title',
+  '#config-diff',
+  '#body-wrap',
+  '#rightside-config-hide',
+  '#rightside-config-show',
+  '.js-pjax'
+]
+
+if (false) {
+  pjaxSelectors.unshift('meta[property="og:image"]', 'meta[property="og:title"]', 'meta[property="og:url"]')
+}
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  if (typeof gtag === 'function') {
+    gtag('config', '', {'page_path': window.location.pathname});
+  }
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // Analytics
+  if (false) {
+    MtaH5.pgv()
+  }
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+
+document.addEventListener('pjax:send', function () {
+  typeof preloader === 'object' && preloader.initLoading()
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

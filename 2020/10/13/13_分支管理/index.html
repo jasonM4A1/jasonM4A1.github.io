@@ -1,0 +1,326 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>分支管理 | Code</title><meta name="keywords" content="Git,分支"><meta name="author" content="Bernardo Li"><meta name="copyright" content="Bernardo Li"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="分支管理在版本回退里，你已经知道，每次提交，Git都把它们串成一条时间线，这条时间线就是一个分支。截止到目前，只有一条时间线，在Git里，这个分支叫主分支，即master分支。HEAD严格来说不是指向提交，而是指向master，master才是指向提交的，所以，HEAD指向的就是当前分支。 一开始的时候，master分支是一条线，Git用master指向最新的提交，再用HEAD指向master，就">
+<meta property="og:type" content="article">
+<meta property="og:title" content="分支管理">
+<meta property="og:url" content="http://example.com/2020/10/13/13_%E5%88%86%E6%94%AF%E7%AE%A1%E7%90%86/index.html">
+<meta property="og:site_name" content="Code">
+<meta property="og:description" content="分支管理在版本回退里，你已经知道，每次提交，Git都把它们串成一条时间线，这条时间线就是一个分支。截止到目前，只有一条时间线，在Git里，这个分支叫主分支，即master分支。HEAD严格来说不是指向提交，而是指向master，master才是指向提交的，所以，HEAD指向的就是当前分支。 一开始的时候，master分支是一条线，Git用master指向最新的提交，再用HEAD指向master，就">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gitee.com/jasonM4A1/pictureHost/raw/master/20201017135440.jpg">
+<meta property="article:published_time" content="2020-10-13T15:12:52.000Z">
+<meta property="article:modified_time" content="2021-02-25T13:24:04.181Z">
+<meta property="article:author" content="Bernardo Li">
+<meta property="article:tag" content="Git">
+<meta property="article:tag" content="分支">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gitee.com/jasonM4A1/pictureHost/raw/master/20201017135440.jpg"><link rel="shortcut icon" href="/img/whiteFlag.ico"><link rel="canonical" href="http://example.com/2020/10/13/13_%E5%88%86%E6%94%AF%E7%AE%A1%E7%90%86/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#121212","position":"bottom-left"},
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: true,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2021-02-25 21:24:04'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const fontSizeVal = saveToLocal.get('global-font-size')
+    if (fontSizeVal !== undefined) {
+      document.documentElement.style.setProperty('--global-font-size', fontSizeVal + 'px')
+    }
+    })(window)</script><meta name="generator" content="Hexo 5.4.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="https://gitee.com/jasonM4A1/pictureHost/raw/master/img/20210201095918.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">132</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">70</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">19</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://gitee.com/jasonM4A1/pictureHost/raw/master/20201017135440.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Code</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">分支管理</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2020-10-13T15:12:52.000Z" title="发表于 2020-10-13 23:12:52">2020-10-13</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-02-25T13:24:04.181Z" title="更新于 2021-02-25 21:24:04">2021-02-25</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Git/">Git</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="分支管理"><a href="#分支管理" class="headerlink" title="分支管理"></a>分支管理</h1><p>在<a target="_blank" rel="noopener" href="https://www.liaoxuefeng.com/wiki/896043488029600/897013573512192">版本回退</a>里，你已经知道，每次提交，Git都把它们串成一条时间线，这条时间线就是一个分支。截止到目前，只有一条时间线，在Git里，这个分支叫主分支，即<code>master</code>分支。<code>HEAD</code>严格来说不是指向提交，而是指向<code>master</code>，<code>master</code>才是指向提交的，所以，<code>HEAD</code>指向的就是当前分支。</p>
+<p>一开始的时候，<code>master</code>分支是一条线，Git用<code>master</code>指向最新的提交，再用<code>HEAD</code>指向<code>master</code>，就能确定当前分支，以及当前分支的提交点：</p>
+<p><img src="https://gitee.com/jasonM4A1/pictureHost/raw/master/20201011110016.png"></p>
+<p>每次提交，<code>master</code>分支都会向前移动一步，这样，随着你不断提交，<code>master</code>分支的线也越来越长。</p>
+<p>当我们创建新的分支，例如<code>dev</code>时，Git新建了一个指针叫<code>dev</code>，指向<code>master</code>相同的提交，再把<code>HEAD</code>指向<code>dev</code>，就表示当前分支在<code>dev</code>上：</p>
+<p><img src="https://gitee.com/jasonM4A1/pictureHost/raw/master/20201011110054.png"></p>
+<p>你看，Git创建一个分支很快，因为除了增加一个<code>dev</code>指针，改改<code>HEAD</code>的指向，工作区的文件都没有任何变化！</p>
+<p>不过，从现在开始，对工作区的修改和提交就是针对<code>dev</code>分支了，比如新提交一次后，<code>dev</code>指针往前移动一步，而<code>master</code>指针不变：</p>
+<p><img src="https://gitee.com/jasonM4A1/pictureHost/raw/master/20201011110129.png"></p>
+<p>假如我们在<code>dev</code>上的工作完成了，就可以把<code>dev</code>合并到<code>master</code>上。Git怎么合并呢？最简单的方法，就是直接把<code>master</code>指向<code>dev</code>的当前提交，就完成了合并：</p>
+<p><img src="https://gitee.com/jasonM4A1/pictureHost/raw/master/20201011110222.png"></p>
+<p>所以Git合并分支也很快！就改改指针，工作区内容也不变！</p>
+<p>合并完分支后，甚至可以删除<code>dev</code>分支。删除<code>dev</code>分支就是把<code>dev</code>指针给删掉，删掉后，我们就剩下了一条<code>master</code>分支：</p>
+<p><img src="https://gitee.com/jasonM4A1/pictureHost/raw/master/20201011110257.png"></p>
+<p>因为创建、合并和删除分支非常快，所以Git鼓励你使用分支完成某个任务，合并后再删掉分支，这和直接在<code>master</code>分支上工作效果是一样的，但过程更安全。</p>
+<h2 id="创建分支"><a href="#创建分支" class="headerlink" title="创建分支"></a>创建分支</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"># 创建并切换到分支(本为切换，加上参数-c，就为创建)</span><br><span class="line">git switch -c &lt;分支名&gt;</span><br><span class="line"></span><br><span class="line"># 或者</span><br><span class="line">git checkout -b &lt;分支名&gt;</span><br><span class="line"></span><br><span class="line"># 或者</span><br><span class="line">git branch &lt;分支名&gt;</span><br><span class="line"></span><br><span class="line"># 创建并切换到分支，然后与远程的分支关联</span><br><span class="line">git switch -c &lt;本地分支&gt; &lt;远程仓库&gt; &#x2F;&lt;远程分支&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="切换分支"><a href="#切换分支" class="headerlink" title="切换分支"></a>切换分支</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git switch &lt;分支名&gt;</span><br><span class="line"></span><br><span class="line"># 或者</span><br><span class="line">git checkout &lt;分支名&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="查看分支"><a href="#查看分支" class="headerlink" title="查看分支"></a>查看分支</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># 查看本地分支</span><br><span class="line">git branch</span><br><span class="line"></span><br><span class="line"># 查看远程分支</span><br><span class="line">git branch -r</span><br><span class="line"></span><br><span class="line"># 查看所有分支</span><br><span class="line">git branch -a</span><br></pre></td></tr></table></figure>
+
+<h2 id="合并分支"><a href="#合并分支" class="headerlink" title="合并分支"></a>合并分支</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># 合并分支</span><br><span class="line">git merge &lt;branch&gt;</span><br><span class="line"></span><br><span class="line"># 合并分支，并提交</span><br><span class="line">git merge -m &lt;message&gt; &lt;branch&gt;</span><br><span class="line"></span><br><span class="line"># 禁用fast forward模式 并提交（Git就会在merge时生成一个新的commit）</span><br><span class="line">git merge --no-ff -m &lt;message&gt; &lt;branch&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="查看分支合并情况"><a href="#查看分支合并情况" class="headerlink" title="查看分支合并情况"></a>查看分支合并情况</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git log --graph --pretty&#x3D;oneline --abbrev-commit</span><br></pre></td></tr></table></figure>
+
+<h2 id="合并部分提交到其他分支"><a href="#合并部分提交到其他分支" class="headerlink" title="合并部分提交到其他分支"></a>合并部分提交到其他分支</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 将指定的提交（commit）应用于其他分支</span><br><span class="line">git cherry-pick &lt;commit&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="删除分支"><a href="#删除分支" class="headerlink" title="删除分支"></a>删除分支</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># 此分支已经合并到其他分支上时</span><br><span class="line">git branch -d &lt;branch&gt; &lt;branch&gt;</span><br><span class="line"></span><br><span class="line"># 此分支还未合并到其他分支上时，可以大写D强制删除分支</span><br><span class="line">git brach -D &lt;branch&gt; &lt;branch&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="临时保存"><a href="#临时保存" class="headerlink" title="临时保存"></a>临时保存</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"># 将所有未提交的修改（工作区和暂存区）保存至堆栈中,[save message]可选，为注释</span><br><span class="line">git stash [save message]</span><br><span class="line"></span><br><span class="line"># 查看所有保存记录列表</span><br><span class="line">git stash list</span><br><span class="line"></span><br><span class="line"># 恢复保存的内容，但只能恢复一次,即恢复的同时删除保存的stash。num可选，通过git stash list可查值</span><br><span class="line">git stash pop [stash@&#123;num&#125;]</span><br><span class="line"></span><br><span class="line"># 恢复保存的内容，可以恢复多次。num可选，通过git stash list可查值</span><br><span class="line">git stash apply [stash@&#123;num&#125;]</span><br><span class="line"></span><br><span class="line"># 删除某个保存，num是可选项，通过git stash list可查看具体值</span><br><span class="line">git stash drop [stash@&#123;num&#125;]</span><br><span class="line"></span><br><span class="line"># 删除所有保存</span><br><span class="line">git stash clear</span><br></pre></td></tr></table></figure>
+
+<h2 id="合并冲突"><a href="#合并冲突" class="headerlink" title="合并冲突"></a>合并冲突</h2><p>当分支1与分支2有了两次不同的提交，这是就会产生【合并冲突】。</p>
+<p>图示：</p>
+<p><img src="https://gitee.com/jasonM4A1/pictureHost/raw/master/20201012093535.png"></p>
+<p><img src="https://gitee.com/jasonM4A1/pictureHost/raw/master/20201012093716.png"></p>
+<p>现在，<code>master</code>分支和<code>dev</code>分支各自都分别有新的提交，变成了这样：</p>
+<p><img src="https://gitee.com/jasonM4A1/pictureHost/raw/master/20201012094147.png"></p>
+<p>这种情况下，Git无法执行“快速合并”，只能试图把各自的修改合并起来，但这种合并就可能会有冲突。我们来执行<code>git merge &lt;branch&gt;</code>试试看：</p>
+<p><img src="https://gitee.com/jasonM4A1/pictureHost/raw/master/20201012094303.png"></p>
+<p>这个时候我们打开提示<code>CONFLICT (content): Merge conflict in diary.txt</code>所说的diary.txt文件（也可以直接使用<code>git diff</code>查看文件冲突的地方）：</p>
+<p><img src="https://gitee.com/jasonM4A1/pictureHost/raw/master/20201012094520.png"></p>
+<p>Git会用<code>&lt;&lt;&lt;&lt;&lt;&lt;&lt;</code>，<code>=======</code>，<code>&gt;&gt;&gt;&gt;&gt;&gt;&gt;</code>标记出不同分支发生冲突的内容。这个时候，我们只需要将提示中冲突的地方修改成我们需要的内容既可：</p>
+<p><img src="https://gitee.com/jasonM4A1/pictureHost/raw/master/20201012095109.png"></p>
+<p>然后记住一定要添加并提交，添加提交后，合并就自动完成了。合并冲突也就算了解决了。</p>
+<h3 id="疑问解答"><a href="#疑问解答" class="headerlink" title="疑问解答"></a>疑问解答</h3><p><strong>问</strong>：合并时出现下面的情况原因是什么？又该如何处理？</p>
+<p><img src="https://gitee.com/jasonM4A1/pictureHost/raw/master/20201012095334.png"></p>
+<p><strong>答</strong>：原因是提示中已经给出了<code>error: Merging is not possible because you have unmerged files.</code>，就是说合并时不可能的，因为有尚未合并的文件。解决方法提示中也给出了<code>hint: Fix them up in the work tree, and then use &#39;git add/rm &lt;file&gt;&#39;</code>将工作数中的冲突文件修改一致并提交，然后可以正常合并现在你需要合并的分支了。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">Bernardo Li</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2020/10/13/13_%E5%88%86%E6%94%AF%E7%AE%A1%E7%90%86/">http://example.com/2020/10/13/13_%E5%88%86%E6%94%AF%E7%AE%A1%E7%90%86/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">Code</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Git/">Git</a><a class="post-meta__tags" href="/tags/%E5%88%86%E6%94%AF/">分支</a></div><div class="post_share"><div class="social-share" data-image="https://gitee.com/jasonM4A1/pictureHost/raw/master/20201017135440.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2020/10/13/14_%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93/"><img class="prev-cover" src="https://gitee.com/jasonM4A1/pictureHost/raw/master/20201017141113.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">远程仓库</div></div></a></div><div class="next-post pull-right"><a href="/2020/10/13/12_Git%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/"><img class="next-cover" src="https://gitee.com/jasonM4A1/pictureHost/raw/master/20201017141128.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Git文件操作</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span> 相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2021/01/28/102_Git提示Host-key-verification-failed/" title="Git提示Host key verification failed"><img class="cover" src="https://gitee.com/jasonM4A1/pictureHost/raw/master/img/20210129042155.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-01-28</div><div class="title">Git提示Host key verification failed</div></div></a></div><div><a href="/2020/10/13/10_Git基本理论/" title="Git基本理论"><img class="cover" src="https://gitee.com/jasonM4A1/pictureHost/raw/master/20201017120410.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-10-13</div><div class="title">Git基本理论</div></div></a></div><div><a href="/2020/10/13/11_Git文件状态/" title="Git文件状态"><img class="cover" src="https://gitee.com/jasonM4A1/pictureHost/raw/master/20201017135856.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-10-13</div><div class="title">Git文件状态</div></div></a></div><div><a href="/2020/10/13/12_Git文件操作/" title="Git文件操作"><img class="cover" src="https://gitee.com/jasonM4A1/pictureHost/raw/master/20201017141128.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-10-13</div><div class="title">Git文件操作</div></div></a></div><div><a href="/2020/10/13/14_远程仓库/" title="远程仓库"><img class="cover" src="https://gitee.com/jasonM4A1/pictureHost/raw/master/20201017141113.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-10-13</div><div class="title">远程仓库</div></div></a></div><div><a href="/2020/10/13/15_Git标签/" title="Git标签"><img class="cover" src="https://gitee.com/jasonM4A1/pictureHost/raw/master/20201017141344.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-10-13</div><div class="title">Git标签</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-info-avatar is-center"><img class="avatar-img" src="https://gitee.com/jasonM4A1/pictureHost/raw/master/img/20210201095918.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">Bernardo Li</div><div class="author-info__description">一个学开发的笨蛋</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">132</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">70</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">19</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/jasonM4A1"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="mailto:bernarlido266@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%88%86%E6%94%AF%E7%AE%A1%E7%90%86"><span class="toc-number">1.</span> <span class="toc-text">分支管理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E5%88%86%E6%94%AF"><span class="toc-number">1.1.</span> <span class="toc-text">创建分支</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%87%E6%8D%A2%E5%88%86%E6%94%AF"><span class="toc-number">1.2.</span> <span class="toc-text">切换分支</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E5%88%86%E6%94%AF"><span class="toc-number">1.3.</span> <span class="toc-text">查看分支</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%88%E5%B9%B6%E5%88%86%E6%94%AF"><span class="toc-number">1.4.</span> <span class="toc-text">合并分支</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E5%88%86%E6%94%AF%E5%90%88%E5%B9%B6%E6%83%85%E5%86%B5"><span class="toc-number">1.5.</span> <span class="toc-text">查看分支合并情况</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%88%E5%B9%B6%E9%83%A8%E5%88%86%E6%8F%90%E4%BA%A4%E5%88%B0%E5%85%B6%E4%BB%96%E5%88%86%E6%94%AF"><span class="toc-number">1.6.</span> <span class="toc-text">合并部分提交到其他分支</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%A0%E9%99%A4%E5%88%86%E6%94%AF"><span class="toc-number">1.7.</span> <span class="toc-text">删除分支</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%B4%E6%97%B6%E4%BF%9D%E5%AD%98"><span class="toc-number">1.8.</span> <span class="toc-text">临时保存</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%88%E5%B9%B6%E5%86%B2%E7%AA%81"><span class="toc-number">1.9.</span> <span class="toc-text">合并冲突</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%96%91%E9%97%AE%E8%A7%A3%E7%AD%94"><span class="toc-number">1.9.1.</span> <span class="toc-text">疑问解答</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2021/02/20/131_windows%E5%90%AF%E5%8A%A8ssh-agent/" title="windows启动ssh-agent"><img src="https://gitee.com/jasonM4A1/pictureHost/raw/master/img/20210220091020.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="windows启动ssh-agent"/></a><div class="content"><a class="title" href="/2021/02/20/131_windows%E5%90%AF%E5%8A%A8ssh-agent/" title="windows启动ssh-agent">windows启动ssh-agent</a><time datetime="2021-02-20T01:09:25.000Z" title="发表于 2021-02-20 09:09:25">2021-02-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/02/20/130_Idea%E7%94%9F%E6%88%90entity%E5%AE%9E%E4%BD%93%E7%B1%BB/" title="Idea生成entity实体类"><img src="https://gitee.com/jasonM4A1/pictureHost/raw/master/img/20210220084833.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Idea生成entity实体类"/></a><div class="content"><a class="title" href="/2021/02/20/130_Idea%E7%94%9F%E6%88%90entity%E5%AE%9E%E4%BD%93%E7%B1%BB/" title="Idea生成entity实体类">Idea生成entity实体类</a><time datetime="2021-02-20T00:45:30.000Z" title="发表于 2021-02-20 08:45:30">2021-02-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/02/18/129_idea%E6%96%B0%E5%BB%BA%E7%B1%BB%EF%BC%8C%E7%B1%BB%E5%90%8D%E5%87%BA%E7%8E%B0%E5%88%A0%E9%99%A4%E7%BA%BF%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/" title="idea新建类，类名出现删除线问题解决"><img src="https://gitee.com/jasonM4A1/pictureHost/raw/master/img/20210218154416.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="idea新建类，类名出现删除线问题解决"/></a><div class="content"><a class="title" href="/2021/02/18/129_idea%E6%96%B0%E5%BB%BA%E7%B1%BB%EF%BC%8C%E7%B1%BB%E5%90%8D%E5%87%BA%E7%8E%B0%E5%88%A0%E9%99%A4%E7%BA%BF%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/" title="idea新建类，类名出现删除线问题解决">idea新建类，类名出现删除线问题解决</a><time datetime="2021-02-18T07:43:22.000Z" title="发表于 2021-02-18 15:43:22">2021-02-18</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/02/18/128_Cannot-resolve-plugin-org-apache-maven-plugins-maven-site-plugin-3-7-1%E6%8A%A5%E9%94%99/" title="Cannot resolve plugin org.apache.maven.plugins:maven-site-plugin:3.7.1报错"><img src="https://gitee.com/jasonM4A1/pictureHost/raw/master/img/20210218152004.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Cannot resolve plugin org.apache.maven.plugins:maven-site-plugin:3.7.1报错"/></a><div class="content"><a class="title" href="/2021/02/18/128_Cannot-resolve-plugin-org-apache-maven-plugins-maven-site-plugin-3-7-1%E6%8A%A5%E9%94%99/" title="Cannot resolve plugin org.apache.maven.plugins:maven-site-plugin:3.7.1报错">Cannot resolve plugin org.apache.maven.plugins:maven-site-plugin:3.7.1报错</a><time datetime="2021-02-18T07:19:05.000Z" title="发表于 2021-02-18 15:19:05">2021-02-18</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/02/10/114_HTTP%E5%8D%8F%E8%AE%AE%E5%85%A5%E9%97%A8/" title="Http协议入门"><img src="https://gitee.com/jasonM4A1/pictureHost/raw/master/img/20210203172229.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Http协议入门"/></a><div class="content"><a class="title" href="/2021/02/10/114_HTTP%E5%8D%8F%E8%AE%AE%E5%85%A5%E9%97%A8/" title="Http协议入门">Http协议入门</a><time datetime="2021-02-10T01:20:50.000Z" title="发表于 2021-02-10 09:20:50">2021-02-10</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2021 By Bernardo Li</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">李博帅</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="font-plus" type="button" title="放大字体"><i class="fas fa-plus"></i></button><button id="font-minus" type="button" title="缩小字体"><i class="fas fa-minus"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script src="/js/search/local-search.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"><script>function loadValine () {
+  function initValine () {
+    let initData = {
+      el: '#vcomment',
+      appId: 'MF0PRYjapmP9TvfVhQrAk3qp-gzGzoHsz',
+      appKey: '1gBa0Ea7mSph6YIuCz2wDtIG',
+      placeholder: 'Please leave your footprints',
+      avatar: 'monsterid',
+      meta: 'nick,mail,link'.split(','),
+      pageSize: '10',
+      lang: 'en',
+      recordIP: false,
+      serverURLs: '',
+      emojiCDN: '',
+      emojiMaps: "",
+      enableQQ: false,
+      path: window.location.pathname,
+    }
+
+    if (true) { 
+      initData.requiredFields= ('nick,mail'.split(','))
+    }
+    
+    if (false) {
+      const otherData = false
+      initData = Object.assign(initData, otherData)
+    }
+    
+    const valine = new Valine(initData)
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !false) {
+  if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script></div><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = [
+  'title',
+  '#config-diff',
+  '#body-wrap',
+  '#rightside-config-hide',
+  '#rightside-config-show',
+  '.js-pjax'
+]
+
+if (false) {
+  pjaxSelectors.unshift('meta[property="og:image"]', 'meta[property="og:title"]', 'meta[property="og:url"]')
+}
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  if (typeof gtag === 'function') {
+    gtag('config', '', {'page_path': window.location.pathname});
+  }
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // Analytics
+  if (false) {
+    MtaH5.pgv()
+  }
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+
+document.addEventListener('pjax:send', function () {
+  typeof preloader === 'object' && preloader.initLoading()
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

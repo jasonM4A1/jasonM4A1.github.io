@@ -1,0 +1,709 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>JavaScript入门 | Code</title><meta name="keywords" content="JavaScript,前端"><meta name="author" content="Bernardo Li"><meta name="copyright" content="Bernardo Li"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="JavaScript 概述介绍JavaScript是一门脚本语言，不需要编译就可以直接被浏览器解析执行。它是运行在浏览器中的，每一个浏览器都有自己的JavaScript解析引擎。 JavaScript可以用来增强用户和html页面的交互过程，可以来控制html元素。让页面有一些动态的效果，以此来增强用户的体验。 特点 交互性（它可以做的就是信息的动态交互） 安全性（不允许直接访问本地硬盘） 跨平台">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript入门">
+<meta property="og:url" content="http://example.com/2021/02/02/107-JavaScript%E5%85%A5%E9%97%A8/index.html">
+<meta property="og:site_name" content="Code">
+<meta property="og:description" content="JavaScript 概述介绍JavaScript是一门脚本语言，不需要编译就可以直接被浏览器解析执行。它是运行在浏览器中的，每一个浏览器都有自己的JavaScript解析引擎。 JavaScript可以用来增强用户和html页面的交互过程，可以来控制html元素。让页面有一些动态的效果，以此来增强用户的体验。 特点 交互性（它可以做的就是信息的动态交互） 安全性（不允许直接访问本地硬盘） 跨平台">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gitee.com/jasonM4A1/pictureHost/raw/master/img/20210202012435.png">
+<meta property="article:published_time" content="2021-02-01T17:23:23.000Z">
+<meta property="article:modified_time" content="2021-02-25T13:24:04.172Z">
+<meta property="article:author" content="Bernardo Li">
+<meta property="article:tag" content="JavaScript">
+<meta property="article:tag" content="前端">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gitee.com/jasonM4A1/pictureHost/raw/master/img/20210202012435.png"><link rel="shortcut icon" href="/img/whiteFlag.ico"><link rel="canonical" href="http://example.com/2021/02/02/107-JavaScript%E5%85%A5%E9%97%A8/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#121212","position":"bottom-left"},
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: true,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2021-02-25 21:24:04'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const fontSizeVal = saveToLocal.get('global-font-size')
+    if (fontSizeVal !== undefined) {
+      document.documentElement.style.setProperty('--global-font-size', fontSizeVal + 'px')
+    }
+    })(window)</script><meta name="generator" content="Hexo 5.4.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="https://gitee.com/jasonM4A1/pictureHost/raw/master/img/20210201095918.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">132</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">70</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">19</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://gitee.com/jasonM4A1/pictureHost/raw/master/img/20210202012435.png')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Code</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">JavaScript入门</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-02-01T17:23:23.000Z" title="发表于 2021-02-02 01:23:23">2021-02-02</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-02-25T13:24:04.172Z" title="更新于 2021-02-25 21:24:04">2021-02-25</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="JavaScript-概述"><a href="#JavaScript-概述" class="headerlink" title="JavaScript 概述"></a>JavaScript 概述</h1><h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>JavaScript是一门脚本语言，不需要编译就可以直接被浏览器解析执行。它是运行在浏览器中的，每一个浏览器都有自己的JavaScript解析引擎。</p>
+<p>JavaScript可以用来增强用户和html页面的交互过程，可以来控制html元素。让页面有一些动态的效果，以此来增强用户的体验。</p>
+<h2 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h2><ol>
+<li>交互性（它可以做的就是信息的动态交互）</li>
+<li>安全性（不允许直接访问本地硬盘）</li>
+<li>跨平台性（只要是可以解释 JS 的浏览器都可以执行，和平台无关）</li>
+</ol>
+<h2 id="发展史"><a href="#发展史" class="headerlink" title="发展史"></a>发展史</h2><ol>
+<li>1992年，Nombase公司，开发出第一门客户端脚本语言，专门用于表单的校验。命名为 C– ，后来更名为ScriptEase</li>
+<li>1995年，Netscape(网景)公司，开发了一门客户端脚本语言：LiveScript。后来，请来SUN公司的专家，修改LiveScript，命名为JavaScript</li>
+<li>1996年，微软抄袭JavaScript开发出JScript语言</li>
+<li>1997年，ECMA(欧洲计算机制造商协会)，制定出客户端脚本语言的标准：ECMAScript，就是统一了所有客户端脚本语言的编码方式。</li>
+</ol>
+<blockquote>
+<p>JavaScript = ECMAScript + JavaScript自己特有的东西(BOM+DOM)</p>
+</blockquote>
+<h1 id="JavaScript基础语法"><a href="#JavaScript基础语法" class="headerlink" title="JavaScript基础语法"></a>JavaScript基础语法</h1><h2 id="与html结合方式"><a href="#与html结合方式" class="headerlink" title="与html结合方式"></a>与html结合方式</h2><p>JavaScript与Html结合的方法总有两种，即——内部JS和外部JS。</p>
+<h3 id="内部JS"><a href="#内部JS" class="headerlink" title="内部JS"></a>内部JS</h3><h4 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h4><p>直接在html页面中书写JavaScript代码，所书写的JavaScript代码使用<code>Script</code>标签包围起来。</p>
+<h4 id="格式"><a href="#格式" class="headerlink" title="格式"></a>格式</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type&#x3D;&quot;text&#x2F;javascript&quot;&gt;</span><br><span class="line">	JS代码</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="演示"><a href="#演示" class="headerlink" title="演示"></a>演示</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang&#x3D;&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset&#x3D;&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;title&gt;Demo&lt;&#x2F;title&gt;</span><br><span class="line">    &lt;!--在内部定义JS--&gt;</span><br><span class="line">    &lt;script type&#x3D;&quot;text&#x2F;javascript&quot;&gt;</span><br><span class="line">        alert(&quot;Hello World&quot;);</span><br><span class="line">    &lt;&#x2F;script&gt;</span><br><span class="line">&lt;&#x2F;head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line"></span><br><span class="line">&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="外部JS"><a href="#外部JS" class="headerlink" title="外部JS"></a>外部JS</h3><h4 id="概述-1"><a href="#概述-1" class="headerlink" title="概述"></a>概述</h4><p>使用<code>script</code>标签，通过src属性引入外部的js文件。</p>
+<h4 id="格式-1"><a href="#格式-1" class="headerlink" title="格式"></a>格式</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type&#x3D;&quot;text&#x2F;javascript&quot; src&#x3D;&quot;JS文件地址&quot;&gt;&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="演示-1"><a href="#演示-1" class="headerlink" title="演示"></a>演示</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang&#x3D;&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset&#x3D;&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;title&gt;Demo&lt;&#x2F;title&gt;</span><br><span class="line">    &lt;!--引用外部JS--&gt;</span><br><span class="line">    &lt;script type&#x3D;&quot;text&#x2F;javascript&quot; src&#x3D;&quot;..&#x2F;JavaScript&#x2F;one.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">&lt;&#x2F;head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line"></span><br><span class="line">&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<ol>
+<li><code>script</code>标签可以定义在html页面的任何地方，但是定义的位置会影响其执行顺序。</li>
+<li><code>script</code>标签也可以在一个html页面，同时定义多个。</li>
+</ol>
+</blockquote>
+<h2 id="JavaScript注释"><a href="#JavaScript注释" class="headerlink" title="JavaScript注释"></a>JavaScript注释</h2><h3 id="概述-2"><a href="#概述-2" class="headerlink" title="概述"></a>概述</h3><p>JavaScript的注释格式和Java的完全一致，无论是单行注释，还是多行注释。</p>
+<h3 id="单行注释"><a href="#单行注释" class="headerlink" title="单行注释"></a>单行注释</h3><h4 id="格式-2"><a href="#格式-2" class="headerlink" title="格式"></a>格式</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;注释内容</span><br></pre></td></tr></table></figure>
+
+<h4 id="演示-2"><a href="#演示-2" class="headerlink" title="演示"></a>演示</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;这是一个单行注释</span><br></pre></td></tr></table></figure>
+
+<h3 id="多行注释"><a href="#多行注释" class="headerlink" title="多行注释"></a>多行注释</h3><h4 id="格式-3"><a href="#格式-3" class="headerlink" title="格式"></a>格式</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;* 注释内容 *&#x2F;</span><br></pre></td></tr></table></figure>
+
+<h4 id="演示-3"><a href="#演示-3" class="headerlink" title="演示"></a>演示</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;*</span><br><span class="line">    这是一个多行注释</span><br><span class="line"> *&#x2F;</span><br></pre></td></tr></table></figure>
+
+<h2 id="JavaScript数据类型"><a href="#JavaScript数据类型" class="headerlink" title="JavaScript数据类型"></a>JavaScript数据类型</h2><h3 id="概述-3"><a href="#概述-3" class="headerlink" title="概述"></a>概述</h3><p>JavaScript也同Java一样，数据类型分为两类，即——原始数据类型、引用数据类型。</p>
+<h3 id="原始数据类型"><a href="#原始数据类型" class="headerlink" title="原始数据类型"></a>原始数据类型</h3><h4 id="number类型"><a href="#number类型" class="headerlink" title="number类型"></a>number类型</h4><ul>
+<li>整数</li>
+<li>小数</li>
+<li>NaN（not a number，一个不是数字的数字类型）</li>
+</ul>
+<h4 id="string类型"><a href="#string类型" class="headerlink" title="string类型"></a>string类型</h4><p>单引号与双引号定义的都是字符串类型，Javascript没有字符类型的概念。</p>
+<h4 id="boolean类型"><a href="#boolean类型" class="headerlink" title="boolean类型"></a>boolean类型</h4><ul>
+<li>true</li>
+<li>false</li>
+</ul>
+<h4 id="null类型"><a href="#null类型" class="headerlink" title="null类型"></a>null类型</h4><p>一个对象为空的占位符。</p>
+<h4 id="undefined类型"><a href="#undefined类型" class="headerlink" title="undefined类型"></a>undefined类型</h4><p>未定义。如果一个变量没有给初始化值，则会被默认赋值为undefined。</p>
+<h3 id="引用数据类型"><a href="#引用数据类型" class="headerlink" title="引用数据类型"></a>引用数据类型</h3><p>对象。Javascript中的引用数据类型也都是对象。</p>
+<h2 id="JavaScript变量"><a href="#JavaScript变量" class="headerlink" title="JavaScript变量"></a>JavaScript变量</h2><h3 id="概述-4"><a href="#概述-4" class="headerlink" title="概述"></a>概述</h3><p>JavaScript与Java中的变量很相识，但又并不完全相同。根本原因为Javascript为弱类型语言，而Java为强类型语言。什么是弱类型语言，什么是强类型语言呢？下面我来简单的说明一下：</p>
+<ul>
+<li><strong>弱类型语言：</strong>在开辟变量存储空间时，不定义空间将来的存储数据类型，而是可以存放任意类型的数据。</li>
+<li><strong>强类型语言：</strong>在开辟变量存储空间时，定义了空间将来存储的数据的数据类型，只能存储固定类型的数据。</li>
+</ul>
+<p>正是由于语言类型的不同，导致了两种语言的变量也有不同的用意，下文我主要表述其不同之处。</p>
+<h3 id="格式-4"><a href="#格式-4" class="headerlink" title="格式"></a>格式</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;定义变量（默认赋值为undefined）</span><br><span class="line">var 变量名;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;定义并初始化值</span><br><span class="line">var 变量名 &#x3D; 初始值;</span><br></pre></td></tr></table></figure>
+
+<h3 id="演示-4"><a href="#演示-4" class="headerlink" title="演示"></a>演示</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;定义变量（默认赋值为undefined)</span><br><span class="line">var num01;</span><br><span class="line">var num02;</span><br><span class="line">var num03;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;接收number类型值</span><br><span class="line">num01 &#x3D; 1;</span><br><span class="line">num02 &#x3D; 3.14;</span><br><span class="line">num03 &#x3D; NaN;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;定义并初始化string类型值</span><br><span class="line">var str01 &#x3D; &#39;2&#39;;</span><br><span class="line">var str02 &#x3D; &quot;two&quot;;</span><br><span class="line">var str03 &#x3D; &#39;我是一个二&#39;;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;定义并初始化boolean类型值</span><br><span class="line">var flag01 &#x3D; true;</span><br><span class="line">var flag02 &#x3D; false;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;定义并初始化null类型值</span><br><span class="line">var obj &#x3D; null;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;定义并初始化undefined类型值</span><br><span class="line">var und01 &#x3D; undefined;</span><br><span class="line">var und02;&#x2F;&#x2F;默认赋值为undefined</span><br></pre></td></tr></table></figure>
+
+<h3 id="新特性"><a href="#新特性" class="headerlink" title="新特性"></a>新特性</h3><p>ES2015(ES6) 新增加了两个重要的 JavaScript 关键字: <strong>let</strong> 和 <strong>const</strong>。</p>
+<p>let 声明的变量只在 let 命令所在的代码块内有效。</p>
+<p>const 声明一个只读的常量，一旦声明，常量的值就不能改变。</p>
+<ul>
+<li>使用var声明的变量，其作用域为该语句所在的函数内，且存在变量提升现象；</li>
+<li>使用let声明的变量，其作用域为该语句所在的代码块内，不存在变量提升；</li>
+<li>使用const声明的是常量，在后面出现的代码中不能再修改该常量的值。</li>
+</ul>
+<p><strong>总结：</strong></p>
+<p>通常，应该始终使用const声明变量，如果您意识到需要更改变量的值，请返回并将其更改为let。如果项目不支持ES6，再使用var来声明变量。</p>
+<h3 id="typeof函数"><a href="#typeof函数" class="headerlink" title="typeof函数"></a>typeof函数</h3><h4 id="概述-5"><a href="#概述-5" class="headerlink" title="概述"></a>概述</h4><p>由于Javascript的变量可以存储任意类型的数据，这样就导致我们无法判断一个变量中存储的数据是number类型、string类型的，还是boolean类型的。于是这个时候，我们就需要用到<code>typeof</code>运算符，来帮助我们区分变量中存储的不同数据的类型。</p>
+<p>typeof的作用就是传入一个变量，同时返回这个变量所存储数据的数据类型。</p>
+<h4 id="格式-5"><a href="#格式-5" class="headerlink" title="格式"></a>格式</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">typeof(变量名)</span><br></pre></td></tr></table></figure>
+
+<h4 id="演示-5"><a href="#演示-5" class="headerlink" title="演示"></a>演示</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;分别判断num01、str01、flag01、obj、und01的数据类型</span><br><span class="line">let type01 &#x3D; typeof(num01);</span><br><span class="line">let type02 &#x3D; typeof(str01);</span><br><span class="line">let type03 &#x3D; typeof(flag01);</span><br><span class="line">let type04 &#x3D; typeof(obj);</span><br><span class="line">let type05 &#x3D; typeof(und01);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;打印到html页面上</span><br><span class="line">document.write(type01 + &quot;&lt;br&gt;&quot;);</span><br><span class="line">document.write(type02 + &quot;&lt;br&gt;&quot;);</span><br><span class="line">document.write(type03 + &quot;&lt;br&gt;&quot;);</span><br><span class="line">document.write(type04 + &quot;&lt;br&gt;&quot;);</span><br><span class="line">document.write(type05 + &quot;&lt;br&gt;&lt;br&gt;&quot;);</span><br><span class="line"></span><br><span class="line">&#x2F;* 打印结果：</span><br><span class="line">	number</span><br><span class="line">    string</span><br><span class="line">    boolean</span><br><span class="line">    object</span><br><span class="line">    undefined</span><br><span class="line">*&#x2F;</span><br></pre></td></tr></table></figure>
+
+<h2 id="JavaScript运算符"><a href="#JavaScript运算符" class="headerlink" title="JavaScript运算符"></a>JavaScript运算符</h2><h3 id="一元运算符"><a href="#一元运算符" class="headerlink" title="一元运算符"></a>一元运算符</h3><h4 id="概述-6"><a href="#概述-6" class="headerlink" title="概述"></a>概述</h4><p>只有一个运算数参与的运算符。</p>
+<h4 id="主要成员"><a href="#主要成员" class="headerlink" title="主要成员"></a>主要成员</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">++&#96;、&#96;--&#96;、&#96;+(正号)&#96;、&#96;-(负号)</span><br></pre></td></tr></table></figure>
+
+<h4 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h4><ol>
+<li>关于自增与自减：<ul>
+<li><code>a++</code>，先运算，再自增。</li>
+<li><code>++a</code>，先自增，再运算。</li>
+</ul>
+</li>
+<li>在JS中，如果运算数不是运算符所要求的类型，那么js引擎会自动的将运算数进行类型转换。如：<ul>
+<li>String类型转number类型：首先按照字面转化为相应的数字，如果字面值不是数字，则转为NaN（不是数字的数字）。</li>
+<li>boolean类型转number类型：true转为1，false转为0。</li>
+</ul>
+</li>
+</ol>
+<h3 id="算数运算符"><a href="#算数运算符" class="headerlink" title="算数运算符"></a>算数运算符</h3><h4 id="概述-7"><a href="#概述-7" class="headerlink" title="概述"></a>概述</h4><p>用于进行一些数学运算的符号。</p>
+<h4 id="主要成员-1"><a href="#主要成员-1" class="headerlink" title="主要成员"></a>主要成员</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">+&#96;、&#96;-&#96;、&#96;*&#96;、&#96;&#x2F;&#96;、&#96;%</span><br></pre></td></tr></table></figure>
+
+<h3 id="赋值运算符"><a href="#赋值运算符" class="headerlink" title="赋值运算符"></a>赋值运算符</h3><h4 id="概述-8"><a href="#概述-8" class="headerlink" title="概述"></a>概述</h4><p>将一个数据赋予另一数据的符号。</p>
+<h4 id="主要成员-2"><a href="#主要成员-2" class="headerlink" title="主要成员"></a>主要成员</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x3D;&#96;、&#96;+&#x3D;&#96;、&#96;-&#x3D;</span><br></pre></td></tr></table></figure>
+
+<h3 id="比较运算符"><a href="#比较运算符" class="headerlink" title="比较运算符"></a>比较运算符</h3><h4 id="概述-9"><a href="#概述-9" class="headerlink" title="概述"></a>概述</h4><p>用于数据大小比较的运算符。</p>
+<h4 id="主要成员-3"><a href="#主要成员-3" class="headerlink" title="主要成员"></a>主要成员</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt;&#96;、&#96;&lt;&#96;、&#96;&gt;&#x3D;&#96;、&#96;&lt;&#x3D;&#96;、&#96;&#x3D;&#x3D;&#96;、&#96;&#x3D;&#x3D;&#x3D;(全等于)</span><br></pre></td></tr></table></figure>
+
+<h4 id="注意事项-1"><a href="#注意事项-1" class="headerlink" title="注意事项"></a>注意事项</h4><ol>
+<li>若类型相同，则直接进行比较。若数据类型不同，先进行类型转换，再比较。</li>
+<li><code>===(全等于)</code>：在比较之前，先判断类型，如果类型不一样，则直接返回false。</li>
+<li>字符串类型之间的数据进行比较，按照字典顺序比较。按位逐一比较，直到得出大小为止。</li>
+</ol>
+<h3 id="逻辑运算符"><a href="#逻辑运算符" class="headerlink" title="逻辑运算符"></a>逻辑运算符</h3><h4 id="概述-10"><a href="#概述-10" class="headerlink" title="概述"></a>概述</h4><p>用于进行逻辑判断的运算符。</p>
+<h4 id="主要成员-4"><a href="#主要成员-4" class="headerlink" title="主要成员"></a>主要成员</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&amp;&amp;&#96;、&#96;||&#96;、&#96;!</span><br></pre></td></tr></table></figure>
+
+<h4 id="注意事项-2"><a href="#注意事项-2" class="headerlink" title="注意事项"></a>注意事项</h4><p>在进行逻辑运算时，通常会遇到其他数据类型转为boolean数据。</p>
+<ol>
+<li>number转boolean时：0或NaN为假，其他为真</li>
+<li>string转boolean时：除了空字符串为假，其他都是true</li>
+<li>null和undefined转boolean时：都为false</li>
+<li>对象转boolean时：都为true</li>
+</ol>
+<h3 id="三元运算符"><a href="#三元运算符" class="headerlink" title="三元运算符"></a>三元运算符</h3><h4 id="格式-6"><a href="#格式-6" class="headerlink" title="格式"></a>格式</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;表达式为真，则返回结果1。为假，则返回结果2</span><br><span class="line">表达式 ? 结果1 : 结果2</span><br></pre></td></tr></table></figure>
+
+<h4 id="演示-6"><a href="#演示-6" class="headerlink" title="演示"></a>演示</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">let a &#x3D; 1;</span><br><span class="line">let b &#x3D; 2;</span><br><span class="line">let c &#x3D; a &gt; b ? &quot;正确&quot; : &quot;错误&quot;;</span><br><span class="line">console.log(c);&#x2F;&#x2F;错误</span><br></pre></td></tr></table></figure>
+
+<h2 id="控制语句"><a href="#控制语句" class="headerlink" title="控制语句"></a>控制语句</h2><h3 id="主要成员-5"><a href="#主要成员-5" class="headerlink" title="主要成员"></a>主要成员</h3><ol>
+<li><code>if...else...</code></li>
+<li><code>while</code></li>
+<li><code>do...while</code></li>
+<li><code>for</code></li>
+<li><code>switch...case</code></li>
+</ol>
+<h3 id="注意事项-3"><a href="#注意事项-3" class="headerlink" title="注意事项"></a>注意事项</h3><p>switch语句的差异：</p>
+<ol>
+<li>在java中，switch语句可以接受的数据类型只有：<code>byte</code>、<code>short</code>、<code>int</code>、<code>char</code>、<code>枚举</code>、<code>String</code>。</li>
+<li>在Javascript中，switch语句可以接受任意的原始数据类型</li>
+</ol>
+<h2 id="JS特殊语法"><a href="#JS特殊语法" class="headerlink" title="JS特殊语法"></a>JS特殊语法</h2><ol>
+<li><p>语句以<code>;</code>结尾，如果一行只有一条语句则可以省略，但不建议</p>
+</li>
+<li><p>变量的定义使用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">let</span><br></pre></td></tr></table></figure>
+
+<p>关键字，但也可以不使用</p>
+<ul>
+<li>使用<code>let</code>关键字定义变量，定义的变量为局部变量。</li>
+<li>不是用<code>let</code>关键字定义变量，定义的变量为全局变量，但不建议</li>
+</ul>
+</li>
+</ol>
+<h1 id="JavaScript对象"><a href="#JavaScript对象" class="headerlink" title="JavaScript对象"></a>JavaScript对象</h1><p>JavaScript中的函数相当于Java中的方法，大致可以分为以下几种：</p>
+<ul>
+<li>function-方法对象</li>
+<li>Array-数组对象</li>
+<li>Date-日期对象</li>
+<li>Math-数学对象</li>
+<li>RegExp-正则对象</li>
+<li>Global-全局对象</li>
+<li>Number-数字包装对象</li>
+<li>String-字符串对象</li>
+<li>Boolean-布尔对象</li>
+<li>Error-错误对象</li>
+</ul>
+<p>下面我会逐个讲解。</p>
+<h2 id="function-函数对象"><a href="#function-函数对象" class="headerlink" title="function-函数对象"></a>function-函数对象</h2><h3 id="创建"><a href="#创建" class="headerlink" title="创建"></a>创建</h3><h4 id="格式-7"><a href="#格式-7" class="headerlink" title="格式"></a>格式</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;创建函数格式一</span><br><span class="line">function 函数名(形参列表) &#123;</span><br><span class="line">    函数体</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;创建函数格式二</span><br><span class="line">let 函数名 &#x3D; function(形参列表) &#123;</span><br><span class="line">    函数体</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;创建函数格式三（不建议使用）</span><br><span class="line">let 函数名 &#x3D; new function(形参列表,函数体);</span><br></pre></td></tr></table></figure>
+
+<h4 id="演示-7"><a href="#演示-7" class="headerlink" title="演示"></a>演示</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;创建函数格式一</span><br><span class="line">function fun01(a, b) &#123;</span><br><span class="line">    console.log(&quot;fun01的结果为：&quot; + (a + b));</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F;创建函数格式二</span><br><span class="line">let fun02 &#x3D; function(a,b)&#123;</span><br><span class="line">    console.log(&quot;fun02的结果为：&quot; + (a + b));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="调用"><a href="#调用" class="headerlink" title="调用"></a>调用</h3><h4 id="格式-8"><a href="#格式-8" class="headerlink" title="格式"></a>格式</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">函数名(实参列表);</span><br></pre></td></tr></table></figure>
+
+<h4 id="演示-8"><a href="#演示-8" class="headerlink" title="演示"></a>演示</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;调用fun01</span><br><span class="line">fun01(10,20);&#x2F;&#x2F;fun01的结果为：30</span><br><span class="line">&#x2F;&#x2F;调用fun02</span><br><span class="line">fun02(30,40);&#x2F;&#x2F;fun02的结果为：70</span><br></pre></td></tr></table></figure>
+
+<h3 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h3><p><code>length</code>：函数形参的个数。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let d &#x3D; fun01.length;</span><br><span class="line"></span><br><span class="line">console.log(&quot;函数fun01的形参个数为：&quot; + d);&#x2F;&#x2F;函数fun01的形参个数为：2</span><br></pre></td></tr></table></figure>
+
+<h3 id="特点-1"><a href="#特点-1" class="headerlink" title="特点"></a>特点</h3><ol>
+<li>创建方法时，形参类型不需要写，返回值类型也不需要写。</li>
+<li>方法是一个对象，如果定义名称相同的方法，会后者后覆盖前者。</li>
+<li>在JS中，方法的调用只与方法的名称有关，和参数列表无关。即只要方法名正确，你参数传少、传多，都是可以正常调用方法的。</li>
+<li>在方法声明中有一个隐藏的内置对象（数组）——arguments，封装所有的实际参数。所以哪怕方法形参只有两个，但是你也可以传入三个，因为实参都是先被<code>arguments</code>数组所接收了。</li>
+</ol>
+<h2 id="Array-数组对象"><a href="#Array-数组对象" class="headerlink" title="Array-数组对象"></a>Array-数组对象</h2><h3 id="创建-1"><a href="#创建-1" class="headerlink" title="创建"></a>创建</h3><h4 id="格式-9"><a href="#格式-9" class="headerlink" title="格式"></a>格式</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;创建数组格式一</span><br><span class="line">let 数组名 &#x3D; new Array();</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;创建数组格式二</span><br><span class="line">let 数组名 &#x3D; new Array(默认长度);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;创建数组格式三</span><br><span class="line">let 数组名 &#x3D; new Array(元素列表);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;创建数组格式四</span><br><span class="line">let 数组名 &#x3D; [元素列表];</span><br></pre></td></tr></table></figure>
+
+<h4 id="演示-9"><a href="#演示-9" class="headerlink" title="演示"></a>演示</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;创建数组格式一</span><br><span class="line">let arr01 &#x3D; new Array();</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;创建数组格式二</span><br><span class="line">let arr02 &#x3D; new Array(3);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;创建数组格式三</span><br><span class="line">let arr03 &#x3D; new Array(1,2,3);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;创建数组格式四</span><br><span class="line">let arr04 &#x3D; [4,5,6,7,8];</span><br></pre></td></tr></table></figure>
+
+<h3 id="遍历"><a href="#遍历" class="headerlink" title="遍历"></a>遍历</h3><h4 id="格式-10"><a href="#格式-10" class="headerlink" title="格式"></a>格式</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">数组名[索引];</span><br></pre></td></tr></table></figure>
+
+<h4 id="演示-10"><a href="#演示-10" class="headerlink" title="演示"></a>演示</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;遍历数组</span><br><span class="line">for (let i &#x3D; 0; i &lt; arr04.length; i++) &#123;</span><br><span class="line">    console.log(arr04[i]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="属性-1"><a href="#属性-1" class="headerlink" title="属性"></a>属性</h3><p><code>length</code>：数组的长度</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">let num &#x3D; arr03.length;&#x2F;&#x2F;获取数组arr03的长度</span><br></pre></td></tr></table></figure>
+
+<h3 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h3><h4 id="join"><a href="#join" class="headerlink" title="join()"></a>join()</h4><p>将数组中的元素按照指定的分隔符拼接为字符串</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;将数组中的元素按照指定的分隔符拼接为字符串</span><br><span class="line">let arr05 &#x3D; arr04.join(&quot;-&quot;);</span><br><span class="line">console.log(arr05);&#x2F;&#x2F;&#x2F;&#x2F;4-5-6-7-8</span><br></pre></td></tr></table></figure>
+
+<h4 id="push"><a href="#push" class="headerlink" title="push()"></a>push()</h4><p>向数组的末尾添加一个或更多元素，并返回新的长度。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;向数组的末尾添加一个或更多元素，并返回新的长度</span><br><span class="line">let length &#x3D; arr04.push(9,10,11);</span><br><span class="line">console.log(length);&#x2F;&#x2F;8</span><br></pre></td></tr></table></figure>
+
+<h3 id="特点-2"><a href="#特点-2" class="headerlink" title="特点"></a>特点</h3><ol>
+<li>JS中，数组存储元素的类型不是统一的，是可变的。而Java数组只能存储单一类型的元素。</li>
+<li>JS中，数组长度也不是固定的，数组长度可变。而Java数组长度创建之初就固定，不可改变。</li>
+</ol>
+<h2 id="Date-日期对象"><a href="#Date-日期对象" class="headerlink" title="Date-日期对象"></a>Date-日期对象</h2><h3 id="创建-2"><a href="#创建-2" class="headerlink" title="创建"></a>创建</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="格式-11"><a href="#格式-11" class="headerlink" title="格式"></a>格式</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">let 日期对象名 &#x3D; new Date();</span><br></pre></td></tr></table></figure>
+
+<h4 id="演示-11"><a href="#演示-11" class="headerlink" title="演示"></a>演示</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">let newTime &#x3D; new Date();</span><br><span class="line">document.write(newTime);&#x2F;&#x2F;Tue Dec 22 2020 22:45:04 GMT+0800 (GMT+08:00)</span><br></pre></td></tr></table></figure>
+
+<h3 id="方法-1"><a href="#方法-1" class="headerlink" title="方法"></a>方法</h3><ul>
+<li><p><code>toLocaleString()</code>：返回当前date对象对应的时间本地字符串格式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let newTime &#x3D; new Date();</span><br><span class="line">let localeTime &#x3D; newTime.toLocaleDateString();</span><br><span class="line">document.write(localeTime);&#x2F;&#x2F;2020&#x2F;12&#x2F;22</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>getTime()</code>：获取毫秒值。返回当前如期对象描述的时间到1970年1月1日零点的毫秒值差</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let newTime &#x3D; new Date();</span><br><span class="line">let MSTime &#x3D; newTime.getTime();</span><br><span class="line">document.write(MSTime);&#x2F;&#x2F;1608648497413</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="Math-数学对象"><a href="#Math-数学对象" class="headerlink" title="Math-数学对象"></a>Math-数学对象</h2><h3 id="创建-3"><a href="#创建-3" class="headerlink" title="创建"></a>创建</h3><p>Javascript中的Math也不需要创建了，直接通过<code>Math.方法名()</code>的方式来使用数学对象。</p>
+<h3 id="属性-2"><a href="#属性-2" class="headerlink" title="属性"></a>属性</h3><p><code>PI</code>：圆周率</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">let a &#x3D; Math.PI;</span><br><span class="line">document.write(a);&#x2F;&#x2F;3.141592653589793</span><br></pre></td></tr></table></figure>
+
+<h3 id="方法-2"><a href="#方法-2" class="headerlink" title="方法"></a>方法</h3><ul>
+<li><code>random()</code>：返回一个<code>[0,)</code>之间的伪随机数。</li>
+<li><code>ceil()</code>：对传入的参数，向上取整。</li>
+<li><code>floor()</code>：对传入的参数，向下取整。</li>
+<li><code>round()</code>：对传入的参数，四舍五入。</li>
+</ul>
+<h2 id="RegExp-正则对象"><a href="#RegExp-正则对象" class="headerlink" title="RegExp-正则对象"></a>RegExp-正则对象</h2><h3 id="创建-4"><a href="#创建-4" class="headerlink" title="创建"></a>创建</h3><h4 id="格式-12"><a href="#格式-12" class="headerlink" title="格式"></a>格式</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;创建正则格式一</span><br><span class="line">let 正则对象名 &#x3D; new RegExp(&quot;正则表达式&quot;);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;创建正则格式二</span><br><span class="line">let 正则对象名 &#x3D; &#x2F;正则表达式&#x2F;;</span><br></pre></td></tr></table></figure>
+
+<h4 id="演示-12"><a href="#演示-12" class="headerlink" title="演示"></a>演示</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;创建正则格式一</span><br><span class="line">let regExp01 &#x3D; new RegExp(&quot;^0\\\\d&#123;2&#125;.[1-9].*6$&quot;);</span><br><span class="line">document.write(regExp01);&#x2F;&#x2F;&#x2F;^0\\d&#123;2&#125;.[1-9].*6$&#x2F;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;创建正则格式二</span><br><span class="line">let regExp02 &#x3D; &#x2F;^0\\d&#123;2&#125;.[1-9].*6$&#x2F;;</span><br><span class="line">document.write(regExp02);&#x2F;&#x2F;&#x2F;^0\\d&#123;2&#125;.[1-9].*6$&#x2F;&#x2F;^0\\d&#123;2&#125;.[1-9].*6$&#x2F;</span><br></pre></td></tr></table></figure>
+
+<h3 id="规则"><a href="#规则" class="headerlink" title="规则"></a>规则</h3><p>规则太多了，说也说不清，来这里学习吧~</p>
+<p>点我——&gt;<a target="_blank" rel="noopener" href="https://codejiaonang.com/#/">正则学习网站</a></p>
+<h3 id="方法-3"><a href="#方法-3" class="headerlink" title="方法"></a>方法</h3><p><code>test()</code>：传入字符串，验证是否符合正则定义的规范</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let regExp01 &#x3D; new RegExp(&quot;^0\\\\d&#123;2&#125;.[1-9].*6$&quot;);</span><br><span class="line">let result &#x3D; regExp01.test(&quot;3093&quot;);</span><br><span class="line">document.write(result);&#x2F;&#x2F;false</span><br></pre></td></tr></table></figure>
+
+<h2 id="Global-全局对象"><a href="#Global-全局对象" class="headerlink" title="Global-全局对象"></a>Global-全局对象</h2><h3 id="创建-5"><a href="#创建-5" class="headerlink" title="创建"></a>创建</h3><p>全局对象也是不需要创建的，Global对象中的方法也不需要对象，就可以直接被调用。如：<code>alert()</code></p>
+<h3 id="方法-4"><a href="#方法-4" class="headerlink" title="方法"></a>方法</h3><ul>
+<li><code>encodeURI()</code>：将字符串作为 URI 进行编码。</li>
+<li><code>encodeURIComponent()</code>：将字符串作为 URI 组件进行编码。编码的字符更多。</li>
+<li><code>decodeURI()</code>：对 encodeURI() 函数编码过的 URI 进行解码。</li>
+<li><code>decodeURIComponent()</code>：可对 encodeURIComponent() 函数编码的 URI 进行解码。</li>
+<li><code>eval()</code>：解析字符串形式的JavaScript代码，并执行它。</li>
+<li><code>isNaN()</code>：因为用<code>==</code>与NaN进行比较，哪怕是NaN自身，也只能得到false。使用此方法，可以检查数据本身其是否为NaN。</li>
+<li><code>parseInt()</code>：逐一判断每一个字符是否是数字，直到不是数字为止，将前边数字部分转为number。</li>
+</ul>
+<h2 id="Number-数字包装对象"><a href="#Number-数字包装对象" class="headerlink" title="Number-数字包装对象"></a>Number-数字包装对象</h2><h3 id="概述-11"><a href="#概述-11" class="headerlink" title="概述"></a>概述</h3><p>Number 对象是原始数值的包装对象。</p>
+<h3 id="创建-6"><a href="#创建-6" class="headerlink" title="创建"></a>创建</h3><h4 id="格式-13"><a href="#格式-13" class="headerlink" title="格式"></a>格式</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">let 变量名 &#x3D; new Number(value);</span><br></pre></td></tr></table></figure>
+
+<h4 id="演示-13"><a href="#演示-13" class="headerlink" title="演示"></a>演示</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">let num &#x3D; new Number(40);</span><br></pre></td></tr></table></figure>
+
+<h3 id="方法-5"><a href="#方法-5" class="headerlink" title="方法"></a>方法</h3><ul>
+<li><p><code>toString()</code>：数字转为字符串</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">let num &#x3D; new Number(40);</span><br><span class="line">document.write(typeof(num) + &quot;&lt;br&#x2F;&gt;&quot;);&#x2F;&#x2F;object</span><br><span class="line"></span><br><span class="line">let string &#x3D; num.toString();</span><br><span class="line">document.write(typeof(string));&#x2F;&#x2F;string</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>valueof()</code>：拆箱</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">let num &#x3D; new Number(40);</span><br><span class="line">document.write(typeof(num) + &quot;&lt;br&#x2F;&gt;&quot;);&#x2F;&#x2F;object</span><br><span class="line"></span><br><span class="line">let number &#x3D; num.valueOf();</span><br><span class="line">document.write(typeof(number));&#x2F;&#x2F;number</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="String-字符串对象"><a href="#String-字符串对象" class="headerlink" title="String-字符串对象"></a>String-字符串对象</h2><h3 id="概述-12"><a href="#概述-12" class="headerlink" title="概述"></a>概述</h3><p>String 对象用于处理文本（字符串），和Java的String类几乎一致。</p>
+<h3 id="创建-7"><a href="#创建-7" class="headerlink" title="创建"></a>创建</h3><h4 id="格式-14"><a href="#格式-14" class="headerlink" title="格式"></a>格式</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;创建string对象格式一</span><br><span class="line">let 变量名 &#x3D; new String(&quot;字符串内容&quot;);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;创建string对象格式二</span><br><span class="line">let 变量名 &#x3D; new String(&#39;字符串内容&#39;);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;创建string对象格式三</span><br><span class="line">let 变量名 &#x3D; &quot;字符串内容&quot;;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;创建string对象格式四</span><br><span class="line">let 变量名 &#x3D; &#39;字符串内容&#39;;</span><br></pre></td></tr></table></figure>
+
+<h4 id="演示-14"><a href="#演示-14" class="headerlink" title="演示"></a>演示</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;创建string对象格式一</span><br><span class="line">let s01 &#x3D; new String(&quot;字符串一&quot;);</span><br><span class="line">document.write(s01 + &quot;&lt;br&#x2F;&gt;&quot;);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;创建string对象格式二</span><br><span class="line">let s02 &#x3D; new String(&#39;字符串二&#39;);</span><br><span class="line">document.write(s02 + &quot;&lt;br&#x2F;&gt;&quot;);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;创建string对象格式三</span><br><span class="line">let s03 &#x3D; &quot;字符串三&quot;;</span><br><span class="line">document.write(s03 + &quot;&lt;br&#x2F;&gt;&quot;);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;创建string对象格式四</span><br><span class="line">let s04 &#x3D; &#39;字符串四&#39;;</span><br><span class="line">document.write(s04 + &quot;&lt;br&#x2F;&gt;&quot;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="方法-6"><a href="#方法-6" class="headerlink" title="方法"></a>方法</h3><p>很多，也是基本和Java的差不多。您啊，干脆直接去【菜鸟教程】学得了。<a target="_blank" rel="noopener" href="https://www.runoob.com/jsref/jsref-obj-string.html">JavaScript String 对象 | 菜鸟教程</a></p>
+<h2 id="Boolean-布尔对象"><a href="#Boolean-布尔对象" class="headerlink" title="Boolean-布尔对象"></a>Boolean-布尔对象</h2><h3 id="概述-13"><a href="#概述-13" class="headerlink" title="概述"></a>概述</h3><p>Boolean 对象用于转换一个不是 Boolean 类型的值转换为 Boolean 类型值 (true 或者false).</p>
+<h3 id="创建-8"><a href="#创建-8" class="headerlink" title="创建"></a>创建</h3><h4 id="格式-15"><a href="#格式-15" class="headerlink" title="格式"></a>格式</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;创建Boolean对象格式一</span><br><span class="line">let boolean01 &#x3D; new Boolean();</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;创建Boolean对象格式二</span><br><span class="line">let boolean02 &#x3D; new Boolean(true);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;创建Boolean对象格式三</span><br><span class="line">let boolean03 &#x3D; false;</span><br></pre></td></tr></table></figure>
+
+<h4 id="演示-15"><a href="#演示-15" class="headerlink" title="演示"></a>演示</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;创建Boolean对象格式一</span><br><span class="line">let boolean01 &#x3D; new Boolean();</span><br><span class="line">document.write(boolean01 + &quot;&lt;br&#x2F;&gt;&quot;);&#x2F;&#x2F;false</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;创建Boolean对象格式二</span><br><span class="line">let boolean02 &#x3D; new Boolean(true);</span><br><span class="line">document.write(boolean02 + &quot;&lt;br&#x2F;&gt;&quot;);&#x2F;&#x2F;true</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;创建Boolean对象格式三</span><br><span class="line">let boolean03 &#x3D; false;</span><br><span class="line">document.write(boolean03 + &quot;&lt;br&#x2F;&gt;&quot;);&#x2F;&#x2F;false</span><br></pre></td></tr></table></figure>
+
+<h2 id="Error-错误对象"><a href="#Error-错误对象" class="headerlink" title="Error-错误对象"></a>Error-错误对象</h2><h3 id="概述-14"><a href="#概述-14" class="headerlink" title="概述"></a>概述</h3><p>error是指程序中的非正常运行状态，在其他编程语言中称为“异常”或“错误”，解释器会为每个错误情形创建并抛出一个Error对象，其中包含错误的描述信息；</p>
+<p>ECMAScript定义了六种类型的错误，除此之外，还可以使用Error构造方法创建自定义的Error对象，并使用throw语句抛出该对象。</p>
+<h3 id="创建-9"><a href="#创建-9" class="headerlink" title="创建"></a>创建</h3><h4 id="格式-16"><a href="#格式-16" class="headerlink" title="格式"></a>格式</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;创建Error对象格式一</span><br><span class="line">let 变量名 &#x3D; new Error();</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;创建Error对象格式二</span><br><span class="line">let 变量名 &#x3D; new Error(message);</span><br></pre></td></tr></table></figure>
+
+<h4 id="演示-16"><a href="#演示-16" class="headerlink" title="演示"></a>演示</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;创建Error对象格式一</span><br><span class="line">let error01 &#x3D; new Error();</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;创建Error对象格式二</span><br><span class="line">let error02 &#x3D; new Error(&quot;空指针异常&quot;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h3><ol>
+<li><code>ReferenceError</code>：引用错误，要用的东西没找到；</li>
+<li><code>TypeError</code>：类型错误，错误的调用了对象的方法；</li>
+<li><code>RangeError</code>：范围错误，专指参数超范围；</li>
+<li><code>SyntaxError</code>：语法写错了；</li>
+<li><code>EvalError</code>：eval()方法错误的使用；</li>
+<li><code>URIError</code>：URI地址错误；</li>
+</ol>
+<h3 id="属性-3"><a href="#属性-3" class="headerlink" title="属性"></a>属性</h3><ul>
+<li><code>name</code>： 设置或返回一个错误名</li>
+<li><code>message</code>： 设置或返回一个错误信息(字符串)</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">let error02 &#x3D; new Error(&quot;空指针异常&quot;);</span><br><span class="line"></span><br><span class="line">let errorName &#x3D; error02.name &#x3D; &quot;我的Error对象&quot;;</span><br><span class="line">document.write(errorName + &quot;&lt;br&#x2F;&gt;&quot;);&#x2F;&#x2F;我的Error对象</span><br><span class="line"></span><br><span class="line">let errorMessage01 &#x3D; error02.message;</span><br><span class="line">document.write(errorMessage01 + &quot;&lt;br&#x2F;&gt;&quot;);&#x2F;&#x2F;空指针异常</span><br><span class="line"></span><br><span class="line">error02.message &#x3D; &quot;德玛西亚的异常&quot;;</span><br><span class="line">document.write(error02.message + &quot;&lt;br&#x2F;&gt;&quot;);&#x2F;&#x2F;德玛西亚的异常</span><br></pre></td></tr></table></figure>
+
+<h2 id="自定义Object对象（扩展）"><a href="#自定义Object对象（扩展）" class="headerlink" title="自定义Object对象（扩展）"></a>自定义Object对象（扩展）</h2><p>这个自定义的Object对象，和我们Java中的类很相识，都是由属性和方法(函数)组成的。下面我会来详细介绍一下这个自定Object对象的创建和使用。</p>
+<h3 id="创建-10"><a href="#创建-10" class="headerlink" title="创建"></a>创建</h3><h4 id="格式-17"><a href="#格式-17" class="headerlink" title="格式"></a>格式</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;创建自定Object对象格式一</span><br><span class="line">let 变量名 &#x3D; new Object();</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;创建自定义Object对象格式二</span><br><span class="line">let 变量名 &#x3D; &#123;</span><br><span class="line">    属性名: 属性值,</span><br><span class="line">    函数名: 函数体</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="演示-17"><a href="#演示-17" class="headerlink" title="演示"></a>演示</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;创建自定Object对象格式一</span><br><span class="line">let obj01 &#x3D; new Object();</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;创建自定义Object对象格式二</span><br><span class="line">let obj02 &#x3D; &#123;</span><br><span class="line">    name: &quot;Jason&quot;,</span><br><span class="line">    age: 21,</span><br><span class="line">    reading: function()&#123;</span><br><span class="line">        document.write(&quot;我在读书!&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="添加、修改值"><a href="#添加、修改值" class="headerlink" title="添加、修改值"></a>添加、修改值</h3><h4 id="格式-18"><a href="#格式-18" class="headerlink" title="格式"></a>格式</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Object对象.属性名 &#x3D; 属性值;</span><br><span class="line"></span><br><span class="line">Object对象.函数名 &#x3D; 函数体;</span><br></pre></td></tr></table></figure>
+
+<h4 id="演示-18"><a href="#演示-18" class="headerlink" title="演示"></a>演示</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">obj01.name &#x3D; &quot;Bernardo Li&quot;;</span><br><span class="line"></span><br><span class="line">obj01.reading &#x3D; function () &#123;</span><br><span class="line">    document.write(&quot;我也在读书&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>修改值与添加值一样，修改值无非是在对已存在的值进行赋值。</p>
+</blockquote>
+<h3 id="使用值"><a href="#使用值" class="headerlink" title="使用值"></a>使用值</h3><h4 id="格式-19"><a href="#格式-19" class="headerlink" title="格式"></a>格式</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Object对象.属性名;</span><br><span class="line"></span><br><span class="line">Object对象.函数名();</span><br></pre></td></tr></table></figure>
+
+<h4 id="演示-19"><a href="#演示-19" class="headerlink" title="演示"></a>演示</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">document.write(obj02.name + &quot;&lt;br&#x2F;&gt;&quot;);&#x2F;&#x2F;Jason</span><br><span class="line">obj02.reading();&#x2F;&#x2F;我在读书!</span><br></pre></td></tr></table></figure>
+
+<h1 id="BOM对象"><a href="#BOM对象" class="headerlink" title="BOM对象"></a>BOM对象</h1><h2 id="概述-15"><a href="#概述-15" class="headerlink" title="概述"></a>概述</h2><p>BOM(Browser Object Model) 是指浏览器对象模型，是用于描述这种对象与对象之间层次关系的模型，浏览器对象模型提供了独立于内容的、可以与浏览器窗口进行互动的对象结构。</p>
+<h2 id="组成"><a href="#组成" class="headerlink" title="组成"></a>组成</h2><p>BOM由多个对象组成，其中代表浏览器窗口的Window对象是BOM的顶层对象，其他对象都是该对象的子对象。其子对象如下：</p>
+<ul>
+<li>document——文档对象</li>
+<li>Navigator——浏览器对象</li>
+<li>Screen——显示器对象</li>
+<li>History——历史记录对象</li>
+<li>Location——地址栏对象</li>
+</ul>
+<h2 id="Window-窗口对象"><a href="#Window-窗口对象" class="headerlink" title="Window-窗口对象"></a>Window-窗口对象</h2><h3 id="创建-11"><a href="#创建-11" class="headerlink" title="创建"></a>创建</h3><p>首先window对象是不需要手动去创建的。我们可以通过<code>window.方法名()</code>的方式调用它的方法，甚至不需要<code>window.</code>，就可以直接调用其方法。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;window.方法名()</span><br><span class="line">window.alert(&quot;我是一个弹窗&quot;);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;省略window，直接调用方法</span><br><span class="line">alert(&quot;我也是一个弹窗&quot;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="属性-4"><a href="#属性-4" class="headerlink" title="属性"></a>属性</h3><p>我们可以通过BOM对象中的属性来获取其子对象。如下：</p>
+<ol>
+<li><code>Window.Document</code>：获取Document文档对象<code>Window.</code>可省略）。</li>
+<li><code>Window.History</code>：获取History历史记录对象（<code>Window.</code>可省略）。</li>
+<li><code>Window.Navigator</code>：获取Navigator浏览器对象（<code>Window.</code>可省略）。</li>
+<li><code>Window.Screen</code>：获取Screen显示器对象（<code>Window.</code>可省略）。</li>
+<li><code>Window.Location</code>：获取Location地址栏对象（<code>Window.</code>可省略）。</li>
+</ol>
+<h3 id="方法-7"><a href="#方法-7" class="headerlink" title="方法"></a>方法</h3><h1 id="DOM对象"><a href="#DOM对象" class="headerlink" title="DOM对象"></a>DOM对象</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>我们已经讲解过BOM对象了，知道DOM对象只是BOM顶层对象Window的几个子对象之一。既然DOM对象是BOM对象的子对象，为什么不包含在BOM对象中讲解，而是要单独提取出来进行说明呢？原因就是：DOM对象与History对象、Location对象等虽都为BOM的子对象，但DOM对象在我们日常开发中的使用频率远高于同级的BOM其他子对象。所以我们要对其详细讲解一下。</p>
+<h2 id="概述-16"><a href="#概述-16" class="headerlink" title="概述"></a>概述</h2><p>通过 DOM，可以访问所有的 HTML 元素，连同它们所包含的文本和属性。可以对其中的内容进行修改和删除，同时也可以创建新的元素。</p>
+<p>对于Dom对象的理解，可以总结为四点：</p>
+<ol>
+<li>Document 它管理了所有的 HTML 文档内容。</li>
+<li>document 它是一种树结构的文档，有层级关系。</li>
+<li>它让我们把所有的标签都对象化</li>
+<li>我们可以通过 document 访问所有的标签对象。</li>
+</ol>
+<p><a target="_blank" rel="noopener" href="https://gitee.com/jasonM4A1/pictureHost/raw/master/20201223072456.png"><img src="https://gitee.com/jasonM4A1/pictureHost/raw/master/20201223072456.png" alt="img"></a></p>
+<h2 id="分类-1"><a href="#分类-1" class="headerlink" title="分类"></a>分类</h2><p>document对象包含了以下几种对象：</p>
+<ol>
+<li>Element-元素对象</li>
+<li>Attribute-属性对象</li>
+<li>Text-文本对象</li>
+<li>Comment-注释对象</li>
+<li>Node-节点对象</li>
+</ol>
+<h2 id="创建-12"><a href="#创建-12" class="headerlink" title="创建"></a>创建</h2><h3 id="方式一"><a href="#方式一" class="headerlink" title="方式一"></a>方式一</h3><p>通过windown对象来获取，格式为：<code>window.document</code></p>
+<h3 id="方式二"><a href="#方式二" class="headerlink" title="方式二"></a>方式二</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">window.&#96;可以省略，直接调用document对象，格式为：&#96;document</span><br></pre></td></tr></table></figure>
+
+<h3 id="获取其他对象"><a href="#获取其他对象" class="headerlink" title="获取其他对象"></a>获取其他对象</h3><ul>
+<li><code>document.createElement(tagName)</code>：给定的标签名，创建一个标签对象。tagName为要创建的标签名。</li>
+<li><code>document.createAttribute(attributeName)</code>：创建一个指定名称的属性，并返回Attr 对象属性。</li>
+<li><code>document.createComment(text)</code>：创建注释节点。text为注释文本。</li>
+<li><code>document.createTextNode(text)</code>：创建文本节点。text为文本节点的文本。</li>
+</ul>
+<h2 id="Element-元素对象"><a href="#Element-元素对象" class="headerlink" title="Element-元素对象"></a>Element-元素对象</h2><h3 id="获取"><a href="#获取" class="headerlink" title="获取"></a>获取</h3><ul>
+<li><code>document.getElementById(elementId)</code>：通过标签的 id 属性查找标签 dom 对象，elementId 是标签的 id 属性值。</li>
+<li><code>document.getElementsByName(elementName)</code>：通过标签的 name 属性查找标签 dom 对象，elementName 标签的 name 属性值、</li>
+<li><code>document.getElementsByTagName(tagName)</code>：通过标签名查找标签 dom 对象，tagname 为标签名。</li>
+</ul>
+<blockquote>
+<p>三个查询方法的优先级问题：</p>
+<ol>
+<li>如果有 id 属性，优先使用 getElementById 方法来进行查询</li>
+<li>如果没有 id 属性，则优先使用 getElementsByName 方法来进行查询</li>
+<li>如果 id 属性和 name 属性都没有最后再按标签名查 getElementsByTagName</li>
+</ol>
+</blockquote>
+<p><strong>代码演示</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang&#x3D;&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset&#x3D;&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;title&gt;Demo01&lt;&#x2F;title&gt;</span><br><span class="line">    &lt;style type&#x3D;&quot;text&#x2F;css&quot;&gt;</span><br><span class="line">        #title &#123;</span><br><span class="line">            font-weight: bold;</span><br><span class="line">            color: cornflowerblue;</span><br><span class="line">        &#125;</span><br><span class="line">    &lt;&#x2F;style&gt;</span><br><span class="line">&lt;&#x2F;head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;!--一个表单--&gt;</span><br><span class="line">&lt;form id&#x3D;&quot;table&quot; action&#x3D;&quot;&#x2F;&quot;&gt;</span><br><span class="line">    &lt;span id&#x3D;&quot;title&quot;&gt;请选择你的爱好&lt;&#x2F;span&gt;&lt;br&#x2F;&gt;</span><br><span class="line">    &lt;span&gt;Game：&lt;&#x2F;span&gt;&lt;input type&#x3D;&quot;checkbox&quot; name&#x3D;&quot;hobbies&quot; value&#x3D;&quot;Game&quot;&gt;</span><br><span class="line">    &lt;span&gt;Reading:&lt;&#x2F;span&gt;&lt;input type&#x3D;&quot;checkbox&quot; name&#x3D;&quot;hobbies&quot; value&#x3D;&quot;Reading&quot;&gt;</span><br><span class="line">    &lt;span&gt;Boxing:&lt;&#x2F;span&gt;&lt;input type&#x3D;&quot;checkbox&quot; name&#x3D;&quot;hobbies&quot; value&#x3D;&quot;Boxing&quot;&gt;&lt;br&#x2F;&gt;</span><br><span class="line">    &lt;input type&#x3D;&quot;submit&quot; value&#x3D;&quot;提交&quot;&gt;</span><br><span class="line">&lt;&#x2F;form&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br><span class="line">&lt;script type&#x3D;&quot;text&#x2F;javascript&quot;&gt;</span><br><span class="line">    &#x2F;&#x2F;通过Id获取dom对象</span><br><span class="line">    var tableElement &#x3D; document.getElementById(&quot;table&quot;);</span><br><span class="line">    document.write(tableElement + &quot;&lt;br&#x2F;&gt;&quot;);&#x2F;&#x2F;[object HTMLFormElement]</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F;通过name获取dom对象们</span><br><span class="line">    var hobbiesElement &#x3D; document.getElementsByName(&quot;hobbies&quot;);</span><br><span class="line">    document.write(hobbiesElement + &quot;&lt;br&#x2F;&gt;&quot;);&#x2F;&#x2F;[object NodeList]</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F;通过tagName获取dom对象们</span><br><span class="line">    var spanElement &#x3D; document.getElementsByTagName(&quot;span&quot;);</span><br><span class="line">    document.write(spanElement + &quot;&lt;br&#x2F;&gt;&quot;);&#x2F;&#x2F;[object HTMLCollection]</span><br><span class="line">&lt;&#x2F;script&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="方法-8"><a href="#方法-8" class="headerlink" title="方法"></a>方法</h3><ul>
+<li><code>setAttribute(&quot;属性名&quot;,属性值)</code>：设置调用者的指定属性名的属性值。</li>
+<li><code>removeAttribute(&quot;属性名&quot;)</code>：移除调用者的指定属性。</li>
+</ul>
+<h2 id="Node-节点对象"><a href="#Node-节点对象" class="headerlink" title="Node-节点对象"></a>Node-节点对象</h2><h3 id="属性-5"><a href="#属性-5" class="headerlink" title="属性"></a>属性</h3><ul>
+<li><code>parentNode</code>：获取当前节点的父节点。</li>
+<li><code>childNodes</code>：获取当前节点的所有子节点</li>
+<li><code>firstChild</code>：获取当前节点的第一个子节点</li>
+<li><code>lastChid</code>：获取当前节点的最后一个子节点</li>
+<li><code>previousSibling</code>：获取当前节点的上一个节点</li>
+<li><code>nextSibling</code>：获取当前节点的下一个节点</li>
+<li><code>className</code>：获取或设置标签的 class 属性值</li>
+<li><code>innerHTML</code>：获取/设置起始标签和结束标签中的内容</li>
+<li><code>innerText</code>：获取/设置起始标签和结束标签中的文本</li>
+</ul>
+<h3 id="方法-9"><a href="#方法-9" class="headerlink" title="方法"></a>方法</h3><ul>
+<li><code>appendChild()</code>：向节点的子节点列表的结尾添加新的子节点。</li>
+<li><code>removeChild()</code>：删除（并返回）当前节点的指定子节点。</li>
+<li><code>replaceChild()</code>：用新节点替换一个子节点。</li>
+</ul>
+<blockquote>
+<p>document对象下的其他对象在这里就不在过多的叙述了，有兴趣的可以去菜鸟教程中学习。</p>
+</blockquote>
+<h1 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h1><h2 id="概述-17"><a href="#概述-17" class="headerlink" title="概述"></a>概述</h2><p>某些组件被执行了某些操作后，触发某些代码的执行。</p>
+<h2 id="点击事件"><a href="#点击事件" class="headerlink" title="点击事件"></a>点击事件</h2><ol>
+<li><code>onclick</code>：单击事件</li>
+<li><code>ondblclick</code>：双击事件</li>
+</ol>
+<h2 id="焦点事件"><a href="#焦点事件" class="headerlink" title="焦点事件"></a>焦点事件</h2><ol>
+<li><pre><code>onblur
+</code></pre>
+<p>：失去焦点</p>
+<ul>
+<li>一般用于表单验证</li>
+</ul>
+</li>
+<li><p><code>onfocus</code>：元素获得焦点</p>
+</li>
+</ol>
+<h2 id="加载事件"><a href="#加载事件" class="headerlink" title="加载事件"></a>加载事件</h2><p><code>onload</code>：一张页面或一副图像完成加载。</p>
+<h2 id="鼠标事件"><a href="#鼠标事件" class="headerlink" title="鼠标事件"></a>鼠标事件</h2><ol>
+<li><code>onmousedown</code>：鼠标按钮被按下。</li>
+<li><code>onmouseup</code>：鼠标按钮被松开。</li>
+<li><code>onmousemove</code>：鼠标被移动。</li>
+<li><code>onmouseover</code>：鼠标移到某元素之上。</li>
+<li><code>onmouseout</code>：鼠标从某元素移开。</li>
+</ol>
+<h2 id="键盘事件"><a href="#键盘事件" class="headerlink" title="键盘事件"></a>键盘事件</h2><ol>
+<li><code>onkeydown</code>：某个键盘按键被按下。</li>
+<li><code>onkeyup</code>：某个键盘按键被松开。</li>
+<li><code>onkeypress</code>：某个键盘按键被按下并松开。</li>
+</ol>
+<h2 id="选择和改变"><a href="#选择和改变" class="headerlink" title="选择和改变"></a>选择和改变</h2><ol>
+<li><code>onchange</code>：域的内容被改变。</li>
+<li><code>onselect</code>：文本被选中。</li>
+</ol>
+<h2 id="表单事件"><a href="#表单事件" class="headerlink" title="表单事件"></a>表单事件</h2><ol>
+<li><code>onsubmit</code>：确认按钮被点击。</li>
+<li><code>onreset</code>:重置按钮被点击。</li>
+</ol>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">Bernardo Li</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2021/02/02/107-JavaScript%E5%85%A5%E9%97%A8/">http://example.com/2021/02/02/107-JavaScript%E5%85%A5%E9%97%A8/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">Code</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/JavaScript/">JavaScript</a><a class="post-meta__tags" href="/tags/%E5%89%8D%E7%AB%AF/">前端</a></div><div class="post_share"><div class="social-share" data-image="https://gitee.com/jasonM4A1/pictureHost/raw/master/img/20210202012435.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2021/02/02/108_HttpServletRequest%E5%92%8CHttpServletResponse%E8%AF%A6%E8%A7%A3/"><img class="prev-cover" src="https://gitee.com/jasonM4A1/pictureHost/raw/master/img/20210202012633.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">HttpServletRequest和HttpServletResponse详解</div></div></a></div><div class="next-post pull-right"><a href="/2021/02/02/106-windows%E5%A6%82%E4%BD%95%E6%9C%89%E6%95%88%E7%9A%84%E6%B8%85%E7%90%86C%E7%9B%98%E7%A9%BA%E9%97%B4/"><img class="next-cover" src="https://gitee.com/jasonM4A1/pictureHost/raw/master/img/20210202011708.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Windows如何有效的清理C盘空间</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span> 相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2021/02/02/112_JavaWeb-狂神说笔记/" title="JavaWeb-狂神说笔记(未完)"><img class="cover" src="https://gitee.com/jasonM4A1/pictureHost/raw/master/img/20210202013902.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-02-02</div><div class="title">JavaWeb-狂神说笔记(未完)</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-info-avatar is-center"><img class="avatar-img" src="https://gitee.com/jasonM4A1/pictureHost/raw/master/img/20210201095918.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">Bernardo Li</div><div class="author-info__description">一个学开发的笨蛋</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">132</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">70</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">19</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/jasonM4A1"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="mailto:bernarlido266@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#JavaScript-%E6%A6%82%E8%BF%B0"><span class="toc-number">1.</span> <span class="toc-text">JavaScript 概述</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%8B%E7%BB%8D"><span class="toc-number">1.1.</span> <span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%89%B9%E7%82%B9"><span class="toc-number">1.2.</span> <span class="toc-text">特点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%91%E5%B1%95%E5%8F%B2"><span class="toc-number">1.3.</span> <span class="toc-text">发展史</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#JavaScript%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95"><span class="toc-number">2.</span> <span class="toc-text">JavaScript基础语法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8Ehtml%E7%BB%93%E5%90%88%E6%96%B9%E5%BC%8F"><span class="toc-number">2.1.</span> <span class="toc-text">与html结合方式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%85%E9%83%A8JS"><span class="toc-number">2.1.1.</span> <span class="toc-text">内部JS</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A6%82%E8%BF%B0"><span class="toc-number">2.1.1.1.</span> <span class="toc-text">概述</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A0%BC%E5%BC%8F"><span class="toc-number">2.1.1.2.</span> <span class="toc-text">格式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%BC%94%E7%A4%BA"><span class="toc-number">2.1.1.3.</span> <span class="toc-text">演示</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%96%E9%83%A8JS"><span class="toc-number">2.1.2.</span> <span class="toc-text">外部JS</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A6%82%E8%BF%B0-1"><span class="toc-number">2.1.2.1.</span> <span class="toc-text">概述</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A0%BC%E5%BC%8F-1"><span class="toc-number">2.1.2.2.</span> <span class="toc-text">格式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%BC%94%E7%A4%BA-1"><span class="toc-number">2.1.2.3.</span> <span class="toc-text">演示</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JavaScript%E6%B3%A8%E9%87%8A"><span class="toc-number">2.2.</span> <span class="toc-text">JavaScript注释</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A6%82%E8%BF%B0-2"><span class="toc-number">2.2.1.</span> <span class="toc-text">概述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%95%E8%A1%8C%E6%B3%A8%E9%87%8A"><span class="toc-number">2.2.2.</span> <span class="toc-text">单行注释</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A0%BC%E5%BC%8F-2"><span class="toc-number">2.2.2.1.</span> <span class="toc-text">格式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%BC%94%E7%A4%BA-2"><span class="toc-number">2.2.2.2.</span> <span class="toc-text">演示</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%9A%E8%A1%8C%E6%B3%A8%E9%87%8A"><span class="toc-number">2.2.3.</span> <span class="toc-text">多行注释</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A0%BC%E5%BC%8F-3"><span class="toc-number">2.2.3.1.</span> <span class="toc-text">格式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%BC%94%E7%A4%BA-3"><span class="toc-number">2.2.3.2.</span> <span class="toc-text">演示</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JavaScript%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-number">2.3.</span> <span class="toc-text">JavaScript数据类型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A6%82%E8%BF%B0-3"><span class="toc-number">2.3.1.</span> <span class="toc-text">概述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8E%9F%E5%A7%8B%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-number">2.3.2.</span> <span class="toc-text">原始数据类型</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#number%E7%B1%BB%E5%9E%8B"><span class="toc-number">2.3.2.1.</span> <span class="toc-text">number类型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#string%E7%B1%BB%E5%9E%8B"><span class="toc-number">2.3.2.2.</span> <span class="toc-text">string类型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#boolean%E7%B1%BB%E5%9E%8B"><span class="toc-number">2.3.2.3.</span> <span class="toc-text">boolean类型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#null%E7%B1%BB%E5%9E%8B"><span class="toc-number">2.3.2.4.</span> <span class="toc-text">null类型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#undefined%E7%B1%BB%E5%9E%8B"><span class="toc-number">2.3.2.5.</span> <span class="toc-text">undefined类型</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%95%E7%94%A8%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-number">2.3.3.</span> <span class="toc-text">引用数据类型</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JavaScript%E5%8F%98%E9%87%8F"><span class="toc-number">2.4.</span> <span class="toc-text">JavaScript变量</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A6%82%E8%BF%B0-4"><span class="toc-number">2.4.1.</span> <span class="toc-text">概述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%BC%E5%BC%8F-4"><span class="toc-number">2.4.2.</span> <span class="toc-text">格式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%BC%94%E7%A4%BA-4"><span class="toc-number">2.4.3.</span> <span class="toc-text">演示</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B0%E7%89%B9%E6%80%A7"><span class="toc-number">2.4.4.</span> <span class="toc-text">新特性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#typeof%E5%87%BD%E6%95%B0"><span class="toc-number">2.4.5.</span> <span class="toc-text">typeof函数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A6%82%E8%BF%B0-5"><span class="toc-number">2.4.5.1.</span> <span class="toc-text">概述</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A0%BC%E5%BC%8F-5"><span class="toc-number">2.4.5.2.</span> <span class="toc-text">格式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%BC%94%E7%A4%BA-5"><span class="toc-number">2.4.5.3.</span> <span class="toc-text">演示</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JavaScript%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-number">2.5.</span> <span class="toc-text">JavaScript运算符</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E5%85%83%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-number">2.5.1.</span> <span class="toc-text">一元运算符</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A6%82%E8%BF%B0-6"><span class="toc-number">2.5.1.1.</span> <span class="toc-text">概述</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%BB%E8%A6%81%E6%88%90%E5%91%98"><span class="toc-number">2.5.1.2.</span> <span class="toc-text">主要成员</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="toc-number">2.5.1.3.</span> <span class="toc-text">注意事项</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%97%E6%95%B0%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-number">2.5.2.</span> <span class="toc-text">算数运算符</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A6%82%E8%BF%B0-7"><span class="toc-number">2.5.2.1.</span> <span class="toc-text">概述</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%BB%E8%A6%81%E6%88%90%E5%91%98-1"><span class="toc-number">2.5.2.2.</span> <span class="toc-text">主要成员</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B5%8B%E5%80%BC%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-number">2.5.3.</span> <span class="toc-text">赋值运算符</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A6%82%E8%BF%B0-8"><span class="toc-number">2.5.3.1.</span> <span class="toc-text">概述</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%BB%E8%A6%81%E6%88%90%E5%91%98-2"><span class="toc-number">2.5.3.2.</span> <span class="toc-text">主要成员</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AF%94%E8%BE%83%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-number">2.5.4.</span> <span class="toc-text">比较运算符</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A6%82%E8%BF%B0-9"><span class="toc-number">2.5.4.1.</span> <span class="toc-text">概述</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%BB%E8%A6%81%E6%88%90%E5%91%98-3"><span class="toc-number">2.5.4.2.</span> <span class="toc-text">主要成员</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9-1"><span class="toc-number">2.5.4.3.</span> <span class="toc-text">注意事项</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%BB%E8%BE%91%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-number">2.5.5.</span> <span class="toc-text">逻辑运算符</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A6%82%E8%BF%B0-10"><span class="toc-number">2.5.5.1.</span> <span class="toc-text">概述</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%BB%E8%A6%81%E6%88%90%E5%91%98-4"><span class="toc-number">2.5.5.2.</span> <span class="toc-text">主要成员</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9-2"><span class="toc-number">2.5.5.3.</span> <span class="toc-text">注意事项</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89%E5%85%83%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-number">2.5.6.</span> <span class="toc-text">三元运算符</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A0%BC%E5%BC%8F-6"><span class="toc-number">2.5.6.1.</span> <span class="toc-text">格式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%BC%94%E7%A4%BA-6"><span class="toc-number">2.5.6.2.</span> <span class="toc-text">演示</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8E%A7%E5%88%B6%E8%AF%AD%E5%8F%A5"><span class="toc-number">2.6.</span> <span class="toc-text">控制语句</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BB%E8%A6%81%E6%88%90%E5%91%98-5"><span class="toc-number">2.6.1.</span> <span class="toc-text">主要成员</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9-3"><span class="toc-number">2.6.2.</span> <span class="toc-text">注意事项</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JS%E7%89%B9%E6%AE%8A%E8%AF%AD%E6%B3%95"><span class="toc-number">2.7.</span> <span class="toc-text">JS特殊语法</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#JavaScript%E5%AF%B9%E8%B1%A1"><span class="toc-number">3.</span> <span class="toc-text">JavaScript对象</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#function-%E5%87%BD%E6%95%B0%E5%AF%B9%E8%B1%A1"><span class="toc-number">3.1.</span> <span class="toc-text">function-函数对象</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA"><span class="toc-number">3.1.1.</span> <span class="toc-text">创建</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A0%BC%E5%BC%8F-7"><span class="toc-number">3.1.1.1.</span> <span class="toc-text">格式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%BC%94%E7%A4%BA-7"><span class="toc-number">3.1.1.2.</span> <span class="toc-text">演示</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B0%83%E7%94%A8"><span class="toc-number">3.1.2.</span> <span class="toc-text">调用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A0%BC%E5%BC%8F-8"><span class="toc-number">3.1.2.1.</span> <span class="toc-text">格式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%BC%94%E7%A4%BA-8"><span class="toc-number">3.1.2.2.</span> <span class="toc-text">演示</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B1%9E%E6%80%A7"><span class="toc-number">3.1.3.</span> <span class="toc-text">属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%89%B9%E7%82%B9-1"><span class="toc-number">3.1.4.</span> <span class="toc-text">特点</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Array-%E6%95%B0%E7%BB%84%E5%AF%B9%E8%B1%A1"><span class="toc-number">3.2.</span> <span class="toc-text">Array-数组对象</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA-1"><span class="toc-number">3.2.1.</span> <span class="toc-text">创建</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A0%BC%E5%BC%8F-9"><span class="toc-number">3.2.1.1.</span> <span class="toc-text">格式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%BC%94%E7%A4%BA-9"><span class="toc-number">3.2.1.2.</span> <span class="toc-text">演示</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%81%8D%E5%8E%86"><span class="toc-number">3.2.2.</span> <span class="toc-text">遍历</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A0%BC%E5%BC%8F-10"><span class="toc-number">3.2.2.1.</span> <span class="toc-text">格式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%BC%94%E7%A4%BA-10"><span class="toc-number">3.2.2.2.</span> <span class="toc-text">演示</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B1%9E%E6%80%A7-1"><span class="toc-number">3.2.3.</span> <span class="toc-text">属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%B3%95"><span class="toc-number">3.2.4.</span> <span class="toc-text">方法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#join"><span class="toc-number">3.2.4.1.</span> <span class="toc-text">join()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#push"><span class="toc-number">3.2.4.2.</span> <span class="toc-text">push()</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%89%B9%E7%82%B9-2"><span class="toc-number">3.2.5.</span> <span class="toc-text">特点</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Date-%E6%97%A5%E6%9C%9F%E5%AF%B9%E8%B1%A1"><span class="toc-number">3.3.</span> <span class="toc-text">Date-日期对象</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA-2"><span class="toc-number">3.3.1.</span> <span class="toc-text">创建</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A0%BC%E5%BC%8F-11"><span class="toc-number">3.3.1.1.</span> <span class="toc-text">格式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%BC%94%E7%A4%BA-11"><span class="toc-number">3.3.1.2.</span> <span class="toc-text">演示</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%B3%95-1"><span class="toc-number">3.3.2.</span> <span class="toc-text">方法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Math-%E6%95%B0%E5%AD%A6%E5%AF%B9%E8%B1%A1"><span class="toc-number">3.4.</span> <span class="toc-text">Math-数学对象</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA-3"><span class="toc-number">3.4.1.</span> <span class="toc-text">创建</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B1%9E%E6%80%A7-2"><span class="toc-number">3.4.2.</span> <span class="toc-text">属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%B3%95-2"><span class="toc-number">3.4.3.</span> <span class="toc-text">方法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#RegExp-%E6%AD%A3%E5%88%99%E5%AF%B9%E8%B1%A1"><span class="toc-number">3.5.</span> <span class="toc-text">RegExp-正则对象</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA-4"><span class="toc-number">3.5.1.</span> <span class="toc-text">创建</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A0%BC%E5%BC%8F-12"><span class="toc-number">3.5.1.1.</span> <span class="toc-text">格式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%BC%94%E7%A4%BA-12"><span class="toc-number">3.5.1.2.</span> <span class="toc-text">演示</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%84%E5%88%99"><span class="toc-number">3.5.2.</span> <span class="toc-text">规则</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%B3%95-3"><span class="toc-number">3.5.3.</span> <span class="toc-text">方法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Global-%E5%85%A8%E5%B1%80%E5%AF%B9%E8%B1%A1"><span class="toc-number">3.6.</span> <span class="toc-text">Global-全局对象</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA-5"><span class="toc-number">3.6.1.</span> <span class="toc-text">创建</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%B3%95-4"><span class="toc-number">3.6.2.</span> <span class="toc-text">方法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Number-%E6%95%B0%E5%AD%97%E5%8C%85%E8%A3%85%E5%AF%B9%E8%B1%A1"><span class="toc-number">3.7.</span> <span class="toc-text">Number-数字包装对象</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A6%82%E8%BF%B0-11"><span class="toc-number">3.7.1.</span> <span class="toc-text">概述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA-6"><span class="toc-number">3.7.2.</span> <span class="toc-text">创建</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A0%BC%E5%BC%8F-13"><span class="toc-number">3.7.2.1.</span> <span class="toc-text">格式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%BC%94%E7%A4%BA-13"><span class="toc-number">3.7.2.2.</span> <span class="toc-text">演示</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%B3%95-5"><span class="toc-number">3.7.3.</span> <span class="toc-text">方法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#String-%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%AF%B9%E8%B1%A1"><span class="toc-number">3.8.</span> <span class="toc-text">String-字符串对象</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A6%82%E8%BF%B0-12"><span class="toc-number">3.8.1.</span> <span class="toc-text">概述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA-7"><span class="toc-number">3.8.2.</span> <span class="toc-text">创建</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A0%BC%E5%BC%8F-14"><span class="toc-number">3.8.2.1.</span> <span class="toc-text">格式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%BC%94%E7%A4%BA-14"><span class="toc-number">3.8.2.2.</span> <span class="toc-text">演示</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%B3%95-6"><span class="toc-number">3.8.3.</span> <span class="toc-text">方法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Boolean-%E5%B8%83%E5%B0%94%E5%AF%B9%E8%B1%A1"><span class="toc-number">3.9.</span> <span class="toc-text">Boolean-布尔对象</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A6%82%E8%BF%B0-13"><span class="toc-number">3.9.1.</span> <span class="toc-text">概述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA-8"><span class="toc-number">3.9.2.</span> <span class="toc-text">创建</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A0%BC%E5%BC%8F-15"><span class="toc-number">3.9.2.1.</span> <span class="toc-text">格式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%BC%94%E7%A4%BA-15"><span class="toc-number">3.9.2.2.</span> <span class="toc-text">演示</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Error-%E9%94%99%E8%AF%AF%E5%AF%B9%E8%B1%A1"><span class="toc-number">3.10.</span> <span class="toc-text">Error-错误对象</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A6%82%E8%BF%B0-14"><span class="toc-number">3.10.1.</span> <span class="toc-text">概述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA-9"><span class="toc-number">3.10.2.</span> <span class="toc-text">创建</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A0%BC%E5%BC%8F-16"><span class="toc-number">3.10.2.1.</span> <span class="toc-text">格式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%BC%94%E7%A4%BA-16"><span class="toc-number">3.10.2.2.</span> <span class="toc-text">演示</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E7%B1%BB"><span class="toc-number">3.10.3.</span> <span class="toc-text">分类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B1%9E%E6%80%A7-3"><span class="toc-number">3.10.4.</span> <span class="toc-text">属性</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89Object%E5%AF%B9%E8%B1%A1%EF%BC%88%E6%89%A9%E5%B1%95%EF%BC%89"><span class="toc-number">3.11.</span> <span class="toc-text">自定义Object对象（扩展）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA-10"><span class="toc-number">3.11.1.</span> <span class="toc-text">创建</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A0%BC%E5%BC%8F-17"><span class="toc-number">3.11.1.1.</span> <span class="toc-text">格式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%BC%94%E7%A4%BA-17"><span class="toc-number">3.11.1.2.</span> <span class="toc-text">演示</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B7%BB%E5%8A%A0%E3%80%81%E4%BF%AE%E6%94%B9%E5%80%BC"><span class="toc-number">3.11.2.</span> <span class="toc-text">添加、修改值</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A0%BC%E5%BC%8F-18"><span class="toc-number">3.11.2.1.</span> <span class="toc-text">格式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%BC%94%E7%A4%BA-18"><span class="toc-number">3.11.2.2.</span> <span class="toc-text">演示</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E5%80%BC"><span class="toc-number">3.11.3.</span> <span class="toc-text">使用值</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A0%BC%E5%BC%8F-19"><span class="toc-number">3.11.3.1.</span> <span class="toc-text">格式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%BC%94%E7%A4%BA-19"><span class="toc-number">3.11.3.2.</span> <span class="toc-text">演示</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#BOM%E5%AF%B9%E8%B1%A1"><span class="toc-number">4.</span> <span class="toc-text">BOM对象</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A6%82%E8%BF%B0-15"><span class="toc-number">4.1.</span> <span class="toc-text">概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%84%E6%88%90"><span class="toc-number">4.2.</span> <span class="toc-text">组成</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Window-%E7%AA%97%E5%8F%A3%E5%AF%B9%E8%B1%A1"><span class="toc-number">4.3.</span> <span class="toc-text">Window-窗口对象</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA-11"><span class="toc-number">4.3.1.</span> <span class="toc-text">创建</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B1%9E%E6%80%A7-4"><span class="toc-number">4.3.2.</span> <span class="toc-text">属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%B3%95-7"><span class="toc-number">4.3.3.</span> <span class="toc-text">方法</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#DOM%E5%AF%B9%E8%B1%A1"><span class="toc-number">5.</span> <span class="toc-text">DOM对象</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">5.1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A6%82%E8%BF%B0-16"><span class="toc-number">5.2.</span> <span class="toc-text">概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%86%E7%B1%BB-1"><span class="toc-number">5.3.</span> <span class="toc-text">分类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA-12"><span class="toc-number">5.4.</span> <span class="toc-text">创建</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E5%BC%8F%E4%B8%80"><span class="toc-number">5.4.1.</span> <span class="toc-text">方式一</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E5%BC%8F%E4%BA%8C"><span class="toc-number">5.4.2.</span> <span class="toc-text">方式二</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E5%85%B6%E4%BB%96%E5%AF%B9%E8%B1%A1"><span class="toc-number">5.4.3.</span> <span class="toc-text">获取其他对象</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Element-%E5%85%83%E7%B4%A0%E5%AF%B9%E8%B1%A1"><span class="toc-number">5.5.</span> <span class="toc-text">Element-元素对象</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96"><span class="toc-number">5.5.1.</span> <span class="toc-text">获取</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%B3%95-8"><span class="toc-number">5.5.2.</span> <span class="toc-text">方法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Node-%E8%8A%82%E7%82%B9%E5%AF%B9%E8%B1%A1"><span class="toc-number">5.6.</span> <span class="toc-text">Node-节点对象</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B1%9E%E6%80%A7-5"><span class="toc-number">5.6.1.</span> <span class="toc-text">属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%B3%95-9"><span class="toc-number">5.6.2.</span> <span class="toc-text">方法</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%8B%E4%BB%B6"><span class="toc-number">6.</span> <span class="toc-text">事件</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A6%82%E8%BF%B0-17"><span class="toc-number">6.1.</span> <span class="toc-text">概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%82%B9%E5%87%BB%E4%BA%8B%E4%BB%B6"><span class="toc-number">6.2.</span> <span class="toc-text">点击事件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%84%A6%E7%82%B9%E4%BA%8B%E4%BB%B6"><span class="toc-number">6.3.</span> <span class="toc-text">焦点事件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8A%A0%E8%BD%BD%E4%BA%8B%E4%BB%B6"><span class="toc-number">6.4.</span> <span class="toc-text">加载事件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%BC%A0%E6%A0%87%E4%BA%8B%E4%BB%B6"><span class="toc-number">6.5.</span> <span class="toc-text">鼠标事件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%94%AE%E7%9B%98%E4%BA%8B%E4%BB%B6"><span class="toc-number">6.6.</span> <span class="toc-text">键盘事件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%89%E6%8B%A9%E5%92%8C%E6%94%B9%E5%8F%98"><span class="toc-number">6.7.</span> <span class="toc-text">选择和改变</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A1%A8%E5%8D%95%E4%BA%8B%E4%BB%B6"><span class="toc-number">6.8.</span> <span class="toc-text">表单事件</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2021/02/20/131_windows%E5%90%AF%E5%8A%A8ssh-agent/" title="windows启动ssh-agent"><img src="https://gitee.com/jasonM4A1/pictureHost/raw/master/img/20210220091020.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="windows启动ssh-agent"/></a><div class="content"><a class="title" href="/2021/02/20/131_windows%E5%90%AF%E5%8A%A8ssh-agent/" title="windows启动ssh-agent">windows启动ssh-agent</a><time datetime="2021-02-20T01:09:25.000Z" title="发表于 2021-02-20 09:09:25">2021-02-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/02/20/130_Idea%E7%94%9F%E6%88%90entity%E5%AE%9E%E4%BD%93%E7%B1%BB/" title="Idea生成entity实体类"><img src="https://gitee.com/jasonM4A1/pictureHost/raw/master/img/20210220084833.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Idea生成entity实体类"/></a><div class="content"><a class="title" href="/2021/02/20/130_Idea%E7%94%9F%E6%88%90entity%E5%AE%9E%E4%BD%93%E7%B1%BB/" title="Idea生成entity实体类">Idea生成entity实体类</a><time datetime="2021-02-20T00:45:30.000Z" title="发表于 2021-02-20 08:45:30">2021-02-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/02/18/129_idea%E6%96%B0%E5%BB%BA%E7%B1%BB%EF%BC%8C%E7%B1%BB%E5%90%8D%E5%87%BA%E7%8E%B0%E5%88%A0%E9%99%A4%E7%BA%BF%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/" title="idea新建类，类名出现删除线问题解决"><img src="https://gitee.com/jasonM4A1/pictureHost/raw/master/img/20210218154416.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="idea新建类，类名出现删除线问题解决"/></a><div class="content"><a class="title" href="/2021/02/18/129_idea%E6%96%B0%E5%BB%BA%E7%B1%BB%EF%BC%8C%E7%B1%BB%E5%90%8D%E5%87%BA%E7%8E%B0%E5%88%A0%E9%99%A4%E7%BA%BF%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/" title="idea新建类，类名出现删除线问题解决">idea新建类，类名出现删除线问题解决</a><time datetime="2021-02-18T07:43:22.000Z" title="发表于 2021-02-18 15:43:22">2021-02-18</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/02/18/128_Cannot-resolve-plugin-org-apache-maven-plugins-maven-site-plugin-3-7-1%E6%8A%A5%E9%94%99/" title="Cannot resolve plugin org.apache.maven.plugins:maven-site-plugin:3.7.1报错"><img src="https://gitee.com/jasonM4A1/pictureHost/raw/master/img/20210218152004.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Cannot resolve plugin org.apache.maven.plugins:maven-site-plugin:3.7.1报错"/></a><div class="content"><a class="title" href="/2021/02/18/128_Cannot-resolve-plugin-org-apache-maven-plugins-maven-site-plugin-3-7-1%E6%8A%A5%E9%94%99/" title="Cannot resolve plugin org.apache.maven.plugins:maven-site-plugin:3.7.1报错">Cannot resolve plugin org.apache.maven.plugins:maven-site-plugin:3.7.1报错</a><time datetime="2021-02-18T07:19:05.000Z" title="发表于 2021-02-18 15:19:05">2021-02-18</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/02/10/114_HTTP%E5%8D%8F%E8%AE%AE%E5%85%A5%E9%97%A8/" title="Http协议入门"><img src="https://gitee.com/jasonM4A1/pictureHost/raw/master/img/20210203172229.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Http协议入门"/></a><div class="content"><a class="title" href="/2021/02/10/114_HTTP%E5%8D%8F%E8%AE%AE%E5%85%A5%E9%97%A8/" title="Http协议入门">Http协议入门</a><time datetime="2021-02-10T01:20:50.000Z" title="发表于 2021-02-10 09:20:50">2021-02-10</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2021 By Bernardo Li</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">李博帅</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="font-plus" type="button" title="放大字体"><i class="fas fa-plus"></i></button><button id="font-minus" type="button" title="缩小字体"><i class="fas fa-minus"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script src="/js/search/local-search.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"><script>function loadValine () {
+  function initValine () {
+    let initData = {
+      el: '#vcomment',
+      appId: 'MF0PRYjapmP9TvfVhQrAk3qp-gzGzoHsz',
+      appKey: '1gBa0Ea7mSph6YIuCz2wDtIG',
+      placeholder: 'Please leave your footprints',
+      avatar: 'monsterid',
+      meta: 'nick,mail,link'.split(','),
+      pageSize: '10',
+      lang: 'en',
+      recordIP: false,
+      serverURLs: '',
+      emojiCDN: '',
+      emojiMaps: "",
+      enableQQ: false,
+      path: window.location.pathname,
+    }
+
+    if (true) { 
+      initData.requiredFields= ('nick,mail'.split(','))
+    }
+    
+    if (false) {
+      const otherData = false
+      initData = Object.assign(initData, otherData)
+    }
+    
+    const valine = new Valine(initData)
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !false) {
+  if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script></div><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = [
+  'title',
+  '#config-diff',
+  '#body-wrap',
+  '#rightside-config-hide',
+  '#rightside-config-show',
+  '.js-pjax'
+]
+
+if (false) {
+  pjaxSelectors.unshift('meta[property="og:image"]', 'meta[property="og:title"]', 'meta[property="og:url"]')
+}
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  if (typeof gtag === 'function') {
+    gtag('config', '', {'page_path': window.location.pathname});
+  }
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // Analytics
+  if (false) {
+    MtaH5.pgv()
+  }
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+
+document.addEventListener('pjax:send', function () {
+  typeof preloader === 'object' && preloader.initLoading()
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
